@@ -1,1 +1,3 @@
 Ensemble des divs: head, menuConnexion,menuGauche, menuDroite, corps
+configuration de git:
+	git clone ssh://bd@ceypasbien.com:1022/home/bd/trac/git bloody
