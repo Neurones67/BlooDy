@@ -10,15 +10,17 @@
 	<link rel="stylesheet" media="screen" type="text/css" href="LeStyle.css" />
 </head>
 <body>
-<-- Début du site internet -->
+<!-- Début du site Internet -->
 <div id="body">
 	<div id="head">
 		<img src="http://github.com/images/modules/header/logov3-hover.png" alt="image de rien du tout ." />
 	</div>
 	<div id="menuConnexion">
+	<form method="POST" action="/connexion.html">
 		<input id="id_Connexion" type="text" /><input id="id_MotDePasse" type="password" />
 		<input type="submit" id="btn_Connexion" value="Connexion" />
 		<a class="lien_MotDePassePerdu">Mot de passe perdu ?</a>
+	</form>
 	</div>
 	<div id="menuGauche">
 	</div>
