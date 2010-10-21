@@ -10,11 +10,11 @@
 	<link rel="stylesheet" media="screen" type="text/css" href="LeStyle.css" />
 </head>
 <body>
-<div id="head">
-</div>
-<div id="menuConnexion">
-</div>
 <div id="body">
+	<div id="head">
+	</div>
+	<div id="menuConnexion">
+	</div>
 	<div id="menuGauche">
 	</div>
 	<div id="corps">
