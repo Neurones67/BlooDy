@@ -51,7 +51,7 @@ class Utilisateurs
 			$this->descrption=$data->description;
 			$this->bdpublique=$data->bdpublique;
 			$this->accueiltype=$data->accueiltype;
-			$this->ipinscription=$data->ipinscription
+			$this->ipinscription=$data->ipinscription;
 			$this->uetat=$data->uetat;
 			$this->cvalidation=$data->cvalidation;
 			return true;
