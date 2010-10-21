@@ -1,3 +1,11 @@
 Ensemble des divs: head, menuConnexion,menuGauche, menuDroite, corps
 configuration de git:
+	git config --global user.name "pseudo"
+	git config --global user.email "e-mail"
 	git clone ssh://bd@ceypasbien.com:1022/home/bd/trac/git bloody
+
+utilisation de git, en étant dans le bon dossier:
+	git pull	//met à jour du serveur à chez toi
+	git add nomdufichieràajouter secondfichier ...
+	git commit -am "ce que j'ai fait" 
+	git push origin master		// dire que tu push sur la branche "master", si pas de changements : git push simplement
