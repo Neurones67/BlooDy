@@ -17,7 +17,7 @@ class Utilisateurs
 	
 	// variables utiles
 	private $mysql; // Connexion à la base de données
-	public __construct($uid=0)
+	public __construct($uid)
 	{
 		// Demande de l'objet MySQL
 		$this->mysql=requestObject('MySQL');
