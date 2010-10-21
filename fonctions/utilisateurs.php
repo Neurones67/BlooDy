@@ -69,5 +69,20 @@ class Utilisateurs
 	private function auth($login,$user)
 	{
 		// Authentifie un utilisateur avec son login et son mot de passe
+		$login=$this->mysql->real_escape_string($login);
+		$password=$this->passhash($password);
+		$sql='SELECT uid FROM utilisateurs WHERE login="'.$login.'" AND password="'.$password.'"';
+		$res=$this->mysql->query($sql);
+		if($data=$req->fetch_object())
+		{
+			$_SESSION['connecte']=true;
+			$_SESSION['uid']=$data->uid;
+			$this->init_data($uid);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
