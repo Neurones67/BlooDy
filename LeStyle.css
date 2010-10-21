@@ -1,7 +1,16 @@
+#head,#menuConnexion
+{
+	min-width : 1100px;
+	width : 90%;
+	margin : auto;
+}
 #head
+{
+	text-align : center;
+}
+#menuConnexion
 {
 }
 #body
 {
 }
-
