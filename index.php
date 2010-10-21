@@ -14,11 +14,13 @@
 </div>
 <div id="menuConnexion">
 </div>
-<div id="menuGauche">
-</div>
-<div id="corps">
-</div>
-<div id="menuDroite">
+<div id="body">
+	<div id="menuGauche">
+	</div>
+	<div id="corps">
+	</div>
+	<div id="menuDroite">
+	</div>
 </div>
 <div id="foot">
 </div>
