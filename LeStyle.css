@@ -19,4 +19,8 @@
 	padding : 0px;
 	padding-top : 10px;
 }
-
+.sousListe
+{
+	border-left : 2px;
+	border-color : gray;
+}
