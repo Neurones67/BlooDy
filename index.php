@@ -1,8 +1,8 @@
 <?php 
+	require_once('fonctions.php');
 	echo('<?xml version=\'1.0\' encoding="UTF-8" ?>'); ?>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>Bienvenue sur le site !</title>
@@ -10,11 +10,12 @@
 	<link rel="stylesheet" media="screen" type="text/css" href="LeStyle.css" />
 </head>
 <body>
-<div id="head">
-</div>
-<div id="menuConnexion">
-</div>
 <div id="body">
+	<div id="head">
+	<img src="http://github.com/images/modules/header/logov3-hover.png" alt="image de rien du tout ." />
+	</div>
+	<div id="menuConnexion">
+	</div>
 	<div id="menuGauche">
 	</div>
 	<div id="corps">
