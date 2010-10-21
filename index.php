@@ -10,9 +10,10 @@
 	<link rel="stylesheet" media="screen" type="text/css" href="LeStyle.css" />
 </head>
 <body>
+<-- Début du site internet -->
 <div id="body">
 	<div id="head">
-	<img src="http://github.com/images/modules/header/logov3-hover.png" alt="image de rien du tout ." />
+		<img src="http://github.com/images/modules/header/logov3-hover.png" alt="image de rien du tout ." />
 	</div>
 	<div id="menuConnexion">
 	</div>
