@@ -10,17 +10,17 @@
 	<link rel="stylesheet" media="screen" type="text/css" href="LeStyle.css" />
 </head>
 <body>
-<div "head">
+<div id="head">
 </div>
-<div "menuConnexion">
+<div id="menuConnexion">
 </div>
-<div "menuGauche">
+<div id="menuGauche">
 </div>
 <div "corps">
 </div>
-<div "menuDroite">
+<div id="menuDroite">
 </div>
-<div "foot">
+<div id="foot">
 </div>
 </body>
 </html>
