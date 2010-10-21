@@ -17,7 +17,7 @@ class Utilisateurs
 	
 	// variables utiles
 	private $mysql; // Connexion à la base de données
-	public __construct($uid)
+	public function __construct($uid=0)
 	{
 		// Demande de l'objet MySQL
 		$this->mysql=requestObject('MySQL');
@@ -39,7 +39,7 @@ class Utilisateurs
 			$this->uetat=255; // Non connecté
 		}
 	}
-	private init_data($uid)
+	private function init_data($uid)
 	{
 		$uid=intval($uid);
 		$sql='SELECT uid,email,description,bdpublique,accueiltype,ipinscription,uetat,cvalidation FROM utilisateurs WHERE uid='.$uid;
@@ -61,12 +61,12 @@ class Utilisateurs
 			return false;
 		}
 	}
-	private passhash($password)
+	private function passhash($password)
 	{
 		// Permet de chiffrer un mot de passe
 		return sha1(md5($password));
 	}
-	private auth($login,$user)
+	private function auth($login,$user)
 	{
 		// Authentifie un utilisateur avec son login et son mot de passe
 	}
