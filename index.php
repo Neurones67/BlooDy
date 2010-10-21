@@ -16,7 +16,7 @@
 </div>
 <div id="menuGauche">
 </div>
-<div "corps">
+<div id="corps">
 </div>
 <div id="menuDroite">
 </div>
