@@ -16,6 +16,9 @@
 		<img src="http://github.com/images/modules/header/logov3-hover.png" alt="image de rien du tout ." />
 	</div>
 	<div id="menuConnexion">
+		<input id="id_Connexion" type="text" /><input id="id_MotDePasse" type="password" />
+		<input type="submit" id="btn_Connexion" value="Connexion" />
+		<a class="lien_MotDePassePerdu">Mot de passe perdu ?</a>
 	</div>
 	<div id="menuGauche">
 	</div>
