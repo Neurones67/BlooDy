@@ -15,6 +15,7 @@ class DB extends MySQLi
 	function __destruct()
 	{
 		$this->close();
+		unset($reqcount);
 	}
 	function query($req)
 	{
@@ -23,7 +24,16 @@ class DB extends MySQLi
 			$this->initParams();
 		}
 		$this->reqcount++;
-		$res = parent::query($req) or die($this->error.' requête : '.$req);
+		if(!($res = parent::query($req)))
+		{
+			ob_start();
+			debug_print_backtrace();
+			file_put_contents("mysql_errors",date('[d/m/Y - H:i:s]').' Erreur MySQL : '.$this->error.'
+Backtrace:
+'.ob_get_contents());
+			ob_end_clean();
+			die("Une erreur s'est produite: ". $this->error);
+		}
 		return $res;
 	}
 	function count()

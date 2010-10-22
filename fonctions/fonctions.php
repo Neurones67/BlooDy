@@ -21,7 +21,7 @@ define('TEMPLATES',STYLES.'templates/');
 define('PARTIAL',TEMPLATES.'partial/');
 define('PROOT',TEMPLATES.'root/');
 
-require_once('password.php');
+include('password.php');
 //Inclusion des différentes classes écrites
 require_once('db.php');
 require_once('utilisateurs.php'); 

@@ -11,3 +11,9 @@ include('mail.php');
 $object=new EMail();
 $object->send('marc@moonscoop-fan.com','Test d\'envoi de mails','hééhooo ça marche ? :D',"Marc");
 */
+
+// Test de la gestion d'erreur
+include('db.php');
+include('password.php');
+$mysql=new DB($host,$username,$password,$base);
+$mysql->query('SELECT * from trucs');
