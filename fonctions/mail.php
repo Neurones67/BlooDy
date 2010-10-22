@@ -33,6 +33,10 @@ class EMail
 	}
 	public function __destruct()
 	{
+		unset($this->backend);
+		unset($this->mailobject);
+		unset($this->params);
+		unset($this->headers);
 	}
 	public function send($recipients,$subject,$message)
 	{
