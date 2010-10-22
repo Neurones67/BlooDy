@@ -1,3 +1,8 @@
+Un mot sur les dépendances :
+
+Besoin de support des packages pear (apt-get install php-pear sur les systèmes basés sur Debian) :
+Besoin des packages Pear : Mail, Net_SMTP, Net_Socket
+
 Ensemble des divs: head, menuConnexion,menuGauche, menuDroite, corps
 configuration de git:
 	git config --global user.name "pseudo"
