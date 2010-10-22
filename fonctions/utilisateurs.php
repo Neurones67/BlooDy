@@ -39,6 +39,17 @@ class Utilisateurs
 			$this->uetat=255; // Non connecté
 		}
 	}
+	public function __destruct()
+	{
+		unset($this->uid);
+		unset($this->email);
+		unset($this->description);
+		unset($this->bdpublique);
+		unset($this->accueiltype);
+		unset($this->ipinscription);
+		unset($this->uetat);
+		unset($this->cvalidation);
+	}
 	private function init_data($uid)
 	{
 		$uid=intval($uid);
@@ -65,6 +76,21 @@ class Utilisateurs
 	{
 		// Permet de chiffrer un mot de passe
 		return sha1(md5($password));
+	}
+	private function genConfirmCode()
+	{
+		// Génère une chaine aléatoire de 5 caractères pour les codes de confirmations
+		return substr(sha1(md5(sha1(mt_rand().time().'BlooDy'))),5,5);
+	}
+	private function register($login,$password,$email)
+	{
+		// Enregistre l'utilisateur avec les paramètres indiqués et retourne l'identifiant (uid) nouvellement créer
+		$login=$this->mysql->real_escape_string($login);
+		$password=$this->passhash($password);
+		$email=$this->mysql->real_escape_string($email);
+		$sql='INSERT INTO utilisateurs(login,motdepasse,email) VALUES("'.$login.'","'.$password.'","'.$email.'"';
+		$res=$this->mysql->query($sql);
+		return $this->mysql->insert_id;	
 	}
 	private function auth($login,$user)
 	{
