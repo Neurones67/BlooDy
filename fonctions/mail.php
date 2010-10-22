@@ -22,7 +22,7 @@ class EMail
 		$this->params=array(
 			"host"=>"localhost",
 			"port"=>"25");
-		$this->mailobject=Mail:factory($this->backend,$this->params);
+		$this->mailobject=Mail::factory($this->backend,$this->params);
 		$this->headers=array(
 			"From"=> "BlooDy <contact@bd.ceypasbien.com>",
 			"Sender"=> "BlooDy <contact@bd.ceypasbien.com>",
