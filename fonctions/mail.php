@@ -38,10 +38,17 @@ class EMail
 		unset($this->params);
 		unset($this->headers);
 	}
-	public function send($recipients,$subject,$message)
+	public function send($recipients,$subject,$message,$user="")
 	{
 		$lheaders=$this->headers;
-		$lheaders['To']=$recipients;
+		if(!empty($user))
+		{
+			$lheaders['To']=$user." <".$recipients.">";
+		}
+		else
+		{
+			$lheaders['To']=$recipients;
+		}
 		$lheaders['Subject']=$subject;	
 		return $this->mailobject->send($recipients,$lheaders,$message);
 	}
