@@ -10,7 +10,7 @@ class Livre
 {
 	// Déclaration des attributs
 	private $lid;
-	private $nom:
+	private $nom;
 	private $isbn;
 	private $ean13;
 	private $date_publication;
