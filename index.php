@@ -38,6 +38,7 @@
 	</div>
 </div>
 <div id="foot">
+<p>Rien de spécial</p>
 </div>
 </body>
 </html>

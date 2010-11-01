@@ -1,7 +1,7 @@
 /*				Le style du site "BlooDy"				*/
 
 /*	Sélection multiple	*/
-#head, #corps, #menuGauche, #menuDroite
+#head, #corps, #menuGauche, #menuDroite, #foot
 {
 	border-style : solid;
 	border-width : 1px;
@@ -50,6 +50,6 @@
 }
 .sousListe
 {
-	border-left : 2px;
+	border-left : 1px;
 	border-color : gray;
 }
