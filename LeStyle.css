@@ -6,6 +6,13 @@
 	margin : auto;
 	padding : 0px;
 }
+/*
+   Je met des bords, ceci est TEMPORAIRE. (car moche)
+*/
+#head,#corps,#menuGauche,#menuDroite
+{
+	border : 1px;
+}
 #head
 {
 	padding : 0px;
