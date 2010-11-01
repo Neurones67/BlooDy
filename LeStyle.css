@@ -35,7 +35,8 @@
 }
 #menuConnexion
 {
-	border-top : none;
+	border : solid 1px #000;
+	border-top : none;	
 	background-color : gray;
 	padding : 0px;
 }
