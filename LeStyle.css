@@ -1,17 +1,24 @@
+/*				Le style du site "BlooDy"				*/
+
+#head,#corps,#menuGauche,#menuDroite
+{
+	border-style : solid;
+	border : 1px;
+	border-color : black;
+}
+#corps, #menuGauche, #menuDroite
+{
+	padding : 0px;
+	padding-top : 10px;
+}
+
+/*	Sélection d'un contenant unique	*/
 #body
 {
 	min-width : 1100px;
 	width : 90%;
 	margin : auto;
 	padding : 0px;
-}
-/*
-   Je met des bords, ceci est TEMPORAIRE. (car moche)
-*/
-#head,#corps,#menuGauche,#menuDroite
-{
-	border : 1px;
-	border-color : black;
 }
 #head
 {
@@ -22,11 +29,6 @@
 #menuConnexion
 {
 	padding : 0px;
-}
-#corps, #menuGauche, #menuDroite
-{
-	padding : 0px;
-	padding-top : 10px;
 }
 #menuGauche
 {
