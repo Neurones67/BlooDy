@@ -1,11 +1,11 @@
 /*				Le style du site "BlooDy"				*/
 
 /*	Sélection multiple	*/
-#head,#corps,#menuGauche,#menuDroite
+#head, #corps, #menuGauche, #menuDroite
 {
 	border-style : solid;
 	border-width : 1px;
-	border-color : #FFF;
+	border-color : #ffffff;
 }
 #corps, #menuGauche, #menuDroite
 {
