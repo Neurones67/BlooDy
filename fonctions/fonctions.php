@@ -1,35 +1,40 @@
 <?php
 /*
-	Fonctions principales pour Génération Taraddicts
-	Par Neurones67
+	Fonctions principales pour Bloody
+	Par Marc
 	Licence GPLv3
 	11/07/10
 */
 // Démarrage de session
 session_start();
+
+// Permet de calculer la différence entre deux temps en ms.
 function microtime_diff($a, $b) {
 	list($a_dec, $a_sec) = explode(" ", $a);
 	list($b_dec, $b_sec) = explode(" ", $b);
 	return $b_sec - $a_sec + $b_dec - $a_dec;
 }
 // Définition des constantes
-define('ROOT', $_SERVER['DOCUMENT_ROOT'].'/');
-define('FONCTIONS', ROOT.'fonctions/');
-define('STYLES', ROOT.'styles/');
-define('JS', ROOT.'js/');
-define('TEMPLATES',STYLES.'templates/');
-define('PARTIAL',TEMPLATES.'partial/');
-define('PROOT',TEMPLATES.'root/');
+define('ROOT', $_SERVER['DOCUMENT_ROOT'].'/'); // Répertoire racine du site
+define('FONCTIONS', ROOT.'fonctions/'); // Répertoire où se trouvent les fonctions
+define('STYLES', ROOT.'styles/'); // Répertoire où se trouvent les documents de style (css/images)
+define('JS', ROOT.'js/'); // Répertoire où se trouvent les scripts Javascript
+define('TEMPLATES',STYLES.'templates/'); // Répertoire où se trouvent les templates HTML
+define('PARTIAL',TEMPLATES.'partial/'); // Répertoire où se trouvent les templates HTML partiels (juste une partie d'une page)
+define('PROOT',TEMPLATES.'root/'); // Répertoire où se trouvent les template HTML des pages à la racine du site
 
+// On inclu les informations d'identifications à la base de donnée
 include('password.php');
 //Inclusion des différentes classes écrites
 require_once('db.php');
 require_once('utilisateurs.php'); 
 
+
+// Initialisation de la variable globale qui va stocker les différents objets (pour un accès direct depuis n'importe où)
 $GLOBALS['object']=array();
 // fonctions de base
 
-// Demande d'objet commun
+// Permet de demander l'instance d'une classe, si déjà chargée, la retourne, sinon, la créer, la stoque, et la retourne
 function requestObject($objectName)
 {
 	if(!isset($GLOBALS['object'][$objectName]))
