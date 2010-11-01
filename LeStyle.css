@@ -1,6 +1,5 @@
 #body
 {
-	background-color : gray;
 	min-width : 1100px;
 	width : 90%;
 	margin : auto;
@@ -12,10 +11,12 @@
 #head,#corps,#menuGauche,#menuDroite
 {
 	border : 1px;
+	border-color : black;
 }
 #head
 {
 	padding : 0px;
+	background-color : gray;
 	text-align : center;
 }
 #menuConnexion
@@ -26,6 +27,14 @@
 {
 	padding : 0px;
 	padding-top : 10px;
+}
+#menuGauche
+{
+	float : left;
+}
+#menuDroite
+{
+	float : right;
 }
 .sousListe
 {
