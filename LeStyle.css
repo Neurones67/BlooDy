@@ -30,6 +30,8 @@
 {
 	margin-right : 170px;
 	margin-left : 170px;
+	border-right : none;
+	border-left : none;
 }
 #head
 {
