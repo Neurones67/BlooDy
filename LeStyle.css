@@ -1,9 +1,10 @@
 /*				Le style du site "BlooDy"				*/
 
+/*	Sélection multiple	*/
 #head,#corps,#menuGauche,#menuDroite
 {
 	border-style : solid;
-	border : 2px;
+	border-width : 1px;
 	border-color : #FFF;
 }
 #corps, #menuGauche, #menuDroite
