@@ -4,7 +4,7 @@
 #head, #corps, #menuGauche, #menuDroite
 {
 	border-style : solid;
-	border-width : 1px;
+	border-width : 3px;
 	border-color : #ffffff;
 }
 #corps, #menuGauche, #menuDroite
