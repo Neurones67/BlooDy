@@ -26,10 +26,13 @@
 	</form>
 	</div>
 	<div id="menuGauche">
+		<p>Voici le menu de gauche</p>
 	</div>
 	<div id="corps">
+		<p>Voici le corps du site</p>
 	</div>
 	<div id="menuDroite">
+		<p>Voici le menu de suggestions</p>
 	</div>
 </div>
 <div id="foot">
