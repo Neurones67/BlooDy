@@ -30,10 +30,12 @@
 {
 	padding : 0px;
 	background-color : gray;
+	border-bottom : none;
 	text-align : center;
 }
 #menuConnexion
 {
+	border-top : none;
 	padding : 0px;
 }
 #menuGauche
