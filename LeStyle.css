@@ -53,6 +53,10 @@
 {
 	float : right;
 }
+#foot
+{
+	margin-top : 10px;
+}
 .sousListe
 {
 	border-left : 1px;
