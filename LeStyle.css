@@ -13,6 +13,10 @@
 	margin-top : 10px;
 	min-height : 400px;
 }
+#menuGauche, #menuDroite
+{
+	width : 150px;
+}
 
 /*	Sélection d'un contenant unique	*/
 #body
@@ -24,7 +28,8 @@
 }
 #corps
 {
-	margin : 10px;
+	margin-right : 170px;
+	margin-left : 170px;
 }
 #head
 {
