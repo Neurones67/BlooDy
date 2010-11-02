@@ -16,7 +16,7 @@
 	include_once('partial/entete.php');
 	include_once('partial/menuConnexion.php');
 	include_once('partial/menuGauche.php');
-	
+?>	
 	<div id="menuDroite">
 		<p>Voici le menu de suggestions</p>
 	</div>
