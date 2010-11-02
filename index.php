@@ -7,7 +7,7 @@
 <head>
 	<title>Bienvenue sur le site !</title>
 	<meta http-equiv="Content-Type" content="text/html ; charset=UTF-8" />
-	<link rel="stylesheet" media="screen" type="text/css" href="LeStyle.css" />
+	<link rel="stylesheet" media="screen" type="text/css" href="styles/style.css" />
 </head>
 <body>
 <!-- Début du site Internet -->
