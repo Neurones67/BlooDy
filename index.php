@@ -12,9 +12,10 @@
 <body>
 <!-- Début du site Internet -->
 <div id="body">
-	<div id="head">
-		<img src="http://github.com/images/modules/header/logov3-hover.png" alt="image de rien du tout ." />
-	</div>
+<?php	
+	include_once('partial/entete.php');
+?>
+	
 	<div id="menuConnexion">
 	<form method="POST" action="/connexion.php">
 		<input id="id_Connexion" type="text" name="id_Connexion" />
