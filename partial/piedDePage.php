@@ -1,0 +1,3 @@
+	<div id="foot">
+		<p>Rien de spécial à dire concernant le pied de page :)</p>
+	</div>
