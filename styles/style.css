@@ -69,10 +69,10 @@
 	float:left;
 	width:164px;
 	height:62px;
-	background-image:url('images/menuG_Noinscription.png');
+	background-image:url('images/menuG_Noinscrire.png');
 	background-repeat:no-repeat;
 }
 #menuGaucheinscr:hover
 {
-	background-image:url('images/menuG_Oinscription.png');
+	background-image:url('images/menuG_Oinscrire.png');
 }
