@@ -1,5 +1,5 @@
 ErrorDocument 404 /index.php?mode=404
 RewriteEngine On
 RewriteBase /
-RewriteRule ^(.*).html$	/index.php?page=$1 [L]
+RewriteRule ^(.*)\.html$	/index.php?page=$1 [L]
 RewriteRule ^(.*)/$	/index.php?page=$1 [L]
