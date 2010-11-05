@@ -50,6 +50,9 @@
 #menuGauche
 {
 	float : left;
+	background-image:url('/images/artMenuGauche.png');
+	background-repeat:no-repeat;
+}
 }
 #menuDroite
 {
