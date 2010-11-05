@@ -64,3 +64,15 @@
 	border-left : 1px;
 	border-color : gray;
 }
+#menuGaucheinscr
+{
+	float:left;
+	width:164px;
+	height:62px;
+	background-image:url('images/menuG_Noinscription.png');
+	background-repeat:no-repeat;
+}
+#menuGaucheinscr:hover
+{
+	background-image:url('images/menuG_Oinscription.png');
+}
