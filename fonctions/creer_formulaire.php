@@ -5,12 +5,12 @@
 /* On souhaite un label puis un champ de texte associé */
 function creer_label_champ($label,$nom,$tailleChamp=null)
 {
-	$ligne="<dl><dt><label for=\"".$nom."\" >".$label."</label></dt><dd>";
+	$ligne="<dt><label for=\"".$nom."\" >".$label."</label></dt><dd>";
 	$ligne.="<input id=\"".$nom."\" name=\"".$nom."\" type=\"text\" ";
 	if(isset($tailleChamp))
 		$ligne.="size=\"".$tailleChamp."\" ";
 	
-	$ligne.="/></dd></dl>\n"; //on termine le input et on ferme toutes les balises
+	$ligne.="/></dd>\n"; //on termine le input et on ferme toutes les balises
 	echo $ligne;
 }
 
