@@ -1,7 +1,7 @@
 	<div id="menuGauche">
 
 		<div id="menuGaucheinscr">
-		<a href="www.google.fr"><img src="/images/transparentinscrire.png" alt="transparentinscrire" /></a>
+		<a href="www.google.fr"><img src="/images/transparentinscrire.png" class="imagetransparent" alt="transparentinscrire" /></a>
 		</div>
 		<p>Voici le menu de gauche</p>
 	</div>
