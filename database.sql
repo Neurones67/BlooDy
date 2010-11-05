@@ -16,14 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Current Database: `bd`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `bd` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
-
-USE `bd`;
-
---
 -- Table structure for table `amis`
 --
 
@@ -43,6 +35,31 @@ CREATE TABLE `amis` (
 LOCK TABLES `amis` WRITE;
 /*!40000 ALTER TABLE `amis` DISABLE KEYS */;
 /*!40000 ALTER TABLE `amis` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `appartient`
+--
+
+DROP TABLE IF EXISTS `appartient`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `appartient` (
+  `uid` int(11) DEFAULT NULL,
+  `lid` int(11) DEFAULT NULL,
+  `date_achat` int(11) DEFAULT NULL,
+  `etat` int(1) DEFAULT NULL,
+  `emplacement` text COLLATE utf8_bin
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `appartient`
+--
+
+LOCK TABLES `appartient` WRITE;
+/*!40000 ALTER TABLE `appartient` DISABLE KEYS */;
+/*!40000 ALTER TABLE `appartient` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -267,5 +284,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-10-19 15:23:37
+-- Dump completed on 2010-11-05 15:15:32
 
