@@ -97,7 +97,7 @@ class Utilisateurs
 		// Authentifie un utilisateur avec son pseudo et son mot de passe
 		$pseudo=$this->mysql->real_escape_string($pseudo);
 		$password=$this->passhash($password);
-		$sql='SELECT uid FROM utilisateurs WHERE pseudo="'.$pseudo.'" AND password="'.$password.'"';
+		$sql='SELECT uid FROM utilisateurs WHERE pseudo="'.$pseudo.'" AND motdepasse="'.$password.'"';
 		$res=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
@@ -124,6 +124,10 @@ class Utilisateurs
 			{
 				return 'Connexion echouée';
 			}
+		}
+		else
+		{
+			return 'Vous n\'avez pas remplis tous les champs';
 		}
 	}
 }
