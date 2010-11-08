@@ -92,7 +92,7 @@ class Utilisateurs
 		$res=$this->mysql->query($sql);
 		return $this->mysql->insert_id;	
 	}
-	private function auth($login,$user)
+	private function auth($login,$password)
 	{
 		// Authentifie un utilisateur avec son login et son mot de passe
 		$login=$this->mysql->real_escape_string($login);
@@ -109,6 +109,21 @@ class Utilisateurs
 		else
 		{
 			return false;
+		}
+	}
+	public function connexion()
+	{
+		if(isset($_POST['id_Connexion'],$_POST['id_MotDePasse']) and !empty($_POST['id_Connexion']) and !empty($_POST['id_MotDePasse']))
+		{
+		
+			if($this->auth($_POST['id_Connexion'],$_POST['id_MotDePasse']))
+			{
+				return 'Connexion réussie';
+			}
+			else
+			{
+				return 'Connexion echouée';
+			}
 		}
 	}
 }
