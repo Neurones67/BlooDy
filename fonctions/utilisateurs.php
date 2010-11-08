@@ -35,7 +35,7 @@ class Utilisateurs
 		}
 		else
 		{
-			$this->login="Anonyme";
+			$this->pseudo="Anonyme";
 			$this->uetat=255; // Non connecté
 		}
 	}
@@ -82,22 +82,22 @@ class Utilisateurs
 		// Génère une chaine aléatoire de 5 caractères pour les codes de confirmations
 		return substr(sha1(md5(sha1(mt_rand().time().'BlooDy'))),5,5);
 	}
-	private function register($login,$password,$email)
+	private function register($pseudo,$password,$email)
 	{
 		// Enregistre l'utilisateur avec les paramètres indiqués et retourne l'identifiant (uid) nouvellement créer
-		$login=$this->mysql->real_escape_string($login);
+		$pseudo=$this->mysql->real_escape_string($pseudo);
 		$password=$this->passhash($password);
 		$email=$this->mysql->real_escape_string($email);
-		$sql='INSERT INTO utilisateurs(login,motdepasse,email) VALUES("'.$login.'","'.$password.'","'.$email.'"';
+		$sql='INSERT INTO utilisateurs(pseudo,motdepasse,email) VALUES("'.$pseudo.'","'.$password.'","'.$email.'"';
 		$res=$this->mysql->query($sql);
 		return $this->mysql->insert_id;	
 	}
-	private function auth($login,$password)
+	private function auth($pseudo,$password)
 	{
-		// Authentifie un utilisateur avec son login et son mot de passe
-		$login=$this->mysql->real_escape_string($login);
+		// Authentifie un utilisateur avec son pseudo et son mot de passe
+		$pseudo=$this->mysql->real_escape_string($pseudo);
 		$password=$this->passhash($password);
-		$sql='SELECT uid FROM utilisateurs WHERE login="'.$login.'" AND password="'.$password.'"';
+		$sql='SELECT uid FROM utilisateurs WHERE pseudo="'.$pseudo.'" AND password="'.$password.'"';
 		$res=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
