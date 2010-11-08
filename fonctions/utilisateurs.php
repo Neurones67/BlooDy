@@ -98,7 +98,7 @@ class Utilisateurs
 		$pseudo=$this->mysql->real_escape_string($pseudo);
 		$password=$this->passhash($password);
 		$sql='SELECT uid FROM utilisateurs WHERE pseudo="'.$pseudo.'" AND motdepasse="'.$password.'"';
-		$res=$this->mysql->query($sql);
+		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
 			$_SESSION['connecte']=true;
