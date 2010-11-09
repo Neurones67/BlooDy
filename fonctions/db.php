@@ -47,7 +47,7 @@ class DB extends MySQLi
 			// On affiche l'état de la pile d'appel (pour savoir pourquoi ça plante, d'uù le script est lancé)
 			debug_print_backtrace();
 			// On écrit tout ça dans un fichier de logs "mysql_errors" avec la date, l'erreur, la requête SQL associée et l'état de la pile d'appel dans le buffer
-			file_put_contents("mysql_errors",date('[d/m/Y - H:i:s]').' Erreur MySQL : '.$this->error.' pendant la requête '.$req.'
+			file_put_contents(FONCTIONS."mysql_errors",date('[d/m/Y - H:i:s]').' Erreur MySQL : '.$this->error.' pendant la requête '.$req.'
 Backtrace:
 '.ob_get_contents());
 			// On termine la capture de la sortie et on efface ce qu'on a enregistré
