@@ -92,6 +92,89 @@ class Utilisateurs
 		$res=$this->mysql->query($sql);
 		return $this->mysql->insert_id;	
 	}
+	
+	// Gère le formulaire d'inscription des membres
+	public function register_Form()
+	{
+		$template="";
+		// Gère l'inscription des membres
+		$login="";
+		$email="";
+		if(isset($_POST['login'], $_POST['email'], $_POST['email2'], $_POST['password'], $_POST['password2'])) // Si on a bien renseigné tous les champs
+		{
+			
+			if(!empty($_POST['login']) and !empty($_POST['email']) and !empty($_POST['email2']) and !empty($_POST['password']) and !empty($_POST['password2']))
+			{
+				$errors=array();
+				if(strlen($_POST['login'])>22)
+				{
+					$errors[]="Pseudo trop long, Limité à 22 caractères (le vôtre en fait ".strlen($_POST['login']).")";
+				}
+				if($_POST['email'] != $_POST['email2'])
+				{
+					$errors[]="Les deux adresses emails ne correspondent pas";
+				}
+				if($_POST['password'] != $_POST['password2'])
+				{
+					$errors[]="Les deux mots de passe ne correspondent pas";
+				}
+				$login=$this->mysql->real_escape_string($_POST['login']);
+				$sql='SELECT login FROM utilisateurs WHERE pseudo="'.$login.'"';
+				$req=$this->mysql->query($sql);
+				if($req->fetch_array()) // Si l'user existe déjà
+				{
+					$errors[]="Ce pseudo est déjà utilisé par quelqu'un d'autre, choisissez-en un autre";
+				}
+				if(!preg_match('/^[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+(\.[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+)*@(([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){1,63}\.)+([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){2,63}$/i',$_POST['email']))
+				{
+					$errors[]="L'adresse email n'est pas valide";
+				}
+				if(count($errors)>0)
+				{
+					$template=requestObject('Nav')->userErrorHandler("Plusieurs erreurs ont été détectés dans ce que vous avez fourni",$errors);
+				}
+				else
+				{
+					$password=stripslashes($_POST['password']);
+					if($this->register($login,$password,$email))
+					{
+						$template='<div class="message">Vous êtes maintenant enregistrés sur le site de BlooDy, vous pouvez maintenant vous <a href="/connexion.html">connecter</a></div>';
+					}
+					else
+					{
+						$errors[]="Enregistrement échoué pour une raison inconnue, contacter le webmaster";
+						$template=requestObject('Nav')->userErrorHandler("Une erreur est survenue",$errors);
+					}
+				}
+			}
+			else
+			{
+					$errors=array();
+					if(empty($_POST['login']))
+					{
+						$errors[]="Votre identifiant";
+					}
+					if(empty($_POST['email']))
+					{
+						$errors[]="Votre email";
+					}
+					if(empty($_POST['email2']))
+					{
+						$errors[]="La confirmation de votre email";
+					}
+					if(empty($_POST['password']))
+					{
+						$errors[]="Votre mot de passe";
+					}
+					if(empty($_POST['password2']))
+					{
+						$errors[]="La confirmation de votre mot de passe";
+					}
+					$template=requestObject('Nav')->userErrorHandler("Vous avez oublié de renseigner les champs suivants",$errors);
+			}
+		}
+		return $template;
+	}
 	private function auth($pseudo,$password)
 	{
 		// Authentifie un utilisateur avec son pseudo et son mot de passe
