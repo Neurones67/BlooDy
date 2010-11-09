@@ -1,5 +1,11 @@
 /*				Le style du site "BlooDy"				*/
 
+/*	Supprimer l'effet de bordure dans les liens images (c'est moche) */
+img
+{
+	border:0;
+}
+
 /*	Sélection multiple	*/
 #head, #corps, #menuGauche, #menuDroite, #foot
 {
