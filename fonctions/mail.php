@@ -24,12 +24,12 @@ class EMail
 			"port"=>"25");
 		$this->mailobject=Mail::factory($this->backend,$this->params);
 		$this->headers=array(
-			"From"=> "BlooDy <contact@bd.ceypasbien.com>",
-			"Sender"=> "BlooDy <contact@bd.ceypasbien.com>",
-			"Reply-To"=> "BlooDy <contact@bd.ceypasbien.com>",
+			"From"=> "BlooDy <contact@bloodybd.fr",
+			"Sender"=> "BlooDy <contact@bloodybd.fr>",
+			"Reply-To"=> "BlooDy <contact@bloodybd.fr>",
 			"Content-Type" => "text/plain; charset=UTF-8",
 			"X-Mailer"=> "BlooDy",
-			"X-Origin"=> "http://bd.ceypasbien.com");
+			"X-Origin"=> "http://bloodybd.fr");
 	}
 	public function __destruct()
 	{
