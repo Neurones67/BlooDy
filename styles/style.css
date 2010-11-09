@@ -60,6 +60,7 @@ img
 #barreDeRecherche
 {
 	text-align:right;
+	float:right;
 }
 #menuGauche
 {
