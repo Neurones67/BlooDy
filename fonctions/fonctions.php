@@ -26,10 +26,12 @@ define('PROOT',STYLES.'root/'); // Répertoire où se trouvent les template HTML
 include('password.php');
 //Inclusion des différentes classes écrites
 require_once('templates.php');
+require_once('nav.php');
 require_once('param.php');
 require_once('db.php');
 require_once('utilisateurs.php'); 
 require_once('livre.php'); 
+
 
 // Initialisation de la variable globale qui va stocker les différents objets (pour un accès direct depuis n'importe où)
 $GLOBALS['object']=array();
