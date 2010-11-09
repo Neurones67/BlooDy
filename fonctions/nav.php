@@ -10,7 +10,7 @@ class Nav
 	private $user;
 	public function Nav()
 	{
-		$this->user=requestObject('User');
+		$this->user=requestObject('Utilisateurs');
 	}
 	public function LogStatus() // Retourne le lien de connexion ou de gestion de profil en fonction du statut du visiteur (enregistré ou pas)
 	{
