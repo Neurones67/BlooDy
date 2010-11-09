@@ -64,6 +64,9 @@ img
 #foot
 {
 	margin-top : 10px;
+	text-align:center;
+	font-size:0.8em;
+	text-decoration:italic;
 }
 .sousListe
 {
