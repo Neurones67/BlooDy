@@ -41,6 +41,7 @@ class Utilisateurs
 				session_destroy();
 				session_unset();
 			}
+		}
 		else
 		{
 			$this->pseudo="Anonyme";
