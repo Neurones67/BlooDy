@@ -1,9 +1,8 @@
-function Erase()
+function Erase(id)
 {
-	if (!document.getElementById) 
+	if (document.getElementById(id) != null)
 	{
-	return;	
+		var monObjet = document.getElementById(id);
+		monObjet.value = "";
 	}
-	var monObjet = document.getElementById("id_Identifiant");
-	monObjet.value = "";
 }
