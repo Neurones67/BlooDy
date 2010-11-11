@@ -27,12 +27,20 @@ class Utilisateurs
 			if(!$this->init_data($uid))
 			{
 				// Si on y arrive pas
-				$uid=0;
+				$this->uid=-1;
+			}
+		}
+		elseif(isset($_SESSION['connecte'], $_SESSION['uid']) and $_SESSION['connecte'])
+		{
+			$uid=intval($_SESSION['uid']);
+			if(!$this->init_data($uid))
+			{
+				// Si on y arrive pas
+				$this->uid=-1;
 				// On détruit la session et ses variables;
 				session_destroy();
 				session_unset();
 			}
-		}
 		else
 		{
 			$this->pseudo="Anonyme";
