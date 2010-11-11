@@ -199,7 +199,7 @@ class Utilisateurs
 		{
 			$_SESSION['connecte']=true;
 			$_SESSION['uid']=$data->uid;
-			$this->init_data($uid);
+			$this->init_data($data->uid);
 			return true;
 		}
 		else
