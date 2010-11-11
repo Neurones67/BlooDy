@@ -1,4 +1,4 @@
 function Erase()
 {
-		id_form.id_Connexion.value = "";
+		document.id_form.id_Connexion.value = "";
 }
