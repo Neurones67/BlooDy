@@ -81,7 +81,7 @@ class Nav
 	public function menuGauche()
 	{
 		// Permet de swticher entre le menu connecté et non connecté
-		if(this->user->estConnecte())
+		if($this->user->estConnecte())
 		{
 			$template=trim(file_get_contents(PARTIAL.'menuGaucheCo.xhtml'));
 		}
