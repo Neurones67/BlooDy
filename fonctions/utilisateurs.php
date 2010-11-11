@@ -36,7 +36,7 @@ class Utilisateurs
 		else
 		{
 			$this->pseudo="Anonyme";
-			$this->uetat=255; // Non connecté
+			$this->uetat=-1; // Non connecté
 		}
 	}
 	public function __destruct()
@@ -71,6 +71,10 @@ class Utilisateurs
 		{
 			return false;
 		}
+	}
+	public function estConnecte()
+	{
+		return $this->uid>0;
 	}
 	private function passhash($password)
 	{
