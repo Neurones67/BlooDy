@@ -6,8 +6,7 @@
 	<title>Bloody &bull; {{Title}}</title>
 	<meta http-equiv="Content-Type" content="text/html ; charset=UTF-8" />
 	<link rel="stylesheet" media="screen" type="text/css" href="/styles/style.css" />
-	<script type="text/javascript" src="/Javascript/jquery.js"></script>
-	<script type="text/javascript" src="/Javascript/erase.js"></script>
+	<script type="text/javascript" src="/Javascript/Javascript.js"></script>
 </head>
 <body>
 <!-- Début du site Internet -->
@@ -18,7 +17,7 @@
 	<div id="barreDeNavigation">
 		<div id="menuConnexion">
 		<form method="POST" action="/connexion.html" name="id_form">
-			<input id="id_Identifiant" type="text" name="id_Connexion" value="Identifiant"  />
+			<input id="id_Identifiant" type="text" name="id_Connexion" value="Identifiant" onfocus='Erase()' />
 			<input id="id_MotDePasse" type="password" name="id_MotDePasse" />
 			<input id="btn_Connexion" type="submit" value="Connexion" />
 			<a class="lien_MotDePassePerdu" href="/motdepasseperdu.html">Mot de passe perdu ?</a>
