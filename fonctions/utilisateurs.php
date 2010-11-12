@@ -27,7 +27,16 @@ class Utilisateurs
 			if(!$this->init_data($uid))
 			{
 				// Si on y arrive pas
-				$uid=0;
+				$this->uid=-1;
+			}
+		}
+		elseif(isset($_SESSION['connecte'], $_SESSION['uid']) and $_SESSION['connecte'])
+		{
+			$uid=intval($_SESSION['uid']);
+			if(!$this->init_data($uid))
+			{
+				// Si on y arrive pas
+				$this->uid=-1;
 				// On détruit la session et ses variables;
 				session_destroy();
 				session_unset();
@@ -36,7 +45,7 @@ class Utilisateurs
 		else
 		{
 			$this->pseudo="Anonyme";
-			$this->uetat=255; // Non connecté
+			$this->uetat=-1; // Non connecté
 		}
 	}
 	public function __destruct()
@@ -71,6 +80,10 @@ class Utilisateurs
 		{
 			return false;
 		}
+	}
+	public function estConnecte()
+	{
+		return $this->uid>0;
 	}
 	private function passhash($password)
 	{
@@ -186,7 +199,7 @@ class Utilisateurs
 		{
 			$_SESSION['connecte']=true;
 			$_SESSION['uid']=$data->uid;
-			$this->init_data($uid);
+			$this->init_data($data->uid);
 			return true;
 		}
 		else

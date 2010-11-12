@@ -78,4 +78,17 @@ class Nav
 			return '<a href="/Admin/">Panneau d\'Administration</a>';
 		}
 	}
+	public function menuGauche()
+	{
+		// Permet de swticher entre le menu connecté et non connecté
+		if($this->user->estConnecte())
+		{
+			$template=trim(file_get_contents(PARTIAL.'menuGaucheCo.xhtml'));
+		}
+		else
+		{
+			$template=trim(file_get_contents(PARTIAL.'menuGauche.xhtml'));
+		}
+		return $template;
+	}
 }
