@@ -25,3 +25,10 @@ include('password.php');
 $mysql=new DB($host,$username,$password,$base);
 $mysql->query('SELECT * from trucs');
 */
+
+// Test sur la création des formulaires : Résultat au 14/11/2010 à 5h04 : Ça marche, et c'est bien !
+/*
+  Les fonctions sont à retrouver dans fonctions/creer_formulaire.php
+  Fichier de lancement des tests : test.php
+*/ 
+
