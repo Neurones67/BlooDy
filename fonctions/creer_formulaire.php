@@ -80,11 +80,12 @@ function creer_formulaire_ajout_auteur()
 
 	echo "</fieldset>\n";
 	
+	echo "<fieldset>\n\t<legend>Les informations complémentaires (facultatives)</legend>\n";
+
 	# C'est ici qu'il manque l'upload d'image
 	
-	echo "<fieldset>\n\t<legend>Les informations complémentaires (facultatives)</legend>\n";
-	echo "<label for='biographie'>Sa biographie</label><br />\n";
-	echo "<textarea id='biographie' rows='5' cols='60'>Veuillez entrer la biographie de l'auteur</textarea>\n";
+	echo "<dt><label for='biographie'>Sa biographie</label></dt>\n";
+	echo "<dd><textarea id='biographie' rows='5' cols='60'>Veuillez entrer la biographie de l'auteur</textarea></dd>\n";
 	echo "</fieldset>\n";
 
 	echo "<input type='reset' value='Annuler' />\t";	
@@ -102,6 +103,8 @@ function creer_formulaire_ajout_bd()
 	echo "</fieldset>\n<fieldset>\n\t<legend>Les informations complémentaires (facultatives)</legend>\n";
 	creer_label_champ("Nom de l'auteur", "nomAuteur");
 	creer_label_champ("Prénom de l'auteur", "prenomAuteur");
+	creer_label_champ("Numéro ISBN","noISBN");
+	creer_label_champ("Numéro EAN13","noEAN13");
 	echo "<dt><label for=\"jourPublication\" >Date de publication (JJ/MM/AAAA)</label></dt>\n";
 	echo "\t<dd><input id='jourPublication' name='jourPublication' type='text' /> / ";
 	echo "<input id='moisPublication' name='moisPublication' type='text' /> / ";
@@ -109,8 +112,8 @@ function creer_formulaire_ajout_bd()
 	
 	# C'est ici qu'il manque l'upload d'image
 
-	echo "<label for='synopsis'>Le synopsis</label><br />\n";
-	echo "\t<textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea>\n";
+	echo "<dt><label for='synopsis'>Le synopsis</label></dt>\n";
+	echo "<dd><textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea></dd>\n";
 	echo "</fieldset>\n";
 
 	echo "<input type='reset' value='Annuler' />\t";	
