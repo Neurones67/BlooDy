@@ -49,7 +49,7 @@ function creer_formulaire_inscription()
 	echo "<h2>Inscription</h2>";
 	echo "<form id=\"formulaire_inscription\" method=\"post\" action='' >";
 	creer_label_champ("Pseudonyme","pseudo");
-	creer_label_champ("Mod de passe","modDePasse");
+	creer_label_champ("Mot de passe","motDePasse");
 	creer_label_champ("Confirmation du mot de passe","confirmationMotDePasse");
 	creer_label_champ("E-mail","email");
 	creer_label_champ("Confirmation de l'adresse e-mail","confirmationEmail");
@@ -78,8 +78,12 @@ function creer_formulaire_ajout_auteur()
 function creer_formulaire_ajout_bd()
 {
 	echo "<h2>Ajout d'une Bande Dessinée</h2>";
-	echo "<form id=\"formulaire_ajout_bd\" method=\"post\" action='' >";
+	echo "<form id=\"formulaire_ajout_bd\" method=\"post\" action='' >\n";
+	echo "\t<fieldset>\n\t\t<legend>Les informations indispensables</legend>\n";
 	creer_label_champ("Nom de la Bande dessinée", "nomBD");
+	echo "</fieldset>\n<fieldset>\n\t<legend>Les informations complémentaires (facultatives)</legend>\n";
+	creer_label_champ("Nom de l'auteur", "nomAuteur");
+	creer_label_champ("Prénom de l'auteur", "prenomAuteur");
 	echo "<dt><label for=\"jourPublication\" >Date de publication (JJ/MM/AAAA)</label></dt>\n";
 	echo "\t<dd><input id='jourPublication' name='jourPublication' type='text' /> / ";
 	echo "<input id='moisPublication' name='moisPublication' type='text' /> / ";
@@ -88,8 +92,8 @@ function creer_formulaire_ajout_bd()
 	# C'est ici qu'il manque l'upload d'image
 
 	echo "<label for='synopsis'>Le synopsis</label>\n";
-	echo "<textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea>\n";
-
+	echo "\t<textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea>\n";
+	echo "</fieldset>";
 }
 
 ?>
