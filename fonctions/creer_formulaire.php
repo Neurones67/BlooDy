@@ -46,8 +46,12 @@ function creer_selection($tValeur,$multiple,$nomSelection,$taille)
 }
 function creer_formulaire_inscription()
 {
-	echo "<h2>Inscription</h2>";
-	echo "<form id=\"formulaire_inscription\" method=\"post\" action='' >";
+	echo "<h2>Inscription</h2>\n";
+	echo "<form id=\"formulaire_inscription\" method=\"post\" action='' >\n";
+
+	# Ajout de fieldset afin de guider l'utilisateur
+	echo "<fieldset>\n\t<legend>Les informations indispensables</legend>\n"; 
+
 	creer_label_champ("Pseudonyme","pseudo");
 	creer_label_champ("Mot de passe","motDePasse");
 	creer_label_champ("Confirmation du mot de passe","confirmationMotDePasse");
@@ -55,7 +59,7 @@ function creer_formulaire_inscription()
 	creer_label_champ("Confirmation de l'adresse e-mail","confirmationEmail");
 
 	# Ajout de l'envoi d'une image représentant l'utilisateur
-	
+	echo "</fieldset>\n";
 	echo "<input type='reset' />\t";	
 	echo "<input type='submit' value='OK'>\n"; 
 	
@@ -63,19 +67,25 @@ function creer_formulaire_inscription()
 }
 function creer_formulaire_ajout_auteur()
 {
-	echo "<h2>Ajout d'un auteur</h2>";
-	echo "<form id=\"formulaire_ajout_auteur\" method=\"post\" action='' >";
+	echo "<h2>Ajout d'un auteur</h2>\n";
+	echo "<form id=\"formulaire_ajout_auteur\" method=\"post\" action='' >\n";
+	echo "<fieldset>\n\t<legend>Les informations indispensables</legend>\n";
+
 	creer_label_champ("Nom de l'auteur", "nomAuteur");
 	creer_label_champ("Prénom de l'auteur", "prenomAuteur");
 	echo "<dt><label for=\"jourNaissance\" >Date de naissance (JJ/MM/AAAA)</label></dt>\n";
 	echo "\t<dd><input id='jourNaissance' name='jourNaissance' type='text' /> / ";
 	echo "\t<input id='moisNaissance' name='moisNaissance' type='text' /> / ";
-	echo "\t<input id='anneeNaissance' name='anneeNaissance' type='text' /></dd>";
+	echo "\t<input id='anneeNaissance' name='anneeNaissance' type='text' /></dd>\n";
+
+	echo "<fieldset>\n";
 	
 	# C'est ici qu'il manque l'upload d'image
-
+	
+	echo "<fieldset>\n\t<legend>Les informations complémentaires (facultatives)</legend>\n";
 	echo "<label for='biographie'>Sa biographie</label><br />\n";
 	echo "<textarea id='biographie' rows='5' cols='60'>Veuillez entrer la biographie de l'auteur</textarea>\n";
+	echo "</fieldset>\n";
 
 	echo "<input type='reset' />\t";	
 	echo "<input type='submit' value='OK'>\n"; 
@@ -84,23 +94,24 @@ function creer_formulaire_ajout_auteur()
 }
 function creer_formulaire_ajout_bd()
 {
-	echo "<h2>Ajout d'une Bande Dessinée</h2>";
+	echo "<h2>Ajout d'une Bande Dessinée</h2>\n";
 	echo "<form id=\"formulaire_ajout_bd\" method=\"post\" action='' >\n";
 	echo "\t<fieldset>\n\t\t<legend>Les informations indispensables</legend>\n";
 	creer_label_champ("Nom de la Bande dessinée", "nomBD");
+
 	echo "</fieldset>\n<fieldset>\n\t<legend>Les informations complémentaires (facultatives)</legend>\n";
 	creer_label_champ("Nom de l'auteur", "nomAuteur");
 	creer_label_champ("Prénom de l'auteur", "prenomAuteur");
 	echo "<dt><label for=\"jourPublication\" >Date de publication (JJ/MM/AAAA)</label></dt>\n";
 	echo "\t<dd><input id='jourPublication' name='jourPublication' type='text' /> / ";
 	echo "<input id='moisPublication' name='moisPublication' type='text' /> / ";
-	echo "<input id='anneePublication' name='anneePublication' type='text' /></dd>";
+	echo "<input id='anneePublication' name='anneePublication' type='text' /></dd>\n";
 	
 	# C'est ici qu'il manque l'upload d'image
 
 	echo "<label for='synopsis'>Le synopsis</label><br />\n";
 	echo "\t<textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea>\n";
-	echo "</fieldset>";
+	echo "</fieldset>\n";
 
 	echo "<input type='reset' />\t";	
 	echo "<input type='submit' value='OK'>\n"; 
