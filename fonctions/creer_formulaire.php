@@ -56,6 +56,9 @@ function creer_formulaire_inscription()
 
 	# Ajout de l'envoi d'une image représentant l'utilisateur
 	
+	echo "<input type='reset' />\t";	
+	echo "<input type='submit' value='OK'>\n"; 
+	
 	echo "</form>\n";
 }
 function creer_formulaire_ajout_auteur()
@@ -65,15 +68,19 @@ function creer_formulaire_ajout_auteur()
 	creer_label_champ("Nom de l'auteur", "nomAuteur");
 	creer_label_champ("Prénom de l'auteur", "prenomAuteur");
 	echo "<dt><label for=\"jourNaissance\" >Date de naissance (JJ/MM/AAAA)</label></dt>\n";
-	echo "\t<dd><input id='jourNaissance' name='jourNaissance' type='text' /></dd>";
-	echo "\t<dd><input id='moisNaissance' name='moisNaissance' type='text' /></dd>";
-	echo "\t<dd><input id='anneeNaissance' name='anneeNaissance' type='text' /></dd>";
+	echo "\t<dd><input id='jourNaissance' name='jourNaissance' type='text' /> / ";
+	echo "\t<input id='moisNaissance' name='moisNaissance' type='text' /> / ";
+	echo "\t<input id='anneeNaissance' name='anneeNaissance' type='text' /></dd>";
 	
 	# C'est ici qu'il manque l'upload d'image
 
-	echo "<label for='biographie'>Sa biographie</label>\n";
+	echo "<label for='biographie'>Sa biographie</label><br />\n";
 	echo "<textarea id='biographie' rows='5' cols='60'>Veuillez entrer la biographie de l'auteur</textarea>\n";
 
+	echo "<input type='reset' />\t";	
+	echo "<input type='submit' value='OK'>\n"; 
+
+	echo "</form>\n";
 }
 function creer_formulaire_ajout_bd()
 {
@@ -91,9 +98,14 @@ function creer_formulaire_ajout_bd()
 	
 	# C'est ici qu'il manque l'upload d'image
 
-	echo "<label for='synopsis'>Le synopsis</label>\n";
+	echo "<label for='synopsis'>Le synopsis</label><br />\n";
 	echo "\t<textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea>\n";
 	echo "</fieldset>";
+
+	echo "<input type='reset' />\t";	
+	echo "<input type='submit' value='OK'>\n"; 
+
+	echo "</form>\n";
 }
 
 ?>
