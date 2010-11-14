@@ -47,11 +47,11 @@ function creer_selection($tValeur,$multiple,$nomSelection,$taille)
 function creer_formulaire_inscription()
 {
 	echo "<form id=\"formulaire_inscription\" method=\"post\" action='' >";
-	creer_label_champ("pseudo","Pseudonyme");
-	creer_label_champ("motDePasse","Mod de passe");
-	creer_label_champ("confirmationMotDePasse","Confirmation du mot de passe");
-	creer_label_champ("email","E-mail");
-	creer_label_champ("confirmationEmail","Confirmation de l'adresse e-mail");
+	creer_label_champ("Pseudonyme","pseudo");
+	creer_label_champ("Mod de passe","modDePasse");
+	creer_label_champ("Confirmation du mot de passe","confirmationMotDePasse");
+	creer_label_champ("e-mail","E-mail");
+	creer_label_champ("Confirmation de l'adresse e-mail","confirmationEmail");
 	echo "</form>";
 }
 ?>
