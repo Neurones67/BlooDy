@@ -60,7 +60,7 @@ function creer_formulaire_inscription()
 
 	# Ajout de l'envoi d'une image représentant l'utilisateur
 	echo "</fieldset>\n";
-	echo "<input type='reset' />\t";	
+	echo "<input type='reset' value='Annuler' />\t";	
 	echo "<input type='submit' value='OK'>\n"; 
 	
 	echo "</form>\n";
@@ -87,7 +87,7 @@ function creer_formulaire_ajout_auteur()
 	echo "<textarea id='biographie' rows='5' cols='60'>Veuillez entrer la biographie de l'auteur</textarea>\n";
 	echo "</fieldset>\n";
 
-	echo "<input type='reset' />\t";	
+	echo "<input type='reset' value='Annuler' />\t";	
 	echo "<input type='submit' value='OK'>\n"; 
 
 	echo "</form>\n";
@@ -113,7 +113,7 @@ function creer_formulaire_ajout_bd()
 	echo "\t<textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea>\n";
 	echo "</fieldset>\n";
 
-	echo "<input type='reset' />\t";	
+	echo "<input type='reset' value='Annuler' />\t";	
 	echo "<input type='submit' value='OK'>\n"; 
 
 	echo "</form>\n";
