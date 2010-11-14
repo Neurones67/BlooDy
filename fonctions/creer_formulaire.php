@@ -78,7 +78,7 @@ function creer_formulaire_ajout_auteur()
 	echo "\t<input id='moisNaissance' name='moisNaissance' type='text' /> / ";
 	echo "\t<input id='anneeNaissance' name='anneeNaissance' type='text' /></dd>\n";
 
-	echo "<fieldset>\n";
+	echo "</fieldset>\n";
 	
 	# C'est ici qu'il manque l'upload d'image
 	
