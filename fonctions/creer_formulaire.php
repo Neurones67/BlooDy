@@ -50,7 +50,7 @@ function creer_formulaire_inscription()
 	creer_label_champ("Pseudonyme","pseudo");
 	creer_label_champ("Mod de passe","modDePasse");
 	creer_label_champ("Confirmation du mot de passe","confirmationMotDePasse");
-	creer_label_champ("e-mail","E-mail");
+	creer_label_champ("E-mail","email");
 	creer_label_champ("Confirmation de l'adresse e-mail","confirmationEmail");
 	echo "</form>";
 }
