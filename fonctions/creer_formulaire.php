@@ -5,8 +5,8 @@
 /* On souhaite un label puis un champ de texte associé */
 function creer_label_champ($label,$nom,$tailleChamp=null)
 {
-	$ligne="<dt><label for=\"".$nom."\" >".$label."</label></dt>\n";
-	$ligne.="<dd><input id=\"".$nom."\" name=\"".$nom."\" type=\"text\" ";
+	$ligne="\t<dt><label for=\"".$nom."\" >".$label."</label></dt>\n";
+	$ligne.="\t<dd><input id=\"".$nom."\" name=\"".$nom."\" type=\"text\" ";
 	if(isset($tailleChamp))
 		$ligne.="size=\"".$tailleChamp."\" ";
 	
@@ -37,7 +37,7 @@ function creer_selection($tValeur,$multiple,$nomSelection,$taille)
 	$ligne.=">\n";
 
 	foreach($tValeur as $key => $value)
-		$ligne.="<option value=\"".$key."\">".$value."</option>\n";
+		$ligne.="\t<option value=\"".$key."\">".$value."</option>\n";
 	
 	//fermeture du select
 	$ligne.="</select>\n";
