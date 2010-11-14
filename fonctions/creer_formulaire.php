@@ -46,12 +46,50 @@ function creer_selection($tValeur,$multiple,$nomSelection,$taille)
 }
 function creer_formulaire_inscription()
 {
+	echo "<h2>Inscription</h2>";
 	echo "<form id=\"formulaire_inscription\" method=\"post\" action='' >";
 	creer_label_champ("Pseudonyme","pseudo");
 	creer_label_champ("Mod de passe","modDePasse");
 	creer_label_champ("Confirmation du mot de passe","confirmationMotDePasse");
 	creer_label_champ("E-mail","email");
 	creer_label_champ("Confirmation de l'adresse e-mail","confirmationEmail");
-	echo "</form>";
+
+	# Ajout de l'envoi d'une image représentant l'utilisateur
+	
+	echo "</form>\n";
 }
+function creer_formulaire_ajout_auteur()
+{
+	echo "<h2>Ajout d'un auteur</h2>";
+	echo "<form id=\"formulaire_ajout_auteur\" method=\"post\" action='' >";
+	creer_label_champ("Nom de l'auteur", "nomAuteur");
+	creer_label_champ("Prénom de l'auteur", "prenomAuteur");
+	echo "<dt><label for=\"jourNaissance\" >Date de naissance (JJ/MM/AAAA)</label></dt>\n";
+	echo "\t<dd><input id='jourNaissance' name='jourNaissance' type='text' /></dd>";
+	echo "\t<dd><input id='moisNaissance' name='moisNaissance' type='text' /></dd>";
+	echo "\t<dd><input id='anneeNaissance' name='anneeNaissance' type='text' /></dd>";
+	
+	# C'est ici qu'il manque l'upload d'image
+
+	echo "<label for='biographie'>Sa biographie</label>\n";
+	echo "<textarea id='biographie' rows='5' cols='60'>Veuillez entrer la biographie de l'auteur</textarea>\n";
+
+}
+function creer_formulaire_ajout_bd()
+{
+	echo "<h2>Ajout d'une Bande Dessinée</h2>";
+	echo "<form id=\"formulaire_ajout_bd\" method=\"post\" action='' >";
+	creer_label_champ("Nom de la Bande dessinée", "nomBD");
+	echo "<dt><label for=\"jourPublication\" >Date de publication (JJ/MM/AAAA)</label></dt>\n";
+	echo "\t<dd><input id='jourPublication' name='jourPublication' type='text' /> / ";
+	echo "<input id='moisPublication' name='moisPublication' type='text' /> / ";
+	echo "<input id='anneePublication' name='anneePublication' type='text' /></dd>";
+	
+	# C'est ici qu'il manque l'upload d'image
+
+	echo "<label for='synopsis'>Le synopsis</label>\n";
+	echo "<textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea>\n";
+
+}
+
 ?>
