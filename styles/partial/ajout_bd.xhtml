@@ -1,0 +1,26 @@
+<div id="corps">
+	<h2>Ajout d'une Bande Dessinée</h2> 
+	<form id="formulaire_ajout_bd" method="post" action='' > 
+	<fieldset> 
+		<legend>Les informations indispensables</legend> 
+		<dt><label for="nomBD" >Nom de la Bande dessinée</label></dt> 
+		<dd><input id="nomBD" name="nomBD" type="text" /></dd> 
+	</fieldset> 
+	<fieldset> 
+		<legend>Les informations complémentaires (facultatives)</legend> 
+		<dt><label for="nomAuteur" >Nom de l'auteur</label></dt> 
+		<dd><input id="nomAuteur" name="nomAuteur" type="text" /></dd> 
+		<dt><label for="prenomAuteur" >Prénom de l'auteur</label></dt> 
+		<dd><input id="prenomAuteur" name="prenomAuteur" type="text" /></dd> 
+		<dt><label for="noISBN" >Numéro ISBN</label></dt> 
+		<dd><input id="noISBN" name="noISBN" type="text" /></dd> 
+		<dt><label for="noEAN13" >Numéro EAN13</label></dt> 
+		<dd><input id="noEAN13" name="noEAN13" type="text" /></dd> 
+		<dt><label for="jourPublication" >Date de publication (JJ/MM/AAAA)</label></dt> 
+		<dd><input id='jourPublication' name='jourPublication' type='text' /> / <input id='moisPublication' name='moisPublication' type='text' /> / <input id='anneePublication' name='anneePublication' type='text' /></dd> 
+		<dt><label for='synopsis'>Le synopsis</label></dt> 
+		<dd><textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea></dd> 
+	</fieldset> 
+	<input type='reset' value='Annuler' />	<input type='submit' value='OK'> 
+	</form> 
+</div>
