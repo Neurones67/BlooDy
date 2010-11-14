@@ -17,7 +17,18 @@
 
 <?php 
 	include_once('fonctions/creer_formulaire.php');
+	
+	// Test de création de formulaire d'inscription
 	creer_formulaire_inscription();
+
+	echo "<hr />";
+	// Test de création de formulaire d'ajout d'un auteur
+	creer_formulaire_ajout_auteur();
+
+	echo "<hr />";
+	// Test de création de formulaire d'ajout d'une Bande dessinée
+	creer_formulaire_ajout_bd();
+
 ?>
 </body>
 </html>
