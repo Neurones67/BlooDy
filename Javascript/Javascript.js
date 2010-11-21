@@ -4,9 +4,10 @@ function Erase(nam)
 }
 function VerificationMotDePasse()
 {
-	var paragraphe = document.getElementById("erreurMotDePasse");
+	
 	if(document.formulaire_inscription.motDePasse != document.formulaire_inscription.confirmationMotDePasse)
 	{
+		var paragraphe = document.getElementById("erreurMotDePasse");
                 var old_contenu = paragraphe.firstChild;
                 paragraphe.removeChild(old_contenu);
                 //Ajout de l'information incorrect
@@ -15,6 +16,7 @@ function VerificationMotDePasse()
 	}
 	else
 	{
+		var paragraphe = document.getElementById("erreurMotDePasse");
 		var old_contenu = paragraphe.firstChild;
                 paragraphe.removeChild(old_contenu);
                 //Ajout de l'information correct
