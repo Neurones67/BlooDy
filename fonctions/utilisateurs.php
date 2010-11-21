@@ -132,7 +132,7 @@ class Utilisateurs
 					$errors[]="Les deux mots de passe ne correspondent pas";
 				}
 				$login=$this->mysql->real_escape_string($_POST['login']);
-				$sql='SELECT login FROM utilisateurs WHERE pseudo="'.$login.'"';
+				$sql='SELECT pseudo FROM utilisateurs WHERE pseudo="'.$login.'"';
 				$req=$this->mysql->query($sql);
 				if($req->fetch_array()) // Si l'user existe déjà
 				{
