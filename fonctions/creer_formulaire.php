@@ -52,11 +52,11 @@ function creer_formulaire_inscription()
 	# Ajout de fieldset afin de guider l'utilisateur
 	echo "<fieldset>\n\t<legend>Les informations indispensables</legend>\n"; 
 
-	creer_label_champ("Pseudonyme","pseudo");
+	creer_label_champ("Pseudonyme","login");
 	creer_label_champ("Mot de passe","motDePasse");
-	creer_label_champ("Confirmation du mot de passe","confirmationMotDePasse");
+	creer_label_champ("Confirmation du mot de passe","password2");
 	creer_label_champ("E-mail","email");
-	creer_label_champ("Confirmation de l'adresse e-mail","confirmationEmail");
+	creer_label_champ("Confirmation de l'adresse e-mail","email2");
 
 	# Ajout de l'envoi d'une image représentant l'utilisateur
 	echo "</fieldset>\n";
