@@ -24,7 +24,7 @@ class Utilisateurs
 		if($uid!=0) // Si on demande un utilisateur existant (0 étant l'utilisateur non connecté anonyme)
 		{
 			// on initialise les données de l'utilisateur
-			if(!$this->init_data($uid))
+			if(!$this->initData($uid))
 			{
 				// Si on y arrive pas
 				$this->uid=-1;
@@ -33,7 +33,7 @@ class Utilisateurs
 		elseif(isset($_SESSION['connecte'], $_SESSION['uid']) and $_SESSION['connecte'])
 		{
 			$uid=intval($_SESSION['uid']);
-			if(!$this->init_data($uid))
+			if(!$this->initData($uid))
 			{
 				// Si on y arrive pas
 				$this->uid=-1;
@@ -59,7 +59,7 @@ class Utilisateurs
 		unset($this->uetat);
 		unset($this->cvalidation);
 	}
-	private function init_data($uid)
+	private function initData($uid)
 	{
 		$uid=intval($uid);
 		$sql='SELECT uid,email,description,bdpublique,accueiltype,ipinscription,uetat,cvalidation FROM utilisateurs WHERE uid='.$uid;
@@ -107,7 +107,7 @@ class Utilisateurs
 	}
 	
 	// Gère le formulaire d'inscription des membres
-	public function register_Form()
+	public function registerForm()
 	{
 		$template="";
 		// Gère l'inscription des membres
@@ -199,7 +199,7 @@ class Utilisateurs
 		{
 			$_SESSION['connecte']=true;
 			$_SESSION['uid']=$data->uid;
-			$this->init_data($data->uid);
+			$this->initData($data->uid);
 			return true;
 		}
 		else
