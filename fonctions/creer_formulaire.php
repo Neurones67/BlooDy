@@ -53,7 +53,7 @@ function creer_formulaire_inscription()
 	echo "<fieldset>\n\t<legend>Les informations indispensables</legend>\n"; 
 
 	creer_label_champ("Pseudonyme","login");
-	creer_label_champ("Mot de passe","motDePasse");
+	creer_label_champ("Mot de passe","password");
 	creer_label_champ("Confirmation du mot de passe","password2");
 	creer_label_champ("E-mail","email");
 	creer_label_champ("Confirmation de l'adresse e-mail","email2");
