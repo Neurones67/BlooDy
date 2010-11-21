@@ -2,7 +2,7 @@ function Erase(nam)
 {
 		document.id_form.id_Connexion.value = "";
 }
-function VerificationMotDePasse
+function VerificationMotDePasse()
 {
 	var paragraphe = document.getElementById("formulaire_inscription.confirmationMotDePasse.erreurMotDePasse");
 	if(document.formulaire_inscription.motDePasse != document.formulaire_inscription.confirmationMotDePasse)
