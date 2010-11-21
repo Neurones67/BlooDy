@@ -153,4 +153,28 @@ class Livre
 		$template=str_replace('{{SERIE}}',$livre->serie,$template);
 		return $template;
 	}
+	
+	public static function affichLivreComplet()
+	{
+		// Récupération de l'identifiant du livre :
+		$param = requestObject('Param');
+		$lid=intval($param->getValue());
+		
+		// Récupération de l'objet et donc des paramètres
+		$livre = new Livre($lid);
+		
+		if($livre->getValide()>0) // Si le livre existe
+		{
+			// Récupération du template
+			$template=file_get_contents(PARTIAL.'livre_complet.xhtml');
+			// Remplacement des balises
+			$template=$this->affichLivre($template,$livre);
+		}
+		else
+		{
+			 // Le livre n'existe pas
+			 $template='<div class="error">Le livre demandé n\'existe pas</div>';
+		}
+		return $template;
+	}
 }
