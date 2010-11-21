@@ -17,7 +17,12 @@ class Livre
 	private $lvalide;
 	private $description;
 	private $auteur;
-	
+	private $serie;
+	private $ajuser;
+	private $editeur;
+	private $ajdate;
+	private $genre;
+
 	// Besoin d'une connexion MySQL
 	private $mysql;
 	
@@ -51,7 +56,7 @@ class Livre
 	private function init_data($lid)
 	{
 		// Initialise les attributs du livre avec le lid donné à partir de la base de donnée
-		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom FROM livres l JOIN auteurs a ON l.aid=a.aid';
+		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid';
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
@@ -62,6 +67,11 @@ class Livre
 			$this->date_publication=$data->date_publication;
 			$this->lvalide=$data->lvalide;
 			$this->auteur=$data->anom;
+			$this->genre=$data->gnom;
+			$this->ajuser=$data->pseudo;
+			$this->ajdate=$data->ajdate;
+			$this->editeur=$data->enom;
+			$this->serie=$data->snom;
 			return true;
 		}
 		else
