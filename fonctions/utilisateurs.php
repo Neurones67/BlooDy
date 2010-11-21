@@ -101,7 +101,7 @@ class Utilisateurs
 		$pseudo=$this->mysql->real_escape_string($pseudo);
 		$password=$this->passhash($password);
 		$email=$this->mysql->real_escape_string($email);
-		$sql='INSERT INTO utilisateurs(pseudo,motdepasse,email) VALUES("'.$pseudo.'","'.$password.'","'.$email.'"';
+		$sql='INSERT INTO utilisateurs(pseudo,motdepasse,email) VALUES("'.$pseudo.'","'.$password.'","'.$email.'")';
 		$res=$this->mysql->query($sql);
 		return $this->mysql->insert_id;	
 	}
@@ -218,7 +218,7 @@ class Utilisateurs
 			}
 			else
 			{
-				return 'Connexion echouée';
+				return 'Connexion échouée';
 			}
 		}
 		else
