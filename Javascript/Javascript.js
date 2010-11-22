@@ -4,6 +4,7 @@ function erase(nam)
 }
 function verificationMotDePasse()
 {
+	alert('J\'aime les frites');
 	var paragraphe = document.getElementById("erreurMotDePasse");
 	var old_contenu = paragraphe.firstChild;
         paragraphe.removeChild(old_contenu);
