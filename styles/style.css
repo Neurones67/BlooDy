@@ -100,7 +100,7 @@ img
 }
 #menuGauche ul li
 {
-	margin-left:0px;
+	padding-left:5px;
 }
 #menuGauche a, #menuGauche a:hover, #menuGauche a:active
 {
