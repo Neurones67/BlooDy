@@ -94,6 +94,19 @@ img
 {
 	background-image:url('/images/menuG_Oinscrire.png');
 }
+#menuGauche ul
+{
+	list-style-type:none;
+}
+#menuGauche ul li
+{
+	margin-left:0px;
+}
+#menuGauche a, #menuGauche a:hover, #menuGauche a:active
+{
+	color:black;
+	text-decoration:none;
+}
 .imagetransparent
 {
 	border:none;
