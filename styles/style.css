@@ -97,9 +97,6 @@ img
 #menuGauche ul
 {
 	list-style-type:none;
-}
-#menuGauche ul li
-{
 	padding-left:5px;
 }
 #menuGauche a, #menuGauche a:hover, #menuGauche a:active
