@@ -177,4 +177,14 @@ class Livre
 		}
 		return $template;
 	}
+	public static listGenres()
+	{
+		$sql='SELECT gid,gnom FROM genre ORDER BY id';
+		$res=array();
+		if($req=$this->mysql->query($sql))
+		{
+			$res[]=$req->fetch_assoc();
+		}
+		return $res;
+	}
 }
