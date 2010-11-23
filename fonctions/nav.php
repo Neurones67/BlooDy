@@ -14,7 +14,7 @@ class Nav
 	}
 	public function LogStatus() // Retourne le lien de connexion ou de gestion de profil en fonction du statut du visiteur (enregistré ou pas)
 	{
-		if($this->user->getLogged())
+		if($this->user->estConnecte())
 		{
 			return '<a href="/Profil/">Profil</a>';
 		}
