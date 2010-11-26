@@ -18,10 +18,20 @@ function verificationMotDePasse()
 	else
 	{
                 //Ajout de l'information correct
-                var info = document.createTextNode("Mot de passe correct");
-                paragraphe.style.color="green";
-                paragraphe.style.fontWeight="bold";
-                paragraphe.appendChild(info);
+		if(document.getElementById('password2').value == "")
+		{
+			 var info = document.createTextNode("Erreur: Mots de passe différents");
+			 paragraphe.style.color="red";
+                	 paragraphe.style.fontWeight="bold";
+                	 paragraphe.appendChild(info);
+		}
+		else
+		{
+		        var info = document.createTextNode("Mot de passe correct");
+		        paragraphe.style.color="green";
+		        paragraphe.style.fontWeight="bold";
+		        paragraphe.appendChild(info);
+		}
 	} 
 }
 function verificationEmail()
@@ -29,7 +39,7 @@ function verificationEmail()
 	var paragraphe = document.getElementById("erreurEmail");
 	var old_contenu = paragraphe.firstChild;
 	paragraphe.style.color="red";
-	var expr = new RegExp('/^[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+(\.[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+)*@(([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){1,63}\.)+([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){2,63}$/i');
+	var expr = new RegExp('^[-a-z0-9!#$%&\'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&\'*+/=?^_`{|}~]+)*@(([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){1,63}\.)+([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){2,63}$',"i");
         paragraphe.removeChild(old_contenu);
 	if(document.getElementById('email').value != document.getElementById('email2').value)
 	{
@@ -41,7 +51,7 @@ function verificationEmail()
 	else
 	{
                 //Ajout de l'information correct
-		if(expr.test(document.getElementById("erreurEmail")))
+		if(!document.getElementById("email2").value.match(expr))
 		{
 			var info = document.createTextNode("Syntaxe de l'Email faux");
 		}
