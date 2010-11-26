@@ -28,21 +28,29 @@ function verificationEmail()
 {
 	var paragraphe = document.getElementById("erreurEmail");
 	var old_contenu = paragraphe.firstChild;
+	paragraphe.style.color="red";
+	var expr = new RegExp('/^[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+(\.[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+)*@(([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){1,63}\.)+([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){2,63}$/i');
         paragraphe.removeChild(old_contenu);
 	if(document.getElementById('email').value != document.getElementById('email2').value)
 	{
                 //Ajout de l'information incorrect
                 var info = document.createTextNode("Erreur: Email différents");
-                paragraphe.style.color="red";
                 paragraphe.style.fontWeight="bold";
                 paragraphe.appendChild(info);
 	}
 	else
 	{
                 //Ajout de l'information correct
-                var info = document.createTextNode("Email correct");
-                paragraphe.style.color="green";
-                paragraphe.style.fontWeight="bold";
+		if(expr.match(document.getElementById("erreurEmail")))
+		{
+			var info = document.createTextNode("Email correct");
+		}
+		else
+		{
+			var info = document.createTextNode("Email correct");
+                	paragraphe.style.color="green";
+                	paragraphe.style.fontWeight="bold";
+		}
                 paragraphe.appendChild(info);
 	} 
 }
