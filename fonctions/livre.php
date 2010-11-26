@@ -177,7 +177,7 @@ class Livre
 		}
 		return $template;
 	}
-	public static listGenres()
+	public static function listGenres()
 	{
 		$sql='SELECT gid,gnom FROM genre ORDER BY id';
 		$res=array();
