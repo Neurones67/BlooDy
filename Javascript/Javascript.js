@@ -41,9 +41,9 @@ function verificationEmail()
 	else
 	{
                 //Ajout de l'information correct
-		if(expr.match(document.getElementById("erreurEmail")))
+		if(expr.test(document.getElementById("erreurEmail")))
 		{
-			var info = document.createTextNode("Email correct");
+			var info = document.createTextNode("Syntaxe de l'Email faux");
 		}
 		else
 		{
