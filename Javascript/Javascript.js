@@ -37,7 +37,7 @@ function verificationEmail()
 	if(document.getElementById('email').value != document.getElementById('email2').value)
 	{
                 //Ajout de l'information incorrect
-                var info = document.createTextNode("Erreur: Email différents");
+                var info = document.createTextNode("Erreur: Email différents ");
                 paragraphe.style.fontWeight="bold";
 		paragraphe.style.color="red";
                 paragraphe.appendChild(info);
@@ -45,7 +45,7 @@ function verificationEmail()
 	else
 	{
                 //Ajout de l'information correct
-			var info = document.createTextNode("Email correct");
+			var info = document.createTextNode("Email correct ");
                 	paragraphe.style.color="green";
                 	paragraphe.style.fontWeight="bold";
                 	paragraphe.appendChild(info);
@@ -59,7 +59,7 @@ function verificationConformiteEmail()
 	paragraphe.style.color="red";
 	if(!document.getElementById("email").value.match(expr))
 	{
-		var info = document.createTextNode("Syntaxe de l'Email faux");
+		var info = document.createTextNode("Syntaxe de l'Email faux ");
 	}
 	paragraphe.appendChild(info);
 }
