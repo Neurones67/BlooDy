@@ -29,6 +29,9 @@
 	// Test de création de formulaire d'ajout d'une Bande dessinée
 	creer_formulaire_ajout_bd();
 
+	echo "<hr />";
+	// Test de création de formulaire de recherche avancée
+	creer_formulaire_recherche();
 ?>
 </body>
 </html>
