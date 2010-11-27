@@ -116,7 +116,9 @@ img
 
 #formulaire_inscription dd
 {
-	float:right;	
+	float:right;
+	margin: 2px 0;
+	
 }
 #formulaire_inscription p
 {
@@ -177,7 +179,7 @@ img
 #input[type="submit"]
 {
 	border: #DDEEFF 1px solid;
-	width: 40%;
+	width: 27%;
 }
 
 #formulaire_inscription input[type="submit"]:hover
@@ -189,7 +191,7 @@ img
 #formulaire_inscription input[type="reset"]
 {
 	border: #DDEEFF 1px solid;
-	width: 40%;
+	width: 27%;
 }
 
 #formulaire_inscription input[type="reset"]:hover
