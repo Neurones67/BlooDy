@@ -127,7 +127,6 @@ img
 {
 	margin-bottom: 1px;
 	border: #CCC 1px solid;
-	width: 70%;
 }
 
 #formulaire_inscription fieldset:hover
@@ -165,6 +164,7 @@ img
 {
 	margin-left: 1%;
 	border: #CCC 1px solid;
+	width: 58%;
 }
 
 #formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus
