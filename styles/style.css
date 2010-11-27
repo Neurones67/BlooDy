@@ -127,7 +127,7 @@ img
 {
 	margin-bottom: 1px;
 	border: #CCC 1px solid;
-	width: 60%;
+	width: 58%;
 }
 
 #formulaire_inscription fieldset:hover
@@ -148,7 +148,7 @@ img
 {
 	background-color: #FFCC66;
 	display: block;
-	width: 45%;
+	width: 50%;
 	float: left;
 	padding-right: 1%;
 	letter-spacing: 1px;
