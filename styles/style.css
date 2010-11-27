@@ -116,9 +116,11 @@ img
 #formulaire_inscription dt
 {
 	margin: 2px 0;
-	float:right;
 }
-
+#formulaire_inscription dd
+{
+	float:right;	
+}
 /* fieldset , legend */
 #formulaire_inscription fieldset
 {
