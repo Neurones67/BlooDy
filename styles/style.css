@@ -107,3 +107,58 @@ img
 	color:black;
 	text-decoration:none;
 }
+#formulaire_inscription
+{
+	background-color: #B1C16F;
+	display: block;
+	width: 39%;
+	float: left;
+	padding-right: 1%;
+	text-align: right;
+	letter-spacing: 1px;
+}
+#formulaire_inscription label:hover
+{
+	font-weight: bold;
+}
+#formulaire_inscription .form_label_nostyle
+{
+	background: none;
+}
+#formulaire_inscription input, #formulaire_inscription select
+{
+	margin-left: 1%;
+	width: 58%;
+	border: #CCC 1px solid;
+}
+
+#formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus
+{
+	border: #999 1px solid;
+	background-color: #DDEEFF;
+}
+
+/* button submit */
+#input[type="submit"]
+{
+	border: #DDEEFF 1px solid;
+	width: 27%;
+}
+
+#formulaire_inscription input[type="submit"]:hover
+{
+	background-color: #66CC33;
+	cursor: pointer;
+}
+
+#formulaire_inscription input[type="reset"]
+{
+	border: #DDEEFF 1px solid;
+	width: 27%;
+}
+
+#formulaire_inscription input[type="reset"]:hover
+{
+	background-color: #E6484D;
+	cursor: pointer;
+}
