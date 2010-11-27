@@ -179,6 +179,7 @@ img
 #input[type="submit"]
 {
 	border: #DDEEFF 1px solid;
+	float:right;
 }
 
 #formulaire_inscription input[type="submit"]:hover
