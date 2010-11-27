@@ -164,7 +164,7 @@ img
 {
 	margin-left: 1%;
 	border: #CCC 1px solid;
-	width: 75%;
+	width: 100%;
 }
 
 #formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus
