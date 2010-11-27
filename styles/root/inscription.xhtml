@@ -4,15 +4,15 @@
 	<form id="formulaire_inscription" method="post" action='' > 
 	<fieldset> 
 		<legend>Les informations indispensables</legend> 
-		<dt><label for="login" >Pseudonyme</label></dt> 
+		<dt><label for="login" >Pseudonyme:</label></dt> 
 		<dd><input id="login" name="login" type="text" /></dd> 
-		<dt><label for="password" >Mot de passe</label></dt> 
+		<dt><label for="password" >Mot de passe:</label></dt> 
 		<dd><input id="password" name="password" type="password" /></dd> 
-		<dt><label for="password2" >Confirmation du mot de passe</label></dt> 
+		<dt><label for="password2" >Confirmation du mot de passe:</label></dt> 
 		<dd><input id="password2" name="password2" type="password"  onblur='verificationMotDePasse()'  /><p id='erreurMotDePasse'> </p></dd> 
-		<dt><label for="email" >E-mail</label></dt> 
+		<dt><label for="email" >E-mail:</label></dt> 
 		<dd><input id="email" name="email" type="text" onblur='verificationConformiteEmail()'/></dd> 
-		<dt><label for="email2" >Confirmation de l'adresse E-mail</label></dt> 
+		<dt><label for="email2" >Confirmation de l'adresse E-mail:</label></dt> 
 		<dd><input id="email2" name="email2" type="text" onblur='verificationEmail()' /><p id='erreurEmail'> </p></dd> 
 	</fieldset> 
 	<input type='reset' value='Annuler' />	<input type='submit' value='OK'/> 
