@@ -117,7 +117,10 @@ img
 {
 	margin: 2px 0;
 }
-
+#formulaire_inscription dd
+{
+	float:right;	
+}
 /* fieldset , legend */
 #formulaire_inscription fieldset
 {
@@ -143,7 +146,7 @@ img
 {
 	background-color: #FFCC66;
 	display: block;
-	width: 100%;
+	width: 40%;
 	float: left;
 	padding-right: 1%;
 	letter-spacing: 1px;
@@ -159,7 +162,7 @@ img
 #formulaire_inscription input, #formulaire_inscription select
 {
 	margin-left: 1%;
-	width: 85%;
+	width: 45%;
 	border: #CCC 1px solid;
 }
 
