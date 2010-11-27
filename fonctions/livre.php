@@ -17,7 +17,12 @@ class Livre
 	private $lvalide;
 	private $description;
 	private $auteur;
-	
+	private $serie;
+	private $ajuser;
+	private $editeur;
+	private $ajdate;
+	private $genre;
+
 	// Besoin d'une connexion MySQL
 	private $mysql;
 	
@@ -26,7 +31,7 @@ class Livre
 		$this->mysql=requestObject('MySQL');
 		if($lid!=0)
 		{
-			if(!$this->init_data($lid)) // On initialise les attributs
+			if(!$this->initData($lid)) // On initialise les attributs
 			{
 				// Si il n'existe pas
 				$this->lvalide=-1; // Permet de dire que le livre n'existe pas
@@ -43,25 +48,25 @@ class Livre
 		unset($this->description);
 		unset($this->aid);
 		unset($this->auteur);
+		unset($this->editeur);
+		unset($this->ajuser);
+		unset($this->ajdate);
+		unset($this->serie);
+		unset($this->genre);
 	}
 	public function getValide()
 	{
 		return $this->lvalide;
 	}
-	private function init_data($lid)
+	private function initData($lid)
 	{
 		// Initialise les attributs du livre avec le lid donné à partir de la base de donnée
-		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom FROM livres l JOIN auteurs a ON l.aid=a.aid';
+		$lid=intval($lid);
+		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
-			$this->lid=$lid;
-			$this->nom=$data->nom;
-			$this->isbn=$data->isbn;
-			$this->ean13=$data->ean13;
-			$this->date_publication=$data->date_publication;
-			$this->lvalide=$data->lvalide;
-			$this->auteur=$data->anom;
+			$this->remplirAttributs($data);
 			return true;
 		}
 		else
@@ -69,8 +74,24 @@ class Livre
 			return false;
 		}
 	}
+	// Rempli les attributs de l'objet avec le résultat d'une requête SQL
+	private function remplirAttributs($data)
+	{
+		$this->lid=$lid;
+		$this->nom=$data->nom;
+		$this->isbn=$data->isbn;
+		$this->ean13=$data->ean13;
+		$this->date_publication=$data->date_publication;
+		$this->lvalide=$data->lvalide;
+		$this->auteur=$data->anom;
+		$this->genre=$data->gnom;
+		$this->ajuser=$data->pseudo;
+		$this->ajdate=$data->ajdate;
+		$this->editeur=$data->enom;
+		$this->serie=$data->snom;
+	}
 	// Ajoute un livre à la base de données avec l'ID de l'auteur et l'ID de la série (peut être vide éventuellement)
-	private function ajout_livre($nom,$isbn,$ean13,$date_publication,$description,$aid,$sid,$uid)
+	private function ajoutLivre($nom,$isbn,$ean13,$date_publication,$description,$aid,$sid,$uid)
 	{
 		// Protection des variables
 		$nom=$this->mysql->real_escape_string($nom);
@@ -94,7 +115,7 @@ class Livre
 		}
 	}
 	// Permet d'ajouter un livre à sa collection
-	private function ajout_collection($lid,$uid,$date_dachat,$etat,$emplacement)
+	private function ajoutCollection($lid,$uid,$date_dachat,$etat,$emplacement)
 	{
 		// Protection des variables
 		$uid=intval($uid);
@@ -115,5 +136,55 @@ class Livre
 			unset($livre);
 			return false;
 		}
+	}
+	// Permet de rempalcer les tags d'un template par les données contenues dans l'objet $livre
+	private static function affichLivre($template,$livre)
+	{
+		$template=str_replace('{{LID}}',$livre->lid,$template);
+		$template=str_replace('{{SNOM}}',$livre->nom,$template);
+		$template=str_replace('{{ISBN}}',$livre->isbn,$template);
+		$template=str_replace('{{EAN13}}',$livre->ean13,$template);
+		$template=str_replace('{{DATEPUB}}',$livre->date_publication,$template);
+		$template=str_replace('{{ANOM}}',$livre->auteur,$template);
+		$template=str_replace('{{GENRE}}',$livre->genre,$template);
+		$template=str_replace('{{AJUSE}}',$livre->ajuser,$template);
+		$template=str_replace('{{AJDATE}}',$livre->ajdate,$template);
+		$template=str_replace('{{EDITEUR}}',$livre->editeur,$template);
+		$template=str_replace('{{SERIE}}',$livre->serie,$template);
+		return $template;
+	}
+	
+	public static function affichLivreComplet()
+	{
+		// Récupération de l'identifiant du livre :
+		$param = requestObject('Param');
+		$lid=intval($param->getValue());
+		
+		// Récupération de l'objet et donc des paramètres
+		$livre = new Livre($lid);
+		
+		if($livre->getValide()>0) // Si le livre existe
+		{
+			// Récupération du template
+			$template=file_get_contents(PARTIAL.'livre_complet.xhtml');
+			// Remplacement des balises
+			$template=$this->affichLivre($template,$livre);
+		}
+		else
+		{
+			 // Le livre n'existe pas
+			 $template='<div class="error">Le livre demandé n\'existe pas</div>';
+		}
+		return $template;
+	}
+	public static function listGenres()
+	{
+		$sql='SELECT gid,gnom FROM genre ORDER BY id';
+		$res=array();
+		if($req=$this->mysql->query($sql))
+		{
+			$res[]=$req->fetch_assoc();
+		}
+		return $res;
 	}
 }

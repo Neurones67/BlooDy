@@ -24,7 +24,7 @@ class Utilisateurs
 		if($uid!=0) // Si on demande un utilisateur existant (0 étant l'utilisateur non connecté anonyme)
 		{
 			// on initialise les données de l'utilisateur
-			if(!$this->init_data($uid))
+			if(!$this->initData($uid))
 			{
 				// Si on y arrive pas
 				$this->uid=-1;
@@ -33,7 +33,7 @@ class Utilisateurs
 		elseif(isset($_SESSION['connecte'], $_SESSION['uid']) and $_SESSION['connecte'])
 		{
 			$uid=intval($_SESSION['uid']);
-			if(!$this->init_data($uid))
+			if(!$this->initData($uid))
 			{
 				// Si on y arrive pas
 				$this->uid=-1;
@@ -59,7 +59,7 @@ class Utilisateurs
 		unset($this->uetat);
 		unset($this->cvalidation);
 	}
-	private function init_data($uid)
+	private function initData($uid)
 	{
 		$uid=intval($uid);
 		$sql='SELECT uid,email,description,bdpublique,accueiltype,ipinscription,uetat,cvalidation FROM utilisateurs WHERE uid='.$uid;
@@ -101,13 +101,13 @@ class Utilisateurs
 		$pseudo=$this->mysql->real_escape_string($pseudo);
 		$password=$this->passhash($password);
 		$email=$this->mysql->real_escape_string($email);
-		$sql='INSERT INTO utilisateurs(pseudo,motdepasse,email) VALUES("'.$pseudo.'","'.$password.'","'.$email.'"';
+		$sql='INSERT INTO utilisateurs(pseudo,motdepasse,email,dinscription,ipinscription) VALUES("'.$pseudo.'","'.$password.'","'.$email.'","'.time().'","'.$_SERVER['REMOTE_ADDR'].'")';
 		$res=$this->mysql->query($sql);
 		return $this->mysql->insert_id;	
 	}
 	
 	// Gère le formulaire d'inscription des membres
-	public function register_Form()
+	public function registerForm()
 	{
 		$template="";
 		// Gère l'inscription des membres
@@ -132,7 +132,8 @@ class Utilisateurs
 					$errors[]="Les deux mots de passe ne correspondent pas";
 				}
 				$login=$this->mysql->real_escape_string($_POST['login']);
-				$sql='SELECT login FROM utilisateurs WHERE pseudo="'.$login.'"';
+				$email=$this->mysql->real_escape_string($_POST['email']);
+				$sql='SELECT pseudo FROM utilisateurs WHERE pseudo="'.$login.'"';
 				$req=$this->mysql->query($sql);
 				if($req->fetch_array()) // Si l'user existe déjà
 				{
@@ -199,7 +200,7 @@ class Utilisateurs
 		{
 			$_SESSION['connecte']=true;
 			$_SESSION['uid']=$data->uid;
-			$this->init_data($data->uid);
+			$this->initData($data->uid);
 			return true;
 		}
 		else
@@ -218,7 +219,7 @@ class Utilisateurs
 			}
 			else
 			{
-				return 'Connexion echouée';
+				return 'Connexion échouée';
 			}
 		}
 		else
