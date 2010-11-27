@@ -173,6 +173,7 @@ img
 #input[type="submit"]
 {
 	border: #DDEEFF 1px solid;
+	width: 15%;
 }
 
 #formulaire_inscription input[type="submit"]:hover
@@ -184,6 +185,7 @@ img
 #formulaire_inscription input[type="reset"]
 {
 	border: #DDEEFF 1px solid;
+	width: 15%;
 }
 
 #formulaire_inscription input[type="reset"]:hover
