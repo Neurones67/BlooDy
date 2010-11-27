@@ -143,7 +143,7 @@ img
 {
 	background-color: #FFCC66;
 	display: block;
-	width: 39%;
+	width: 45%;
 	float: left;
 	padding-right: 1%;
 	letter-spacing: 1px;
@@ -159,7 +159,7 @@ img
 #formulaire_inscription input, #formulaire_inscription select
 {
 	margin-left: 1%;
-	width: 58%;
+	width: 70%;
 	border: #CCC 1px solid;
 }
 
@@ -173,7 +173,7 @@ img
 #input[type="submit"]
 {
 	border: #DDEEFF 1px solid;
-	width: 27%;
+	width: 35%;
 }
 
 #formulaire_inscription input[type="submit"]:hover
@@ -185,7 +185,7 @@ img
 #formulaire_inscription input[type="reset"]
 {
 	border: #DDEEFF 1px solid;
-	width: 27%;
+	width: 35%;
 }
 
 #formulaire_inscription input[type="reset"]:hover
