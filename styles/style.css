@@ -107,14 +107,45 @@ img
 	color:black;
 	text-decoration:none;
 }
+
 #formulaire_inscription
 {
-	background-color: #B1C16F;
+	width: 60%;
+}
+
+#formulaire_inscription dt
+{
+	margin: 2px 0;
+}
+
+/* fieldset , legend */
+#formulaire_inscription fieldset
+{
+	margin-bottom: 10px;
+	border: #CCC 1px solid;
+}
+
+#formulaire_inscription fieldset:hover
+{
+	background-color: #FFF;
+}
+
+#formulaire_inscription fieldset legend
+{
+	padding: 0 10px;
+	border-left: #CCC 1px solid;
+	border-right: #CCC 1px solid;
+	font-size: 1.2em;
+	color: #999;
+}
+/*label*/
+#formulaire_inscription label
+{
+	background-color: #FFCC66;
 	display: block;
 	width: 39%;
 	float: left;
 	padding-right: 1%;
-	text-align: right;
 	letter-spacing: 1px;
 }
 #formulaire_inscription label:hover
