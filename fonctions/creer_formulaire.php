@@ -127,8 +127,8 @@ function creer_formulaire_recherche()
 	echo "<h2>Recherche avancée</h2>\n";
 	echo "<form id=\"formulaire_recherche_avancee\" method=\"post\" action='' >\n";
 	echo "\t<fieldset>\n\t\t<legend>Les informations indispensables</legend>\n";
-	echo "\t\tOù rechercher :\tDans ma base : <input type='radio' name ='emplacement' value='baseutilisateur' /> 
-		Dans la base globale : <input type='radio' value='baseglobale' />\n";
+	echo "\t\tOù rechercher :\tDans ma base : <input type='radio' name='emplacement' value='baseutilisateur' /> 
+		Dans la base globale : <input type='radio' name='emplacement' value='baseglobale' />\n";
 	creer_label_champ("Nom de la Bande dessinée", "nomBD");
 	creer_label_champ("Nom de l'auteur", "nomAuteur");
 	echo "\t</fieldset>\n";
