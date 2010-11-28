@@ -121,21 +121,25 @@ function creer_formulaire_ajout_bd()
 
 	echo "</form>\n";
 }
+
 function creer_formulaire_recherche()
 {
 	echo "<h2>Recherche avancée</h2>\n";
 	echo "<form id=\"formulaire_recherche_avancee\" method=\"post\" action='' >\n";
 	echo "\t<fieldset>\n\t\t<legend>Les informations indispensables</legend>\n";
-	echo "\t\tOù rechercher :\t Dans ma base : <input type='radio' name ='emplacement' value='baseutilisateur' /> 
-		Dans la base globale : <input type='radio' value='baseglobale' />\n"
+	echo "\t\tOù rechercher :\tDans ma base : <input type='radio' name ='emplacement' value='baseutilisateur' /> 
+		Dans la base globale : <input type='radio' value='baseglobale' />\n";
 	creer_label_champ("Nom de la Bande dessinée", "nomBD");
 	creer_label_champ("Nom de l'auteur", "nomAuteur");
 	echo "\t</fieldset>\n";
 	echo "\t<fieldset>\n\t\t<legend>Options avancées</legend>\n";
+	echo "\t\t<dt>Choisir parmi :</dt><dd>Les auteurs <input type='checkbox' checked='checked' value='c_auteurs' /><br />\n
+		Les séries <input type='checkbox' checked='checked' value='c_series' /><br />\n
+		Les BD <input type='checkbox' checked='checked' value='c_bd' /></dd>\n";
 	echo "\t</fieldset>\n";
 
-	echo "<input type='reset' value='Annuler' />\t";	
-	echo "<input type='submit' value='OK'>\n"; 
+	echo "<input type='reset' value='Annuler' />\t";
+	echo "<input type='submit' value='OK'>\n";
 	echo "</form>";
 }
 ?>
