@@ -26,6 +26,11 @@ img
 
 
 /*	Sélection d'un contenant unique	*/
+#centre
+{
+	width: 100%;
+	overflow: hidden;
+}
 #body
 {
 	min-width : 1100px;
