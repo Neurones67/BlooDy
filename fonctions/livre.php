@@ -187,4 +187,8 @@ class Livre
 		}
 		return $res;
 	}
+	public static function creer_liste_genres()
+	{
+		$liste = listeGenres();
+	}
 }
