@@ -33,6 +33,10 @@ img
 	margin : auto;
 	padding : 0px;
 }
+#centre {
+	width: 100%;
+	overflow: hidden;
+}
 #corps
 {
 	margin-right : 170px;
