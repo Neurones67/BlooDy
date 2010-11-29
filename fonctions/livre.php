@@ -187,6 +187,17 @@ class Livre
 		}
 		return $res;
 	}
+	public static function listBD()
+	{
+		// Permet de lister toutes les BDs présentes dans la base de données
+		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid';
+		$res=array();
+		if($req=$this->mysql->query($sql))
+		{
+			$res[]=$req->fetch_assoc();
+		}
+		return $res:
+	}
 	public static function creer_liste_genres()
 	{
 		$liste = listeGenres();
