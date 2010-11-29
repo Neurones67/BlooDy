@@ -6,7 +6,7 @@ img
 	border:0;
 }
 
-/*	SÃ©lection multiple	*/
+/*	Sélection multiple	*/
 #head, #corps, #menuGauche, #menuDroite, #foot
 {
 	border-style : solid;
@@ -25,7 +25,7 @@ img
 }
 
 
-/*	SÃ©lection d'un contenant unique	*/
+/*	Sélection d'un contenant unique	*/
 #body
 {
 	min-width : 1100px;
@@ -111,12 +111,12 @@ img
 #formulaire_inscription
 {
 	width: 70%;
+margin:auto;
 }
 
 
 #formulaire_inscription dd
 {
-	float:right;
 	margin: 2px 0;
 	
 }
@@ -149,10 +149,11 @@ img
 {
 	background-color: #FFCC66;
 	display: block;
-	width: 50%;
+width:50%;
 	float: left;
 	padding-right: 1%;
 	letter-spacing: 1px;
+margin-top:5px;
 }
 #formulaire_inscription label:hover
 {
@@ -164,9 +165,10 @@ img
 }
 #formulaire_inscription input, #formulaire_inscription select
 {
-	margin-left: 1%;
+	width:40%;
+margin-top:4px;
+margin-left:30px;
 	border: #CCC 1px solid;
-	width: 100%;
 }
 
 #formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus
