@@ -4,17 +4,27 @@
 	<form id="formulaire_inscription" method="post" action='' > 
 	<fieldset> 
 		<legend>Les informations indispensables</legend> 
-		<dt><label for="login" >Pseudonyme:</label></dt> 
-		<dd><input id="login" name="login" type="text" /></dd> 
-		<dt><label for="password" >Mot de passe:</label></dt> 
-		<dd><input id="password" name="password" type="password" /></dd> 
-		<dt><label for="password2" >Confirmation du mot de passe:</label></dt> 
-		<dd><input id="password2" name="password2" type="password"  onblur='verificationMotDePasse()'  /></dd>
-		<p id='erreurMotDePasse'> </p>  
-		<dt><label for="email" >E-mail:</label></dt> 
-		<dd><input id="email" name="email" type="text" onblur='verificationConformiteEmail()'/></dd> 
-		<dt><label for="email2" >Confirmation de l'adresse E-mail:</label></dt> 
-		<dd><input id="email2" name="email2" type="text" onblur='verificationEmail()' /></dd>
+		<p>
+			<label for="login" >Pseudonyme:</label>
+			<input id="login" name="login" type="text" /> 
+		</p>
+		<p>
+			<label for="password" >Mot de passe:</label> 
+			<input id="password" name="password" type="password" />
+		</p>
+		<p> 
+			<label for="password2" >Confirmation du mot de passe:</label> 
+			<input id="password2" name="password2" type="password"  onblur='verificationMotDePasse()'  />
+		</p>
+		<p id='erreurMotDePasse'> </p>
+		<p>  
+			<label for="email" >E-mail:</label> 
+			<input id="email" name="email" type="text" onblur='verificationConformiteEmail()'/>
+		</p>
+		<p> 
+			<label for="email2" >Confirmation de l'adresse E-mail:</label> 
+			<input id="email2" name="email2" type="text" onblur='verificationEmail()' />
+		</p>
 		<p id='erreurEmail'> </p>
 		
 	</fieldset>
