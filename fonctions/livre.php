@@ -191,9 +191,8 @@ class Livre
 	{
 		$liste = listeGenres();
 		$res = "<select>\n";
-		foreach(???)
-			$res += "<option value='".."'>".."</option>\n";
-
+		foreach($liste as $val)
+			$res += "<option value='".$val['gid']."'>".$val['gnom']."</option>\n";
 		$res += "</select>\n";
 		return $res;
 	}
