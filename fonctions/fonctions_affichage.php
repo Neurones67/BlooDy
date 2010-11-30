@@ -76,7 +76,7 @@ class Affichage
 			echo "<td><a href='/affichage_complet_bds.html?id=".$tBD['l.lid']."' >".$tBD['l.nom']."</a></td>\n";
 			echo "<td>".$tBD['a.anom']."</td><td><a href='/affichage_complet_auteurs.html?id=".$tBD['a.aid']."' />"./*$tBD['a.aprenom'].*/"</td><td>".$tBD['e.enom']."</td><td>".$tBD['l.isbn']."</td>\n";
 			echo "<td>".$tBD['l.ean13']."</td>\n";
-			echo "</tr>\n"; // fin de la ligne
+			echo "</tr>\n";
 		}
 		echo "</table>\n";
 	}

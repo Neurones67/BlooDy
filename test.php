@@ -32,6 +32,9 @@
 	echo "<hr />";
 	// Test de création de formulaire de recherche avancée
 	creer_formulaire_recherche();
+
+	$testConsultation = new Affichage();
+	$testConsultation->consultation_BD();
 ?>
 </body>
 </html>
