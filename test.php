@@ -17,6 +17,7 @@
 
 <?php 
 	include_once('fonctions/creer_formulaire.php');
+	include_once('fonctions/fonctions_affichage.php');
 	
 	// Test de création de formulaire d'inscription
 	creer_formulaire_inscription();
