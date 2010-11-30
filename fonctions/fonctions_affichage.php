@@ -2,7 +2,7 @@
 
 class Affichage
 {
-	include_once('livre.php');
+	include('livre.php');
 	// On passe à cette fonction le tableau contenant les informations utiles à afficher de façon très compacte
 	// On passe son identifiant unique (t[0]), son nom, son prénom, sa date de naissance
 	public static function affichage_tcompact_auteurs()
