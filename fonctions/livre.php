@@ -206,7 +206,7 @@ class Livre
 		{
 			$res[]=$req->fetch_assoc();
 		}
-		return $res:
+		return $res;
 	}
 }
 ?>
