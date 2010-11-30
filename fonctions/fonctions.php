@@ -92,7 +92,7 @@ function gen_get()
 function queryToArray($query)
 {
 	$res=array();
-	if($query=requestObject('MySQL')->query($sql))
+	if($query=requestObject('MySQL')->query($query))
 	{
 		$res[]=$query->fetch_assoc();
 	}
