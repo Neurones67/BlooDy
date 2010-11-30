@@ -31,7 +31,7 @@ require_once('param.php');
 require_once('db.php');
 require_once('utilisateurs.php'); 
 require_once('livre.php'); 
-
+require_once('auteur.php');
 
 // Initialisation de la variable globale qui va stocker les différents objets (pour un accès direct depuis n'importe où)
 $GLOBALS['object']=array();
