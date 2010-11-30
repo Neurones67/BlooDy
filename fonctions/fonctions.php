@@ -97,7 +97,7 @@ function queryToArray($query)
 		$res[]=$query->fetch_assoc();
 	}
 	$query->seek(0); // Revenir au début des résulats, au cas où on voudrait réutiliser la variable
-	return $res:
+	return $res;
 }
 // Connexion à la base de données
 $mysql=new DB($host,$username,$password,$base);
