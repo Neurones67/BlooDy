@@ -200,7 +200,7 @@ class Livre
 	public static function listBD()
 	{
 		// Permet de lister toutes les BDs présentes dans la base de données
-		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid';
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid';
 		$res=array();
 		if($req=$this->mysql->query($sql))
 		{
@@ -212,6 +212,7 @@ class Livre
 	// On passe son identifiant unique (t[0]), son nom, son prénom, sa date de naissance
 	public static function affichage_tcompact_auteurs()
 	{
+<<<<<<< HEAD
 		$tAut = "A CHANGER !!!!!!!!!!!";
 		// Tout d'abord, on donne les titres de chaque colonne
 		echo "<table id='auteurs'><tr><th>Nom de l'auteur</th><th>Prénom de l'auteur</th><th>Date de naissance</th></tr>\n";
@@ -285,5 +286,14 @@ class Livre
 		}
 		echo "</table>\n";
 	}
+=======
+		$liste = listeGenres();
+		$res = "<select id='genre' name='genre'>\n";
+		foreach($liste as $val)
+			$res += "<option value='".$val['gid']."'>".$val['gnom']."</option>\n";
+		$res += "</select>\n";
+		return $res;
+	}	
+>>>>>>> fbc3c08445e5d3a03c435b251181ceb6833a6d59
 }
 ?>
