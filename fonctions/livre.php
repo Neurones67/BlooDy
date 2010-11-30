@@ -208,14 +208,5 @@ class Livre
 		}
 		return $res:
 	}
-=======
-		$liste = listeGenres();
-		$res = "<select id='genre' name='genre'>\n";
-		foreach($liste as $val)
-			$res += "<option value='".$val['gid']."'>".$val['gnom']."</option>\n";
-		$res += "</select>\n";
-		return $res;
-	}	
->>>>>>> fbc3c08445e5d3a03c435b251181ceb6833a6d59
 }
 ?>
