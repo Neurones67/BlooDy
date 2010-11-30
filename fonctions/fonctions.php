@@ -92,9 +92,9 @@ function gen_get()
 function queryToArray($query)
 {
 	$res=array();
-	if($query=requestObject('MySQL')->query($query))
+	while($data=$query->fetch_assoc())
 	{
-		$res[]=$query->fetch_assoc();
+		$res[]=$data;
 	}
 	$query->seek(0); // Revenir au début des résulats, au cas où on voudrait réutiliser la variable
 	return $res;
