@@ -201,5 +201,10 @@ class Livre
 	public static function creer_liste_genres()
 	{
 		$liste = listeGenres();
+		$res = "<select id='genre' name='genre'>\n";
+		foreach($liste as $val)
+			$res += "<option value='".$val['gid']."'>".$val['gnom']."</option>\n";
+		$res += "</select>\n";
+		return $res;
 	}
 }

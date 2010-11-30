@@ -1,5 +1,7 @@
 <?php
 
+class Affichage
+{
 // On passe à cette fonction le tableau contenant les informations utiles à afficher de façon très compacte
 // On passe son identifiant unique (t[0]), son nom, son prénom, sa date de naissance
 function affichage_tcompact_auteurs($tAut)
@@ -9,11 +11,11 @@ function affichage_tcompact_auteurs($tAut)
 	for(i=0; i < count($tAut) ; i++)
 	{
 		echo "<tr>"; // début de la ligne
-		echo "<td><a href='www.bloodybd.fr/affichage_complet_auteurs.html?id=".$tAut[0]."' >".$tAut[1]."</a>";
-		echo "</td><td>".$tAut[2]."</td><td>".$tAut[3]."</td>";
+		echo "<td><a href='www.bloodybd.fr/affichage_complet_auteurs.html?id=".$tAut[0]."' >".$tAut[1]."</a>\n";
+		echo "</td><td>".$tAut[2]."</td><td>".$tAut[3]."</td>\n";
 		echo "</tr>\n"; // fin de la ligne
 	}
-	echo "</table>";
+	echo "</table>\n";
 }
 
 // Même chose mais avec les collections, on passe l'identifiant unique, le nom de collection, 
@@ -21,17 +23,17 @@ function affichage_tcompact_auteurs($tAut)
 function affichage_tcompact_collections($tCol)
 {
 	// Tout d'abord, on donne les titres de chaque colonne
-	echo "<table id='collections'><tr><th>Nom de la collection</th><th>Nom de l'auteur</th>"
+	echo "<table id='collections'><tr><th>Nom de la collection</th><th>Nom de l'auteur</th>\n";
 	echo "<th>Prénom de l'auteur</th><th>Nom de l'éditeur</th></tr>\n";
 
 	for(i=0; i < count($tCol) ; i++)
 	{
 		echo "<tr>"; // début de la ligne
-		echo "<td><a href='www.bloodybd.fr/affichage_complet_collections.html?id=".$tCol[0]."' >".$tCol[1]."</a></td>";
-		echo "<td>".$tCol[2]."</td><td>".$tCol[3]."</td><td>".$tCol[4]."</td>";
+		echo "<td><a href='www.bloodybd.fr/affichage_complet_collections.html?id=".$tCol[0]."' >".$tCol[1]."</a></td>\n";
+		echo "<td>".$tCol[2]."</td><td>".$tCol[3]."</td><td>".$tCol[4]."</td>\n";
 		echo "</tr>\n"; // fin de la ligne
 	}
-	echo "</table>";
+	echo "</table>\n";
 }
 
 // Même chose mais pour l'affichage des BDs :)
@@ -39,13 +41,13 @@ function affichage_tcompact_collections($tCol)
 function affichage_tcompact_bds($tBD)
 {
 	// Tout d'abord, on donne les titres de chaque colonne
-	echo "<table id='bds'><tr><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>";
+	echo "<table id='bds'><tr><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
 	echo "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th></tr>\n";
 
 	for(i=0; i < count($tBD) ; i++)
 	{
 		echo "<tr>"; // début de la ligne
-		echo "<td><a href='www.bloodybd.fr/affichage_complet_bds.html?id=".$tBD[0]."' >".$tBD[1]."</a></td>";
+		echo "<td><a href='www.bloodybd.fr/affichage_complet_bds.html?id=".$tBD[0]."' >".$tBD[1]."</a></td>\n";
 	
 		// Boucle pour mettre le reste des informations dans le tableau	
 		for(k=2; k <= 6 ; k++)
@@ -53,6 +55,7 @@ function affichage_tcompact_bds($tBD)
 
 		echo "</tr>\n"; // fin de la ligne
 	}
-	echo "</table>";
+	echo "</table>\n";
+}
 }
 ?>
