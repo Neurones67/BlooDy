@@ -88,7 +88,17 @@ function gen_get()
 		}
 	}
 }
-
+// Met les résultats d'une requête sous forme de tableau de tableaux associatifs, Similaire à fetch_all
+function queryToArray($query)
+{
+	$res=array();
+	if($query=$this->mysql->query($sql))
+	{
+		$res[]=$query->fetch_assoc();
+	}
+	$query->seek(0); // Revenir au début des résulats, au cas où on voudrait réutiliser la variable
+	return $res;
+}
 // Connexion à la base de données
 $mysql=new DB($host,$username,$password,$base);
 // Enregistrement de l'objet MySQL dans les variables globales (accessibles alors aux objets)
