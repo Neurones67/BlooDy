@@ -96,7 +96,7 @@ function queryToArray($query)
 	{
 		$res[]=$data;
 	}
-	$query->seek(0); // Revenir au début des résulats, au cas où on voudrait réutiliser la variable
+	$query->data_seek(0); // Revenir au début des résulats, au cas où on voudrait réutiliser la variable
 	return $res;
 }
 // Connexion à la base de données
