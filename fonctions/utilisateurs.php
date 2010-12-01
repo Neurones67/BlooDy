@@ -227,4 +227,12 @@ class Utilisateurs
 			return 'Vous n\'avez pas remplis tous les champs';
 		}
 	}
+	public function deconnexion()
+	{
+		$this->uid=-1;
+		// On détruit la session et ses variables;
+		session_destroy();
+		session_unset();
+		unset($this);
+	}
 }
