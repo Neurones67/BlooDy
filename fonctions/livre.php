@@ -115,6 +115,7 @@ class Livre
 		{
 			$lid=$this->mysql->insert_id; // Renvoi l'identifiant du livre qu'on vient d'ajouter
 			$this->ajoutCollection($lid,$aid,'','',''); // Rajout dans la collection de l'utilisateur
+			return $lid;
 		}
 		else
 		{
