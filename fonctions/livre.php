@@ -65,7 +65,7 @@ class Livre
 	{
 		// Initialise les attributs du livre avec le lid donné à partir de la base de donnée
 		$lid=intval($lid);
-		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom, a.aprenom,s.snom,g.gnom,g.gid,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom, a.aprenom,s.snom,g.gnom,g.gid,e.enom,ajdate,u.pseudo FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
@@ -80,7 +80,7 @@ class Livre
 	// Rempli les attributs de l'objet avec le résultat d'une requête SQL
 	private function remplirAttributs($data)
 	{
-		$this->lid=$lid;
+		$this->lid=$data->lid;
 		$this->nom=$data->nom;
 		$this->isbn=$data->isbn;
 		$this->ean13=$data->ean13;
@@ -96,7 +96,7 @@ class Livre
 		$this->genreid=$data->gid;
 	}
 	// Ajoute un livre à la base de données avec l'ID de l'auteur et l'ID de la série (peut être vide éventuellement)
-	private function ajoutLivre($nom,$isbn,$ean13,$date_publication,$description,$aid,$sid,$uid)
+	private function ajoutLivre($nom,$isbn,$ean13,$date_publication,$description,$aid,$sid,$uid,$genre)
 	{
 		// Protection des variables
 		$nom=$this->mysql->real_escape_string($nom);
@@ -104,11 +104,12 @@ class Livre
 		$ean13=$this->mysql->real_escape_string($ean13);
 		$date_publication=$this->mysql->real_escape_string($date_publication);
 		$description=$this->mysql->real_escape_string($description);
+		$genre=intval($genre);
 		// Forçage du type entier (si autre chose qu'une représentation d'un nombre => 0)
 		$aid=intval($aid);
 		$sid=intval($sid);
 		$uid=intval($uid); // uid utilisateur qui a ajouté le livre
-		$sql='INSERT INTO livres(nom,isbn,ean13,date_publication,description,aid,serie,ajuid,ajdate) VALUES ("'.$nom.'","'.$isbn.'","'.$ean13.'","'.$date_publication.'","'.$description.'","'.$aid.'","'.$sid.'","'.$aid.'","'.time().'")';
+		$sql='INSERT INTO livres(nom,isbn,ean13,date_publication,description,aid,serie,ajuid,ajdate,genre,lvalide) VALUES ("'.$nom.'","'.$isbn.'","'.$ean13.'","'.$date_publication.'","'.$description.'","'.$aid.'","'.$sid.'","'.$aid.'","'.time().'","'.$genre.'",1)';
 		// Si on arrive à executer la requête
 		if($this->mysql->query($sql))
 		{
