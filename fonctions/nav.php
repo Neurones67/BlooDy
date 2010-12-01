@@ -16,7 +16,7 @@ class Nav
 	{
 		if($this->user->estConnecte())
 		{
-			return '<a href="/Profil/">Profil</a>';
+			return trim(file_get_contents(PARTIAL.'menuConnexionCo.xhtml'));
 		}
 		else
 		{

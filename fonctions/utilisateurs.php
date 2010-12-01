@@ -7,6 +7,7 @@ class Utilisateurs
 {
 	// Variables de l'utilisateur
 	private $uid;
+	private $pseudo;
 	private $email;
 	private $description;
 	private $bdpublique;
@@ -51,6 +52,7 @@ class Utilisateurs
 	public function __destruct()
 	{
 		unset($this->uid);
+		unset($this->pseudo);
 		unset($this->email);
 		unset($this->description);
 		unset($this->bdpublique);
@@ -62,11 +64,12 @@ class Utilisateurs
 	private function initData($uid)
 	{
 		$uid=intval($uid);
-		$sql='SELECT uid,email,description,bdpublique,accueiltype,ipinscription,uetat,cvalidation FROM utilisateurs WHERE uid='.$uid;
+		$sql='SELECT uid,pseudo,email,description,bdpublique,accueiltype,ipinscription,uetat,cvalidation FROM utilisateurs WHERE uid='.$uid;
 		$req= $this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
 			$this->uid=$uid;
+			$this->pseudo=$data->pseudo;
 			$this->email=$data->email;
 			$this->descrption=$data->description;
 			$this->bdpublique=$data->bdpublique;
@@ -88,6 +91,10 @@ class Utilisateurs
 	public function getUid()
 	{
 		return $this->uid;
+	}
+	public function getLogin()
+	{
+		return $this->pseudo;
 	}
 	private function passhash($password)
 	{
