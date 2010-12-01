@@ -60,7 +60,7 @@ class Auteur
 		$sql='SELECT aid,anom,aprenom,biographie,adnaissance,aphoto,avalide FROM auteurs WHERE UPPER(anom) LIKE "%'.$nom.'%" '.$filter.' UPPER(aprenom) LIKE "%'.$prenom.'%"';
 		return queryToArray($this->mysql->query($sql));
 	}
-	private function ajout($nom,$prenom="",$biographie="",$datenaissance="",$aphoto="")
+	public function ajout($nom,$prenom="",$biographie="",$datenaissance="",$aphoto="")
 	{
 		$nom=$this->mysql->real_escape_string($nom);
 		$prenom=$this->mysql->real_escape_string($prenom);
