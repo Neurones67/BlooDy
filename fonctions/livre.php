@@ -167,7 +167,7 @@ class Livre
 			if($lid==0) // BD inexistante => création
 			{
 
-				if($lid=$this->ajoutLivre($_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',requestObject('Utilisateurs')->getUid()))
+				if($lid=$this->ajoutLivre($_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',requestObject('Utilisateurs')->getUid()),$_POST['genre'])
 				{
 					$template.="Livre enregistré sous l'identifiant ".$lid;
 				}
@@ -194,7 +194,7 @@ class Livre
 		return $template;
 	}
 	// Permet d'ajouter un livre à sa collection
-	private function ajoutCollection($lid,$uid,$date_dachat,$etat,$emplacement)
+	private function ajoutCollection($lid,$uid,$date_dachat="",$etat="",$emplacement="")
 	{
 		// Protection des variables
 		$uid=intval($uid);
@@ -207,7 +207,7 @@ class Livre
 		$livre=new Livre($lid);
 		if($livre->getValide())
 		{
-			$sql='INSERT INTO appartient(uid,lid,date_achat,etat,emplacement) VALUES("'.$uid.'","'.$lid.'","'.$date_achat.'","'.$etat.'","'.$emplacement.'")';
+			$sql='INSERT INTO appartient(uid,lid,date_achat,etat,emplacement) VALUES("'.$uid.'","'.$lid.'","'.$date_dachat.'","'.$etat.'","'.$emplacement.'")';
 			return $this->mysql->query($sql);
 		}
 		else
