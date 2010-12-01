@@ -124,7 +124,7 @@ class Livre
 		}
 	}
 	// Permet de modifier les données d'un livre
-	private function update($lid,$isbn,$ean13,$date_publication,$description,$aid,$sid)
+	private function update($lid,$nom,$isbn,$ean13,$date_publication,$description,$aid,$sid)
 	{
 		$lid=intval($lid);
 		$nom=$this->mysql->real_escape_string($nom);
@@ -137,7 +137,7 @@ class Livre
 		$livre=new Livre($lid);
 		if($livre->getValide()) // Si le livre existe
 		{
-			$sql='UPDATE livres SET nom="'.$nom.'",isbn="'.$isbn.'",ean13="'.$ean13.'",date_publication="'.$date_publication.'",description="'.$description.'",aid='.$aid.',sid='.$sid.' WHERE lid='.$lid.'';
+			$sql='UPDATE livres SET nom="'.$nom.'",isbn="'.$isbn.'",ean13="'.$ean13.'",date_publication="'.$date_publication.'",description="'.$description.'",aid='.$aid.',serie='.$sid.' WHERE lid='.$lid.'';
 			return $this->mysql->query($sql);
 		}
 		else
@@ -181,7 +181,7 @@ class Livre
 			else
 			{
 				// BD existante => modification
-				if($this->update($lid,$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,''))
+				if($this->update($lid,$_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,''))
 				{
 					$template.="BD mise à jour avec succès";
 				}
