@@ -85,6 +85,7 @@ class Livre
 		$this->isbn=$data->isbn;
 		$this->ean13=$data->ean13;
 		$this->date_publication=$data->date_publication;
+		$this->description=$data->description;
 		$this->lvalide=$data->lvalide;
 		$this->auteurn=$data->anom;
 		$this->auteurp=$data->aprenom;
@@ -221,7 +222,7 @@ class Livre
 	public function affichLivre($template,$livre)
 	{
 		$template=str_replace('{{LID}}',$livre->lid,$template);
-		$template=str_replace('{{SNOM}}',$livre->nom,$template);
+		$template=str_replace('{{NOM}}',$livre->nom,$template);
 		$template=str_replace('{{ISBN}}',$livre->isbn,$template);
 		$template=str_replace('{{EAN13}}',$livre->ean13,$template);
 		$template=str_replace('{{DATEPUB}}',$livre->date_publication,$template);
@@ -232,7 +233,7 @@ class Livre
 		$template=str_replace('{{NOMAUTEUR}}',$livre->auteurn,$template);
 		$template=str_replace('{{PRENOMAUTEUR}}',$livre->auteurp,$template);
 		$template=str_replace('{{DESCRIPTION}}',$livre->description,$template);
-		$template=str_replace('{{SYNOPSYS}}',$livre->description,$template);
+		$template=str_replace('{{SYNOPSIS}}',$livre->description,$template);
 		$template=str_replace('{{GENRE}}',$livre->genre,$template);
 		$template=str_replace('{{AJUSE}}',$livre->ajuser,$template);
 		$template=str_replace('{{AJDATE}}',$livre->ajdate,$template);
