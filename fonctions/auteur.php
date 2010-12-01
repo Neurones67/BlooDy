@@ -47,10 +47,17 @@ class Auteur
 		}
 	}
 	
-	private function recherche($motcle)
+	private function recherche($nom,$prenom="")
 	{
-		$motcle=$this->mysql->real_escape_string($motcle);
-		$sql='SELECT aid,anom,aprenom,biographie,adatenaissance,aphoto,avalide FROM auteurs WHERE anom LIKE "%'.$motcle.'%" OR aprenom LIKE "%'.$motcle.'%"';
+		$filter='AND';
+		if(empty($prenom))
+		{
+			$prenom=$nom;
+			$filter='OR';
+		}
+		$nom=strtoupper($this->mysql->real_escape_string($nom));
+		$prenom=strtoupper($this->mysql->real_escape_string($prenom));
+		$sql='SELECT aid,anom,aprenom,biographie,adatenaissance,aphoto,avalide FROM auteurs WHERE UPPER(anom) LIKE "%'.$nom.'%" '.$filter.' UPPER(aprenom) LIKE "%'.$prenom.'%"';
 		return queryToArray($this->mysql->query($sql));
-	}
+	}	
 }

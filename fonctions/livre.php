@@ -120,14 +120,14 @@ class Livre
 		if(isset($_POST['nomBD'], $_POST['nomAuteur'], $_POST['prenomAuteur'],$_POST['noISBN'],$_POST['noEAN13'],$_POST['genre'],$_POST['jourPublication'],$_POST['moisPublication'],$_POST['anneePublication'],$_POST['synopsis']) and !empty($_POST['nomBD']) and !empty($_POST['nomAuteur']))
 		{
 			$auteur=requestObject('Auteur');
-			$tab=$auteur->recherche($_POST['nomAuteur']);
+			$tab=$auteur->recherche($_POST['nomAuteur'],$_POST['prenomAuteur']);
 			if(count($tab)>0) // l'auteur existe
 			{
 				$aid=$tab[0]['aid'];
 			}
 			else
 			{
-				$aid=requestObject('Auteur')->add($nom);
+				$aid=requestObject('Auteur')->ajout($_POST['nomAuteur'],$_POST['prenomAuteur']);
 			}
 			$date_publication=mktime(0,0,0,intval($_POST['moisPublication']),intval($_POST['jourPublication']),$_POST['anneePublication']);
 			if($lid=$this->ajoutLivre($_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',requestObject('Utilisateurs')->getUid()))
