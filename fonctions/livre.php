@@ -113,6 +113,34 @@ class Livre
 			return false;
 		}
 	}
+	// Permet de traiter le formulaire d'ajout d'une BD
+	public function ajoutForm()
+	{
+		$template="";
+		if(isset($_POST['nomBD'], $_POST['nomAuteur'], $_POST['prenomAuteur'],$_POST['noISBN'],$_POST['noEAN13'],$_POST['genre'],$_POST['jourPublication'],$_POST['moisPublication'],$_POST['anneePublication'],$_POST['synopsis']) and !empty($_POST['nomBD']) and !empty($_POST['nomAuteur']))
+		{
+			$auteur=requestObject('Auteur');
+			$tab=$auteur->recherche($_POST['nomAuteur']);
+			if(count($tab)>0) // l'auteur existe
+			{
+				$aid=$tab[0]['aid'];
+			}
+			else
+			{
+				$aid=requestObject('Auteur')->add($nom);
+			}
+			$date_publication=mktime(0,0,0,intval($_POST['moisPublication']),intval($_POST['jourPublication']),$_POST['anneePublication']);
+			if($lid=$this->ajoutLivre($_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',requestObject('Utilisateurs')->getUid()))
+			{
+				$template="Livre enregistré sous l'identifiant ".$lid;
+			}
+			else
+			{
+				$template="Echec de l'enregistrement";
+			}
+		}
+		return $template;
+	}
 	// Permet d'ajouter un livre à sa collection
 	private function ajoutCollection($lid,$uid,$date_dachat,$etat,$emplacement)
 	{
