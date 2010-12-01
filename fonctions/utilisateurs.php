@@ -85,6 +85,10 @@ class Utilisateurs
 	{
 		return $this->uid>0;
 	}
+	public function getUid()
+	{
+		return $this->uid;
+	}
 	private function passhash($password)
 	{
 		// Permet de chiffrer un mot de passe
