@@ -180,7 +180,7 @@ class Livre
 			else
 			{
 				// BD existante => modification
-				if(update($_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,''))
+				if($this->update($lid,$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,''))
 				{
 					$template.="BD mise à jour avec succès";
 				}
