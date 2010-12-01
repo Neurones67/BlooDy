@@ -61,13 +61,13 @@ function verificationConformiteEmail()
 	}
 	paragraphe.appendChild(info);
 }
-function cacheGenre
+/*function cacheGenre()
 {
-	var p = document.getElementById("");
-	p.document.visibillity.hidden;
+	var p = document.getElementById("Identifiant");
+	p.document.style.display="none";
 }
-function visibleGenre
+function visibleGenre()
 {
-	var p = document.getElementById("");
-	p.document.visibillity.visible;
-}
+	var p = document.getElementById("Identifiant");
+	p.document.style.display="visible";
+}*/
