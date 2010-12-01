@@ -8,22 +8,22 @@
 	<fieldset> 
 		<legend>Les informations complémentaires (facultatives)</legend> 
 		<dt><label for="nomAuteur" >Nom de l'auteur</label></dt> 
-		<dd><input id="nomAuteur" name="nomAuteur" type="text" /></dd> 
+		<dd><input id="nomAuteur" name="nomAuteur" type="text" value="{{NOMAUTEUR}}" /></dd> 
 		<dt><label for="prenomAuteur" >Prénom de l'auteur</label></dt> 
-		<dd><input id="prenomAuteur" name="prenomAuteur" type="text" /></dd> 
+		<dd><input id="prenomAuteur" name="prenomAuteur" type="text" value="{{PRENOMAUTEUR}}" /></dd> 
 		<dt><label for="serie" >Série</label></dt> 
-		<dd><input id="serie" name="serie" type="text" /></dd> 
+		<dd><input id="serie" name="serie" type="text" value="{{SERIE}}" /></dd> 
 		<dt><label for="noISBN" >Numéro ISBN</label></dt> 
-		<dd><input id="noISBN" name="noISBN" type="text" /></dd> 
+		<dd><input id="noISBN" name="noISBN" type="text" value="{{ISBN}}" /></dd> 
 		<dt><label for="noEAN13" >Numéro EAN13</label></dt> 
+		<dd><input type="text" value="{{EAN13}}" id="noEAN13" name="noEAN13" /></dd>
 		<dt><label for="genre" >Genre de la BD</label></dt>
-	    <dd>{{LIVRE:creer_liste_genres}}</dd>	
-		<dd><input id="noEAN13" name="noEAN13" type="text" /></dd> 
+	    <dd>{{GENRES}}</dd>	
 		<dt><label for="jourPublication" >Date de publication (JJ/MM/AAAA)</label></dt> 
-		<dd><input id='jourPublication' name='jourPublication' type='text' /> / <input id='moisPublication' name='moisPublication' type='text' /> / <input id='anneePublication' name='anneePublication' type='text' /></dd> 
+		<dd><input id='jourPublication' name='jourPublication' type='text' value="{{JOURPUB}}" /> / <input id='moisPublication' name='moisPublication' type='text' value="{{MOISPUB}}" /> / <input id='anneePublication' name='anneePublication' type='text' value="{{ANNEEPUB}}" /></dd> 
 		<dt><label for='synopsis'>Le synopsis</label></dt> 
-		<dd><textarea id='synopsis' rows='5' cols='60'>Veuillez entrer le synopsis de la Bande dessinée</textarea></dd> 
+		<dd><textarea id='synopsis' rows='5' cols='60'>{{SYNOPSYS}}</textarea></dd> 
 	</fieldset> 
 	<input type='hidden' name="lid" value='{{LID}}' />
-	<input type='reset' value='Annuler' />	<input type='submit' value='OK'> 
+	<input type='reset' value='Annuler' />	<input type='submit' value='OK'/> 
 	</form> 
