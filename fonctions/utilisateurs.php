@@ -219,6 +219,100 @@ class Utilisateurs
 			return false;
 		}
 	}
+	private function updatePassword($id,$npassword)
+	{
+		if(!$this->estConnecte())
+			return;
+		$npassword=$this->passhash($npassword);
+		$sql='UPDATE utilisateurs SET motdepasse="'.$npassword.'" WHERE uid='.$id;
+		return $this->mysql->query($sql);
+	}
+	public function passwordForm()
+	{
+		if(!$this->estConnecte())
+			return;
+		$template="";
+		if(isset($_POST['opasswd'],$_POST['npasswd'],$_POST['npasswd2']) and !empty($_POST['opasswd']) and !empty($_POST['npasswd']) and !empty($_POST['npasswd2']))
+		{
+			$errors=array();
+			$pass=$this->passhash($_POST['opasswd']);
+			$req='SELECT id FROM utilisateurs WHERE pseudo="'.$this->pseudo.'" AND motdepasse="'.$pass.'"';
+			$req=$this->mysql->query($req);
+			if($data=$req->fetch_array())
+			{
+				if($_POST['npasswd']==$_POST['npasswd2'])
+				{
+					if($this->updatePassword($this->id,$_POST['npasswd']))
+					{
+						$template='<div class="message">Mot de passe changé avec succès !</div>';
+					}
+					else
+					{
+						$errors[]='Impossible de changer le mot de passe';
+					}
+				}
+				else
+				{
+					$errors[]='Les mots de passes ne correspondent pas';
+				}
+			}
+			else
+			{
+				$errors[]='Mot de passe incorrect';
+			}
+			$template.=requestObject('Nav')->userErrorHandler('Le script ne peut pas changer votre mot de passe',$errors);
+		}
+		return $template;
+	}
+	public function emailForm()
+	{
+		if(!$this->estConnecte())
+			return;
+		$template="";
+		if(isset($_POST['password'],$_POST['email'],$_POST['email2']) and !empty($_POST['password']) and !empty($_POST['email']) and !empty($_POST['email2']))
+		{
+			$errors=array();
+			$pass=sha1(md5(stripslashes($_POST['password'])));
+			$req='SELECT id FROM utilisateurs WHERE pseudo="'.$this->pseudo.'" AND motdepasse="'.$pass.'"';
+			$req=$this->mysql->query($req);
+			if($data=$req->fetch_array())
+			{
+				if(!preg_match('/^[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+(\.[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+)*@(([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){1,63}\.)+([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){2,63}$/i',$_POST['email']))
+				{
+					$errors[]="L'adresse email n'est pas valide";
+				}
+				else if($_POST['email']==$_POST['email2'])
+				{
+					if($this->updateEmail($this->id,$_POST['email']))
+					{
+						$template='<div class="message">Adresse email changée avec succès !</div>';
+					}
+					else
+					{
+						$errors[]='Impossible de changer l\'adresse email';
+					}
+				}
+				else
+				{
+					$errors[]='Les deux adresses email ne correspondent pas';
+				}
+			}
+			else
+			{
+				$errors[]='Mot de passe incorrect';
+			}
+			$template.=requestObject('Nav')->userErrorHandler('Le script ne peut pas changer votre adresse email',$errors);
+		}
+		return $template;
+	}
+	private function updateEmail($id,$email)
+	{
+		if(!$this->estConnecte())
+			return;
+		$email=$this->mysql->real_escape_string($email);
+		$sql='UPDATE utilisateurs SET email="'.$email.'" WHERE uid='.$id.'';
+		return $this->mysql->query($sql);
+	}
 	public function connexion()
 	{
 		if(isset($_POST['id_Connexion'],$_POST['id_MotDePasse']) and !empty($_POST['id_Connexion']) and !empty($_POST['id_MotDePasse']))
