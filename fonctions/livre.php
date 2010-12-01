@@ -222,7 +222,7 @@ class Livre
 		$template=str_replace('{{JOURPUB}}',date('j',$livre->date_publication),$template);
 		$template=str_replace('{{MOISPUB}}',date('n',$livre->date_publication),$template);
 		$template=str_replace('{{ANNEEPUB}}',date('Y',$livre->date_publication),$template);
-		$template=str_replace('{{GENRES}}',creer_liste_genres($livre->genreid),$template);
+		$template=str_replace('{{GENRES}}',$this->creer_liste_genres($livre->genreid),$template);
 		$template=str_replace('{{ANOM}}',$livre->auteur,$template);
 		$template=str_replace('{{GENRE}}',$livre->genre,$template);
 		$template=str_replace('{{AJUSE}}',$livre->ajuser,$template);
