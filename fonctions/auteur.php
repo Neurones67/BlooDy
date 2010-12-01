@@ -47,7 +47,7 @@ class Auteur
 		}
 	}
 	
-	private function recherche($nom,$prenom="")
+	public function recherche($nom,$prenom="")
 	{
 		$filter='AND';
 		if(empty($prenom))
