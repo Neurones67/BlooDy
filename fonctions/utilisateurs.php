@@ -313,6 +313,11 @@ class Utilisateurs
 		$sql='UPDATE utilisateurs SET email="'.$email.'" WHERE uid='.$id.'';
 		return $this->mysql->query($sql);
 	}
+	public function liste() // Permet de faire la liste des utilisateurs
+	{
+		$sql='SELECT uid,pseudo,email FROM utilisateurs ORDER BY uid';
+		return queryToArray($this->mysql->query($sql));
+	}
 	public function connexion()
 	{
 		if(isset($_POST['id_Connexion'],$_POST['id_MotDePasse']) and !empty($_POST['id_Connexion']) and !empty($_POST['id_MotDePasse']))
