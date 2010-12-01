@@ -229,7 +229,7 @@ class Livre
 		$template=str_replace('{{NOMAUTEUR}}',$livre->auteurn,$template);
 		$template=str_replace('{{PRENOMAUTEUR}}',$livre->auteurp,$template);
 		$template=str_replace('{{DESCRIPTION}}',$livre->description,$template);
-		$template=str_replace('{{SYNOPSYS}}',$livre->auteur,$template);
+		$template=str_replace('{{SYNOPSYS}}',$livre->description,$template);
 		$template=str_replace('{{GENRE}}',$livre->genre,$template);
 		$template=str_replace('{{AJUSE}}',$livre->ajuser,$template);
 		$template=str_replace('{{AJDATE}}',$livre->ajdate,$template);
@@ -277,9 +277,9 @@ class Livre
 				$filter=' selected="selected" ';
 			else
 				$filter="";
-			$res += "<option value='".$val['gid']."'".$filter.">".$val['gnom']."</option>\n";
+			$res .= "<option value='".$val['gid']."'".$filter.">".$val['gnom']."</option>\n";
 		}
-		$res += "</select>\n";
+		$res .= "</select>\n";
 		return $res;
 	}
 
