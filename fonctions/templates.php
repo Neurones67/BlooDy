@@ -102,7 +102,7 @@ class Templates
 		}
 		if(strstr($template,'{{LOGIN}}'))
 		{
-			$template=str_replace('{{LOGIN}}',requestObject('User')->getLogin(),$template);
+			$template=str_replace('{{LOGIN}}',requestObject('Utilisateurs')->getLogin(),$template);
 		}
 		return $template;
 	}
