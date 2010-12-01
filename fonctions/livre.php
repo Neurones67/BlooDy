@@ -185,7 +185,7 @@ class Livre
 			}
 		}
 		$livre=new Livre($lid);
-		$template=affichLivre($template,$livre);
+		$template=$this->affichLivre($template,$livre);
 		return $template;
 	}
 	// Permet d'ajouter un livre à sa collection
@@ -212,7 +212,7 @@ class Livre
 		}
 	}
 	// Permet de rempalcer les tags d'un template par les données contenues dans l'objet $livre
-	private static function affichLivre($template,$livre)
+	public function affichLivre($template,$livre)
 	{
 		$template=str_replace('{{LID}}',$livre->lid,$template);
 		$template=str_replace('{{SNOM}}',$livre->nom,$template);
