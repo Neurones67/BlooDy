@@ -15,7 +15,8 @@ class Livre
 	private $date_publication;
 	private $lvalide;
 	private $description;
-	private $auteur;
+	private $auteurn;
+	private $auteurp;
 	private $serie;
 	private $ajuser;
 	private $editeur;
@@ -47,7 +48,8 @@ class Livre
 		unset($this->lvalide);
 		unset($this->description);
 		unset($this->aid);
-		unset($this->auteur);
+		unset($this->auteurn);
+		unset($this->auteurp);
 		unset($this->editeur);
 		unset($this->ajuser);
 		unset($this->ajdate);
@@ -63,7 +65,7 @@ class Livre
 	{
 		// Initialise les attributs du livre avec le lid donné à partir de la base de donnée
 		$lid=intval($lid);
-		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,g.gid,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
+		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom, a.aprenom,s.snom,g.gnom,g.gid,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
@@ -84,7 +86,8 @@ class Livre
 		$this->ean13=$data->ean13;
 		$this->date_publication=$data->date_publication;
 		$this->lvalide=$data->lvalide;
-		$this->auteur=$data->anom;
+		$this->auteurn=$data->anom;
+		$this->auteurp=$data->aprenom;
 		$this->genre=$data->gnom;
 		$this->ajuser=$data->pseudo;
 		$this->ajdate=$data->ajdate;
@@ -223,7 +226,10 @@ class Livre
 		$template=str_replace('{{MOISPUB}}',date('n',$livre->date_publication),$template);
 		$template=str_replace('{{ANNEEPUB}}',date('Y',$livre->date_publication),$template);
 		$template=str_replace('{{GENRES}}',$this->creer_liste_genres($livre->genreid),$template);
-		$template=str_replace('{{ANOM}}',$livre->auteur,$template);
+		$template=str_replace('{{NOMAUTEUR}}',$livre->auteurn,$template);
+		$template=str_replace('{{PRENOMAUTEUR}}',$livre->auteurp,$template);
+		$template=str_replace('{{DESCRIPTION}}',$livre->description,$template);
+		$template=str_replace('{{SYNOPSYS}}',$livre->auteur,$template);
 		$template=str_replace('{{GENRE}}',$livre->genre,$template);
 		$template=str_replace('{{AJUSE}}',$livre->ajuser,$template);
 		$template=str_replace('{{AJDATE}}',$livre->ajdate,$template);
