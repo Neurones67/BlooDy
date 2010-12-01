@@ -67,7 +67,7 @@ class Auteur
 		$biographie=$this->mysql->real_escape_string($biographie);
 		$datenaissance=$this->mysql->real_escape_string($datenaissance);
 		$aphoto=$this->mysql->real_escape_string($aphoto);
-		$sql='INSERT INTO auteurs(anom,aphoto,abiographie,aprenom,adnaissance) VALUES("'.$anom.'","'.$aphoto.'","'.$abiographie.'","'.$aprenom.'","'.$adatenaissance.'")';
+		$sql='INSERT INTO auteurs(anom,aphoto,biographie,aprenom,adnaissance) VALUES("'.$nom.'","'.$aphoto.'","'.$biographie.'","'.$prenom.'","'.$datenaissance.'")';
 		if($this->mysql->query($sql))
 		{
 			return $this->mysql->insert_id; // Renvoi l'identifiant de l'auteur qu'on vient d'ajouter
