@@ -55,7 +55,7 @@ class Livre
 	}
 	public function getValide()
 	{
-		return $this->lvalide;
+		return $this->lvalide>0;
 	}
 	private function initData($lid)
 	{
@@ -97,7 +97,7 @@ class Livre
 		$isbn=$this->mysql->real_escape_string($isbn);
 		$ean13=$this->mysql->real_escape_string($ean13);
 		$date_publication=$this->mysql->real_escape_string($date_publication);
-		$description=$this->mysql->real_escape_string($date_publication);
+		$description=$this->mysql->real_escape_string($description);
 		// Forçage du type entier (si autre chose qu'une représentation d'un nombre => 0)
 		$aid=intval($aid);
 		$sid=intval($sid);
@@ -107,6 +107,28 @@ class Livre
 		if($this->mysql->query($sql))
 		{
 			return $this->mysql->insert_id; // Renvoi l'identifiant du livre qu'on vient d'ajouter
+		}
+		else
+		{
+			return false;
+		}
+	}
+	// Permet de modifier les données d'un livre
+	private function update($lid,$isbn,$ean13,$date_publication,$description,$aid,$sid)
+	{
+		$lid=intval($lid);
+		$nom=$this->mysql->real_escape_string($nom);
+		$isbn=$this->mysql->real_escape_string($isbn);
+		$ean13=$this->mysql->real_escape_string($ean13);
+		$date_publication=$this->mysql->real_escape_string($date_publication);
+		$description=$this->mysql->real_escape_string($description);
+		$aid=intval($aid);
+		$sid=intval($sid);
+		$livre=new Livre($lid);
+		if($livre->getValide()) // Si le livre existe
+		{
+			$sql='UPDATE livres SET nom="'.$nom.'",isbn="'.$isbn.'",ean13="'.$ean13.'",date_publication="'.$date_publication.'",description="'.$description.'",aid='.$aid.',sid='.$sid.' WHERE lid='.$lid.'';
+			return $this->mysql->query($sql);
 		}
 		else
 		{
@@ -152,8 +174,8 @@ class Livre
 		$emplacement=$this->mysql->real_escape_string($emplacement);
 		
 		// Est-ce que le livre existe vraiment ?
-		$livre=new Livre($uid);
-		if($livre->getValide>0)
+		$livre=new Livre($lid);
+		if($livre->getValide())
 		{
 			$sql='INSERT INTO appartient(uid,lid,date_achat,etat,emplacement) VALUES("'.$uid.'","'.$lid.'","'.$date_achat.'","'.$etat.'","'.$emplacement.'")';
 			return $this->mysql->query($sql);
