@@ -261,7 +261,7 @@ class Livre
 		return queryToArray($this->mysql->query($sql));
 	}
 
-	public static function creer_liste_genres($selected=0)
+	public function creer_liste_genres($selected=0)
 	{
 		$liste = listeGenres();
 		$res = "<select id='genre' name='genre'>\n";
