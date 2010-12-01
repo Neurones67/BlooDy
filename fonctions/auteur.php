@@ -11,7 +11,7 @@ class Auteur
 	private $anom;
 	private $aprenom;
 	private $biographie;
-	private $adatenaissance;
+	private $adnaissance;
 	private $aphoto;
 	private $avalide;
 	
@@ -42,7 +42,7 @@ class Auteur
 			$this->anom=$data-->anom;
 			$this->aprenom=$data->aprenom;
 			$this->biographie=$data->biographie;
-			$this->adatenaissance=$data->adatenaissance;
+			$this->adnaissance=$data->adnaissance;
 			$this->avalide=$data->avalide;
 		}
 	}
@@ -57,17 +57,17 @@ class Auteur
 		}
 		$nom=strtoupper($this->mysql->real_escape_string($nom));
 		$prenom=strtoupper($this->mysql->real_escape_string($prenom));
-		$sql='SELECT aid,anom,aprenom,biographie,adatenaissance,aphoto,avalide FROM auteurs WHERE UPPER(anom) LIKE "%'.$nom.'%" '.$filter.' UPPER(aprenom) LIKE "%'.$prenom.'%"';
+		$sql='SELECT aid,anom,aprenom,biographie,adnaissance,aphoto,avalide FROM auteurs WHERE UPPER(anom) LIKE "%'.$nom.'%" '.$filter.' UPPER(aprenom) LIKE "%'.$prenom.'%"';
 		return queryToArray($this->mysql->query($sql));
 	}
-	private function ajout($nom,$prenom="",$biographie="",$datenaissance="",$aphoto)
+	private function ajout($nom,$prenom="",$biographie="",$datenaissance="",$aphoto="")
 	{
 		$nom=$this->mysql->real_escape_string($nom);
 		$prenom=$this->mysql->real_escape_string($prenom);
 		$biographie=$this->mysql->real_escape_string($biographie);
 		$datenaissance=$this->mysql->real_escape_string($datenaissance);
 		$aphoto=$this->mysql->real_escape_string($aphoto);
-		$sql='INSERT INTO auteurs(anom,aphoto,abiographie,aprenom,adatenaissance) VALUES("'.$anom.'","'.$aphoto.'","'.$abiographie.'","'.$aprenom.'","'.$adatenaissance.'")';
+		$sql='INSERT INTO auteurs(anom,aphoto,abiographie,aprenom,adnaissance) VALUES("'.$anom.'","'.$aphoto.'","'.$abiographie.'","'.$aprenom.'","'.$adatenaissance.'")';
 		if($this->mysql->query($sql))
 		{
 			return $this->mysql->insert_id; // Renvoi l'identifiant de l'auteur qu'on vient d'ajouter
