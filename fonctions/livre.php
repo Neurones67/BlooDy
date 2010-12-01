@@ -167,7 +167,7 @@ class Livre
 			if($lid==0) // BD inexistante => création
 			{
 
-				if($lid=$this->ajoutLivre($_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',requestObject('Utilisateurs')->getUid()),$_POST['genre'])
+				if($lid=$this->ajoutLivre($_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',requestObject('Utilisateurs')->getUid(),$_POST['genre']))
 				{
 					$template.="Livre enregistré sous l'identifiant ".$lid;
 				}
