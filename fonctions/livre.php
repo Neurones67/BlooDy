@@ -257,7 +257,7 @@ class Livre
 	}
 	public function listGenres()
 	{
-		$sql='SELECT gid,gnom FROM genre ORDER BY id';
+		$sql='SELECT gid,gnom FROM genre ORDER BY gid';
 		return queryToArray($this->mysql->query($sql));
 	}
 
