@@ -108,7 +108,7 @@ class Livre
 		$aid=intval($aid);
 		$sid=intval($sid);
 		$uid=intval($uid); // uid utilisateur qui a ajouté le livre
-		$sql='INSERT INTO livres(nom,isbn,ean13,date_publication,description,aid,sid,ajid,ajdate) VALUES ("'.$nom.'","'.$isbn.'","'.$ean13.'","'.$date_publication.'","'.$description.'","'.$aid.'","'.$sid.'","'.$aid.'","'.time().'")';
+		$sql='INSERT INTO livres(nom,isbn,ean13,date_publication,description,aid,serie,ajid,ajdate) VALUES ("'.$nom.'","'.$isbn.'","'.$ean13.'","'.$date_publication.'","'.$description.'","'.$aid.'","'.$sid.'","'.$aid.'","'.time().'")';
 		// Si on arrive à executer la requête
 		if($this->mysql->query($sql))
 		{
