@@ -20,7 +20,7 @@ class Nav
 		}
 		else
 		{
-			return '<a href="/Connexion.html">Connexion</a>';
+			return trim(file_get_contents(PARTIAL.'menuConnexion.xhtml'));
 		}
 	}
 	public function UserErrorHandler($message,$errors) // Permet d'afficher les erreurs (tableau errors) sous forme de liste avec le message message
