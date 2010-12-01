@@ -263,7 +263,7 @@ class Livre
 
 	public function creer_liste_genres($selected=0)
 	{
-		$liste = listeGenres();
+		$liste = $this->listeGenres();
 		$res = "<select id='genre' name='genre'>\n";
 		foreach($liste as $val)
 		{
