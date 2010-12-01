@@ -5,7 +5,7 @@
 		<dt><label for="nomBD" >Nom de la Bande dessinée</label></dt> 
 		<dd><input id="nomBD" name="nomBD" type="text" /></dd> 
 	</fieldset> 
-	<fieldset> 
+	<fieldset>
 		<legend>Les informations complémentaires (facultatives)</legend> 
 		<dt><label for="nomAuteur" >Nom de l'auteur</label></dt> 
 		<dd><input id="nomAuteur" name="nomAuteur" type="text" value="{{NOMAUTEUR}}" /></dd> 
@@ -22,7 +22,7 @@
 		<dt><label for="jourPublication" >Date de publication (JJ/MM/AAAA)</label></dt> 
 		<dd><input id='jourPublication' name='jourPublication' type='text' value="{{JOURPUB}}" /> / <input id='moisPublication' name='moisPublication' type='text' value="{{MOISPUB}}" /> / <input id='anneePublication' name='anneePublication' type='text' value="{{ANNEEPUB}}" /></dd> 
 		<dt><label for='synopsis'>Le synopsis</label></dt> 
-		<dd><textarea id='synopsis' rows='5' cols='60'>{{SYNOPSYS}}</textarea></dd> 
+		<dd><textarea id='synopsis' name="synopsis" rows='5' cols='60'>{{SYNOPSYS}}</textarea></dd> 
 	</fieldset> 
 	<input type='hidden' name="lid" value='{{LID}}' />
 	<input type='reset' value='Annuler' />	<input type='submit' value='OK'/> 
