@@ -108,11 +108,12 @@ class Livre
 		$aid=intval($aid);
 		$sid=intval($sid);
 		$uid=intval($uid); // uid utilisateur qui a ajouté le livre
-		$sql='INSERT INTO livres(nom,isbn,ean13,date_publication,description,aid,serie,ajid,ajdate) VALUES ("'.$nom.'","'.$isbn.'","'.$ean13.'","'.$date_publication.'","'.$description.'","'.$aid.'","'.$sid.'","'.$aid.'","'.time().'")';
+		$sql='INSERT INTO livres(nom,isbn,ean13,date_publication,description,aid,serie,ajuid,ajdate) VALUES ("'.$nom.'","'.$isbn.'","'.$ean13.'","'.$date_publication.'","'.$description.'","'.$aid.'","'.$sid.'","'.$aid.'","'.time().'")';
 		// Si on arrive à executer la requête
 		if($this->mysql->query($sql))
 		{
-			return $this->mysql->insert_id; // Renvoi l'identifiant du livre qu'on vient d'ajouter
+			$lid=$this->mysql->insert_id; // Renvoi l'identifiant du livre qu'on vient d'ajouter
+			$this->ajoutCollection($lid,$aid,'','',''); // Rajout dans la collection de l'utilisateur
 		}
 		else
 		{
