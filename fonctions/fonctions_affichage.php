@@ -74,9 +74,9 @@ class Affichage
 		for($i=0; $i < count($tBD) ; $i++)
 		{
 			echo "<tr>"; 
-			echo "<td><a href='/affichage_complet_bds.html?id=".$tBD['l.lid']."' >".$tBD['l.nom']."</a></td>\n";
-			echo "<td>".$tBD['a.anom']."</td><td><a href='/affichage_complet_auteurs.html?id=".$tBD['a.aid']."' />"./*$tBD['a.aprenom'].*/"</td><td>".$tBD['e.enom']."</td><td>".$tBD['l.isbn']."</td>\n";
-			echo "<td>".$tBD['l.ean13']."</td>\n";
+			echo "<td><a href='/affichage_complet_bds.html?id=" . $tBD['lid'] . "' >".$tBD['nom']."</a></td>\n";
+			echo "<td>" . $tBD['anom'] . "</td><td><a href='/affichage_complet_auteurs.html?id=" . $tBD['aid'] . "' />" . $tBD['aprenom'] . "</td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
+			echo "<td>".$tBD['ean13']."</td>\n";
 			echo "</tr>\n";
 		}
 		echo "</table>\n";
