@@ -4,13 +4,13 @@ Corriger l'affichage de la page d'accueil : Stéphane
 Formulaire de recherche : Philippe
 CSS des formulaires : Stéphane (OK pour L'inscription)
 Fonction javascript pour vérifier les mails : Stéphane OK
-Fonction pour swicher formulaire connexion / Pseudo déconnexion : Marc
+Fonction pour swicher formulaire connexion / Pseudo déconnexion : Marc FAIT
 Upload Avatar, redimentionnement : Marc
-Affichage liste BDs globale / d'une personne : Marc
-Liste d'utilisateurs : Marc
-Gestion du profil : Marc (falcultatif) = Changer mot de passe changer email, description préférences
-Enregistrement d'une BD : Marc
-Système de rechecrhe complète : Marc : Récupération de auteurs, séries, bd
+Affichage liste BDs globale / d'une personne : Marc FAIT
+Liste d'utilisateurs : Marc FAIT
+Gestion du profil : Marc (falcultatif) = Changer mot de passe OK, changer email OK, description préférences
+Enregistrement d'une BD : Marc FAIT
+Système de rechecrhe complète : Marc : Récupération de auteurs, séries, bd FAIT
 Page d'aide minimale : 
 	Contenu : Philippe, 
 	Mise en forme : Stéphane

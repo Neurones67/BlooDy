@@ -15,12 +15,14 @@ class Livre
 	private $date_publication;
 	private $lvalide;
 	private $description;
-	private $auteur;
+	private $auteurn;
+	private $auteurp;
 	private $serie;
 	private $ajuser;
 	private $editeur;
 	private $ajdate;
 	private $genre;
+	private $genreid;
 
 	// Besoin d'une connexion MySQL
 	private $mysql;
@@ -46,22 +48,24 @@ class Livre
 		unset($this->lvalide);
 		unset($this->description);
 		unset($this->aid);
-		unset($this->auteur);
+		unset($this->auteurn);
+		unset($this->auteurp);
 		unset($this->editeur);
 		unset($this->ajuser);
 		unset($this->ajdate);
 		unset($this->serie);
 		unset($this->genre);
+		unset($this->genreid);
 	}
 	public function getValide()
 	{
-		return $this->lvalide;
+		return $this->lvalide>0;
 	}
 	private function initData($lid)
 	{
 		// Initialise les attributs du livre avec le lid donné à partir de la base de donnée
 		$lid=intval($lid);
-		$sql='SELECT l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom, a.aprenom,s.snom,g.gnom,g.gid,e.enom,ajdate,u.pseudo FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
@@ -76,45 +80,123 @@ class Livre
 	// Rempli les attributs de l'objet avec le résultat d'une requête SQL
 	private function remplirAttributs($data)
 	{
-		$this->lid=$lid;
+		$this->lid=$data->lid;
 		$this->nom=$data->nom;
 		$this->isbn=$data->isbn;
 		$this->ean13=$data->ean13;
 		$this->date_publication=$data->date_publication;
+		$this->description=$data->description;
 		$this->lvalide=$data->lvalide;
-		$this->auteur=$data->anom;
+		$this->auteurn=$data->anom;
+		$this->auteurp=$data->aprenom;
 		$this->genre=$data->gnom;
 		$this->ajuser=$data->pseudo;
 		$this->ajdate=$data->ajdate;
 		$this->editeur=$data->enom;
 		$this->serie=$data->snom;
+		$this->genreid=$data->gid;
 	}
 	// Ajoute un livre à la base de données avec l'ID de l'auteur et l'ID de la série (peut être vide éventuellement)
-	private function ajoutLivre($nom,$isbn,$ean13,$date_publication,$description,$aid,$sid,$uid)
+	private function ajoutLivre($nom,$isbn,$ean13,$date_publication,$description,$aid,$sid,$uid,$genre)
 	{
 		// Protection des variables
 		$nom=$this->mysql->real_escape_string($nom);
 		$isbn=$this->mysql->real_escape_string($isbn);
 		$ean13=$this->mysql->real_escape_string($ean13);
 		$date_publication=$this->mysql->real_escape_string($date_publication);
-		$description=$this->mysql->real_escape_string($date_publication);
+		$description=$this->mysql->real_escape_string($description);
+		$genre=intval($genre);
 		// Forçage du type entier (si autre chose qu'une représentation d'un nombre => 0)
 		$aid=intval($aid);
 		$sid=intval($sid);
 		$uid=intval($uid); // uid utilisateur qui a ajouté le livre
-		$sql='INSERT INTO livres(nom,isbn,ean13,date_publication,description,aid,sid,ajid,ajdate) VALUES ("'.$nom.'","'.$isbn.'","'.$ean13.'","'.$date_publication.'","'.$description.'","'.$aid.'","'.$sid.'"."'.$ajid.'","'.time().'")';
+		$sql='INSERT INTO livres(nom,isbn,ean13,date_publication,description,aid,serie,ajuid,ajdate,genre,lvalide) VALUES ("'.$nom.'","'.$isbn.'","'.$ean13.'","'.$date_publication.'","'.$description.'","'.$aid.'","'.$sid.'","'.$aid.'","'.time().'","'.$genre.'",1)';
 		// Si on arrive à executer la requête
 		if($this->mysql->query($sql))
 		{
-			return $this->mysql->insert_id; // Renvoi l'identifiant du livre qu'on vient d'ajouter
+			$lid=$this->mysql->insert_id; // Renvoi l'identifiant du livre qu'on vient d'ajouter
+			$this->ajoutCollection($lid,$aid,'','',''); // Rajout dans la collection de l'utilisateur
+			return $lid;
 		}
 		else
 		{
 			return false;
 		}
 	}
+	// Permet de modifier les données d'un livre
+	private function update($lid,$nom,$isbn,$ean13,$date_publication,$description,$aid,$sid)
+	{
+		$lid=intval($lid);
+		$nom=$this->mysql->real_escape_string($nom);
+		$isbn=$this->mysql->real_escape_string($isbn);
+		$ean13=$this->mysql->real_escape_string($ean13);
+		$date_publication=$this->mysql->real_escape_string($date_publication);
+		$description=$this->mysql->real_escape_string($description);
+		$aid=intval($aid);
+		$sid=intval($sid);
+		$livre=new Livre($lid);
+		if($livre->getValide()) // Si le livre existe
+		{
+			$sql='UPDATE livres SET nom="'.$nom.'",isbn="'.$isbn.'",ean13="'.$ean13.'",date_publication="'.$date_publication.'",description="'.$description.'",aid='.$aid.',serie='.$sid.' WHERE lid='.$lid.'';
+			return $this->mysql->query($sql);
+		}
+		else
+		{
+			return false;
+		}
+	}
+	// Permet de traiter le formulaire d'ajout/modification d'une BD
+	public function ajoutForm()
+	{
+		$template=trim(file_get_contents(PARTIAL.'ajout_bd.xhtml'));
+		$param=requestObject('Param');
+		$lid=intval($param->getValue());
+		if(isset($_POST['lid'],$_POST['nomBD'], $_POST['nomAuteur'], $_POST['prenomAuteur'],$_POST['noISBN'],$_POST['noEAN13'],$_POST['genre'],$_POST['jourPublication'],$_POST['moisPublication'],$_POST['anneePublication'],$_POST['synopsis']) and !empty($_POST['nomBD']) and !empty($_POST['nomAuteur']))
+		{
+		
+			$lid=intval($_POST['lid']);
+			$auteur=requestObject('Auteur');
+			$tab=$auteur->recherche($_POST['nomAuteur'],$_POST['prenomAuteur']);
+			if(count($tab)>0) // l'auteur existe
+			{
+				$aid=$tab[0]['aid'];
+			}
+			else
+			{
+				$aid=requestObject('Auteur')->ajout($_POST['nomAuteur'],$_POST['prenomAuteur']);
+			}
+			$date_publication=mktime(0,0,0,intval($_POST['moisPublication']),intval($_POST['jourPublication']),$_POST['anneePublication']);
+			if($lid==0) // BD inexistante => création
+			{
+
+				if($lid=$this->ajoutLivre($_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',requestObject('Utilisateurs')->getUid(),$_POST['genre']))
+				{
+					$template.="Livre enregistré sous l'identifiant ".$lid;
+				}
+				else
+				{
+					$template.="Echec de l'enregistrement";
+				}
+			}
+			else
+			{
+				// BD existante => modification
+				if($this->update($lid,$_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,''))
+				{
+					$template.="BD mise à jour avec succès";
+				}
+				else
+				{
+					$template.="Echec de la mise à jour";
+				}
+			}
+		}
+		$livre=new Livre($lid);
+		$template=$this->affichLivre($template,$livre);
+		return $template;
+	}
 	// Permet d'ajouter un livre à sa collection
-	private function ajoutCollection($lid,$uid,$date_dachat,$etat,$emplacement)
+	private function ajoutCollection($lid,$uid,$date_dachat="",$etat="",$emplacement="")
 	{
 		// Protection des variables
 		$uid=intval($uid);
@@ -124,10 +206,10 @@ class Livre
 		$emplacement=$this->mysql->real_escape_string($emplacement);
 		
 		// Est-ce que le livre existe vraiment ?
-		$livre=new Livre($uid);
-		if($livre->getValide>0)
+		$livre=new Livre($lid);
+		if($livre->getValide())
 		{
-			$sql='INSERT INTO appartient(uid,lid,date_achat,etat,emplacement) VALUES("'.$uid.'","'.$lid.'","'.$date_achat.'","'.$etat.'","'.$emplacement.'")';
+			$sql='INSERT INTO appartient(uid,lid,date_achat,etat,emplacement) VALUES("'.$uid.'","'.$lid.'","'.$date_dachat.'","'.$etat.'","'.$emplacement.'")';
 			return $this->mysql->query($sql);
 		}
 		else
@@ -137,14 +219,21 @@ class Livre
 		}
 	}
 	// Permet de rempalcer les tags d'un template par les données contenues dans l'objet $livre
-	private static function affichLivre($template,$livre)
+	public function affichLivre($template,$livre)
 	{
 		$template=str_replace('{{LID}}',$livre->lid,$template);
-		$template=str_replace('{{SNOM}}',$livre->nom,$template);
+		$template=str_replace('{{NOM}}',$livre->nom,$template);
 		$template=str_replace('{{ISBN}}',$livre->isbn,$template);
 		$template=str_replace('{{EAN13}}',$livre->ean13,$template);
 		$template=str_replace('{{DATEPUB}}',$livre->date_publication,$template);
-		$template=str_replace('{{ANOM}}',$livre->auteur,$template);
+		$template=str_replace('{{JOURPUB}}',date('j',$livre->date_publication),$template);
+		$template=str_replace('{{MOISPUB}}',date('n',$livre->date_publication),$template);
+		$template=str_replace('{{ANNEEPUB}}',date('Y',$livre->date_publication),$template);
+		$template=str_replace('{{GENRES}}',$this->creer_liste_genres($livre->genreid),$template);
+		$template=str_replace('{{NOMAUTEUR}}',$livre->auteurn,$template);
+		$template=str_replace('{{PRENOMAUTEUR}}',$livre->auteurp,$template);
+		$template=str_replace('{{DESCRIPTION}}',$livre->description,$template);
+		$template=str_replace('{{SYNOPSIS}}',$livre->description,$template);
 		$template=str_replace('{{GENRE}}',$livre->genre,$template);
 		$template=str_replace('{{AJUSE}}',$livre->ajuser,$template);
 		$template=str_replace('{{AJDATE}}',$livre->ajdate,$template);
@@ -178,17 +267,23 @@ class Livre
 	}
 	public function listGenres()
 	{
-		$sql='SELECT gid,gnom FROM genre ORDER BY id';
+		$sql='SELECT gid,gnom FROM genre ORDER BY gid';
 		return queryToArray($this->mysql->query($sql));
 	}
 
-	public static function creer_liste_genres()
+	public function creer_liste_genres($selected=0)
 	{
-		$liste = listeGenres();
+		$liste = $this->listGenres();
 		$res = "<select id='genre' name='genre'>\n";
 		foreach($liste as $val)
-			$res += "<option value='".$val['gid']."'>".$val['gnom']."</option>\n";
-		$res += "</select>\n";
+		{
+			if($val['gid']==$selected)
+				$filter=' selected="selected" ';
+			else
+				$filter="";
+			$res .= "<option value='".$val['gid']."'".$filter.">".$val['gnom']."</option>\n";
+		}
+		$res .= "</select>\n";
 		return $res;
 	}
 
@@ -196,6 +291,12 @@ class Livre
 	{
 		// Permet de lister toutes les BDs présentes dans la base de données
 		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid';
+		return queryToArray($this->mysql->query($sql));
+	}
+	public function listBDutil()
+	{
+		$uid=requestObject('Utilisateurs')->getUid();
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate,ap.date_achat,ap.etat,ap.emplacement FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid JOIN appartient ap ON ap.lid=l.lid WHERE ap.uid='.$uid;
 		return queryToArray($this->mysql->query($sql));
 	}
 	public function recherche($motcle)
