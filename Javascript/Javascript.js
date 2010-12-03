@@ -64,12 +64,12 @@ function verificationConformiteEmail()
 function cachevisible()
 {
 	var p = document.getElementById("id_auteurs");
-	if(p.style.display=="visible")
+	if(p.style.display=="block")
 	{
-		p.style.display="none";
+		p.style.display='none';
 	}
 	if(p.style.display=="none")
 	{
-		p.style.display="visible";
+		p.style.display='block';
 	}
 }
