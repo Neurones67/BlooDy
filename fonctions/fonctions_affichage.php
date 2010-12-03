@@ -84,7 +84,14 @@ class Affichage
 			
 			if($user->estConnecte())
 			{
-				$res .= "<td><input type='checkbox' name='BD[]' value='" . $tBD['lid'] . "' /></td>";
+				if(empty($tBD['etat'])) // Si on a pas la BD
+				{
+					$res .= "<td><input type='checkbox' name='BD[]' value='" . $tBD['lid'] . "' /></td>";
+				}
+				else
+				{
+					$res .= ";)";
+				}
 			}
 
 			$res .= "</tr>\n";
