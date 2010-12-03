@@ -66,20 +66,33 @@ class Affichage
 	{
 		$livre = new Livre();
 		$tBD = $livre->listBD();
+		$user = new Utilisateur();
 		// Les titres de chaque colonne
 
-		echo "<table id='bds'><tr><th>Genre</th><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
-		echo "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th></tr>\n";
+		$res = "";
+		$res .= "<table id='bds'><tr><th>Genre</th><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
+		$res .= "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th>";
+		if($user->estConnecte())
+			$res .= "<th>Ajouter à ma collection</th>";
+		$res .= "</tr>\n";
 
 		for($i=0; $i < count($tBD) ; $i++)
 		{
-			echo "<tr>"; 
-			echo "<td><a href='/affichage_complet_bds.html?id=" . $tBD['lid'] . "' >".$tBD['nom']."</a></td>\n";
-			echo "<td>" . $tBD['anom'] . "</td><td><a href='/affichage_complet_auteurs.html?id=" . $tBD['aid'] . "' />" . $tBD['aprenom'] . "</td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
-			echo "<td>".$tBD['ean13']."</td>\n";
-			echo "</tr>\n";
+			$res .= "<tr>"; 
+			$res .= "<td><a href='/affichage_complet_bds.html?id=" . $tBD['lid'] . "' >".$tBD['nom']."</a></td>\n";
+			$res .= "<td>" . $tBD['anom'] . "</td><td><a href='/affichage_complet_auteurs.html?id=" . $tBD['aid'] . "' />" . $tBD['aprenom'] . "</td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
+			$res .= "<td>".$tBD['ean13']."</td>\n";
+			
+			if($user->estConnecte())
+			{
+				$res .= "<td><input type='checkbox' name='BD_" . $i . "' value='" . $tBD['lid'] . "' /></td>";
+			}
+
+			$res .= "</tr>\n";
 		}
-		echo "</table>\n";
+		$res .= "</table>\n";
+
+		return $res;
 	}
 }
 ?>
