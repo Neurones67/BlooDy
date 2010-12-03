@@ -67,7 +67,7 @@ function cachevisible()
 	if(p.style.display=="none")
 	{
 		p.style.display='block';
-	
+	}
 	else
 	{
 		p.style.display='none';
