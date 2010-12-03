@@ -66,7 +66,7 @@ class Affichage
 	{
 		$livre = new Livre();
 		$tBD = $livre->listBD();
-		$user = new Utilisateur();
+		$user = new Utilisateurs();
 		// Les titres de chaque colonne
 
 		$res = "";
