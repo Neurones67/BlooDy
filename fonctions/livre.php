@@ -17,6 +17,7 @@ class Livre
 	private $description;
 	private $auteurn;
 	private $auteurp;
+	private $aid;
 	private $serie;
 	private $ajuser;
 	private $editeur;
@@ -65,7 +66,7 @@ class Livre
 	{
 		// Initialise les attributs du livre avec le lid donné à partir de la base de donnée
 		$lid=intval($lid);
-		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom, a.aprenom,s.snom,g.gnom,g.gid,e.enom,ajdate,u.pseudo FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.aid,a.anom, a.aprenom,s.snom,g.gnom,g.gid,e.enom,ajdate,u.pseudo FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
@@ -95,6 +96,7 @@ class Livre
 		$this->editeur=$data->enom;
 		$this->serie=$data->snom;
 		$this->genreid=$data->gid;
+		$this->aid=$data->aid;
 	}
 	// Ajoute un livre à la base de données avec l'ID de l'auteur et l'ID de la série (peut être vide éventuellement)
 	private function ajoutLivre($nom,$isbn,$ean13,$date_publication,$description,$aid,$sid,$uid,$genre)
@@ -232,6 +234,7 @@ class Livre
 		$template=str_replace('{{GENRES}}',$this->creer_liste_genres($livre->genreid),$template);
 		$template=str_replace('{{NOMAUTEUR}}',$livre->auteurn,$template);
 		$template=str_replace('{{PRENOMAUTEUR}}',$livre->auteurp,$template);
+		$template=str_replace('{{IDAUTEUR}}',$livre->aid,$template);
 		$template=str_replace('{{DESCRIPTION}}',$livre->description,$template);
 		$template=str_replace('{{SYNOPSIS}}',$livre->description,$template);
 		$template=str_replace('{{GENRE}}',$livre->genre,$template);
@@ -290,13 +293,13 @@ class Livre
 	public function listBD()
 	{
 		// Permet de lister toutes les BDs présentes dans la base de données
-		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid';
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.aid,a.anom,a.aprenom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid';
 		return queryToArray($this->mysql->query($sql));
 	}
 	public function listBDutil()
 	{
 		$uid=requestObject('Utilisateurs')->getUid();
-		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.anom,s.snom,g.gnom,e.enom,ajdate,ap.date_achat,ap.etat,ap.emplacement FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid JOIN appartient ap ON ap.lid=l.lid WHERE ap.uid='.$uid;
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a,aid,a.anom,a.aprenom,s.snom,g.gnom,e.enom,ajdate,ap.date_achat,ap.etat,ap.emplacement FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid JOIN appartient ap ON ap.lid=l.lid WHERE ap.uid='.$uid;
 		return queryToArray($this->mysql->query($sql));
 	}
 	public function recherche($motcle)

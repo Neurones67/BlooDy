@@ -78,7 +78,7 @@ class Affichage
 		{
 			$res .= "<tr>"; 
 			$res .= "<td><a href='/affichage_complet_bds.html?id=" . $tBD['lid'] . "' >".$tBD['nom']."</a></td>\n";
-			$res .= "<td>" . $tBD['anom'] . "</td><td><a href='/affichage_complet_auteurs.html?id=" . $tBD['aid'] . "' />" . $tBD['aprenom'] . "</td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
+			$res .= "<td>" . $tBD['anom'] . "</td><td><a href='/affichage_complet_auteurs.html?id=" . $tBD['aid'] . "' />" . $tBD['aprenom'] . "</a></td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
 			$res .= "<td>".$tBD['ean13']."</td>\n";
 			
 			if($user->estConnecte())
