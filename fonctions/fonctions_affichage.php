@@ -62,7 +62,7 @@ class Affichage
 		}
 		echo "</table>\n";
 	}
-	public static function consultation_BD()
+	public static function consultation_bd()
 	{
 		$livre = new Livre();
 		$tBD = $livre->listBD();
