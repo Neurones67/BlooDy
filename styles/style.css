@@ -13,7 +13,7 @@ img
 	border-width : 1px;
 	border-color : #000;
 }
-#corps, #menuGauche, #menuDroite
+#corps, #menuGauche, #menuDroite,#centre
 {
 	padding : 10px;
 	margin-top : 10px;
