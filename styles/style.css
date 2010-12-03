@@ -113,11 +113,9 @@ img
 {
 	display: block;
 	height: 1%;
-	padding-top: 6px;
-	padding-right: 10px;
-	padding-bottom: 6px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 	line-height: 1.5;
-	font-size: 0.9em;
 	text-decoration: none;
 }
 #menuGauche p:hover,#menuGauche a:hover
