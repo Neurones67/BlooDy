@@ -29,6 +29,7 @@ class Utilisateurs
 			{
 				// Si on y arrive pas
 				$this->uid=-1;
+				$this->uetat=-1;
 			}
 		}
 		elseif(isset($_SESSION['connecte'], $_SESSION['uid']) and $_SESSION['connecte'])
@@ -38,6 +39,7 @@ class Utilisateurs
 			{
 				// Si on y arrive pas
 				$this->uid=-1;
+				$this->uetat=-1;
 				// On détruit la session et ses variables;
 				session_destroy();
 				session_unset();
@@ -47,6 +49,7 @@ class Utilisateurs
 		{
 			$this->pseudo="Anonyme";
 			$this->uetat=-1; // Non connecté
+			$this->uid=-1;
 		}
 	}
 	public function __destruct()
