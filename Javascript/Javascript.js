@@ -64,16 +64,16 @@ function verificationConformiteEmail()
 function cacheGenre()
 {
 	var p = document.getElementById("id_auteurs");
-	if(p.document.style.display=="visible")
+	if(p.style.display=="visible")
 	{
-		p.document.style.display="none";
+		p.style.display="none";
 	}
 }
 function visibleGenre()
 {
 	var p = document.getElementById("id_auteurs");
-	if(p.document.style.display=="none")
+	if(p.style.display=="none")
 	{
-		p.document.style.display="visible";
+		p.style.display="visible";
 	}
 }
