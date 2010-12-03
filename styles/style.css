@@ -30,6 +30,7 @@ img
 {
 	width: 100%;
 	overflow: hidden;
+	background-color: #D1D1D1;
 }
 #body
 {
@@ -131,10 +132,6 @@ img
 	border: #CCC 1px solid;
 }
 
-#formulaire_inscription fieldset:hover
-{
-	background-color: #FFF;
-}
 
 #formulaire_inscription fieldset legend
 {
