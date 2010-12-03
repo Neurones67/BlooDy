@@ -103,9 +103,12 @@ img
 #menuGauche ul
 {
 	list-style-type:none;
-	padding-left:5px;
+	padding-left:7px;
 }
-
+#menuGauche p
+{
+	color:#ff5814;
+}
 #menuGauche a, #menuGauche a:hover, #menuGauche a:active
 {
 	color:#ff6533;
