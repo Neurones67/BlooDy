@@ -90,7 +90,7 @@ class Affichage
 				}
 				else
 				{
-					$res .= ";)";
+					$res .= "<td>;)</td>";
 				}
 			}
 
