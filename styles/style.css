@@ -109,11 +109,13 @@ img
 	list-style-type:none;
 	padding-left:5px;
 }
+/*
 #menuGauche a, #menuGauche a:hover, #menuGauche a:active
 {
 	color:black;
 	text-decoration:none;
 }
+*/
 /*formulaire */
 #formulaire_inscription
 {
