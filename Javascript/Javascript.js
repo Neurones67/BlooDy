@@ -61,9 +61,9 @@ function verificationConformiteEmail()
 	}
 	paragraphe.appendChild(info);
 }
-function cachevisible()
+function cachevisible(id)
 {
-	var p = document.getElementById("id_auteurs");
+	var p = document.getElementById(id);
 	if(p.style.display=="none")
 	{
 		p.style.display='block';
