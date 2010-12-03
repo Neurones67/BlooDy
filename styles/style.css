@@ -112,9 +112,8 @@ img
 #menuGauche p,#menuGauche a
 {
 	display: block;
-	height: 1%;
-	padding-top: 3px;
-	padding-bottom: 3px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	line-height: 1.5;
 	text-decoration: none;
 }
