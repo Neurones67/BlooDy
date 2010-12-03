@@ -29,9 +29,7 @@ img
 /*	Sélection d'un contenant unique	*/
 #centre
 {
-	width: 100%;
 	overflow: hidden;
-	border-top: none;
 	background-color:#3A3A3A;
 }
 #body
@@ -48,7 +46,7 @@ img
 	margin-left : 170px;
 	background-color: #BCBCBC;
 	border-bottom: none;
-	
+	border-top: none;
 }
 #head
 {
