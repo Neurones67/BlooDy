@@ -1,6 +1,4 @@
 <?php
-
-include_once('livre.php');
 class Affichage
 {
 	// On passe à cette fonction le tableau contenant les informations utiles à afficher de façon très compacte
@@ -62,10 +60,10 @@ class Affichage
 		}
 		echo "</table>\n";
 	}
-	public static function consultation_bd()
+	public function consultation_bd()
 	{
 		$livre = new Livre();
-		$tBD = $livre->listBD();
+		$tBDs = $livre->listBD();
 		$user = new Utilisateurs();
 		// Les titres de chaque colonne
 
@@ -76,7 +74,7 @@ class Affichage
 			$res .= "<th>Ajouter à ma collection</th>";
 		$res .= "</tr>\n";
 
-		for($i=0; $i < count($tBD) ; $i++)
+		foreach($tBDs as $tBD)
 		{
 			$res .= "<tr>"; 
 			$res .= "<td><a href='/affichage_complet_bds.html?id=" . $tBD['lid'] . "' >".$tBD['nom']."</a></td>\n";
@@ -85,7 +83,7 @@ class Affichage
 			
 			if($user->estConnecte())
 			{
-				$res .= "<td><input type='checkbox' name='BD_" . $i . "' value='" . $tBD['lid'] . "' /></td>";
+				$res .= "<td><input type='checkbox' name='BD[]' value='" . $tBD['lid'] . "' /></td>";
 			}
 
 			$res .= "</tr>\n";
