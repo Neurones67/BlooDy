@@ -108,7 +108,8 @@ img
 #menuGauche p
 {
 	color:#ff5814;
-	font-weight: bold;	
+	font-weight: bold;
+	cursor: pointer;	
 }
 #menuGauche p,#menuGauche a
 {
