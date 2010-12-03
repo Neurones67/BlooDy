@@ -61,19 +61,15 @@ function verificationConformiteEmail()
 	}
 	paragraphe.appendChild(info);
 }
-function cacheGenre(Id)
+function cachevisible()
 {
-	var p = document.getElementById(Id);
-	if(p.document.style.display="visible")
+	var p = document.getElementById("id_auteurs");
+	if(p.style.display=="visible")
 	{
-		p.document.style.display="none";
+		p.style.display="none";
 	}
-}
-function visibleGenre()
-{
-	var p = document.getElementById(Id);
-	if(p.document.style.display="none")
+	if(p.style.display=="none")
 	{
-		p.document.style.display="visible";
+		p.style.display="visible";
 	}
 }
