@@ -114,7 +114,7 @@ img
 #formulaire_inscription
 {
 	width: 70%;
-margin:auto;
+	margin:auto;
 }
 
 
@@ -123,10 +123,7 @@ margin:auto;
 	margin: 2px 0;
 	
 }
-#formulaire_inscription p
-{
-	float:right;
-}
+
 /* fieldset , legend */
 #formulaire_inscription fieldset
 {
@@ -148,7 +145,7 @@ margin:auto;
 	color: #999;
 }
 /*label*/
-#formulaire_inscription label
+#formulaire_inscription dt
 {
 	background-color: #FFCC66;
 	display: block;
@@ -184,7 +181,6 @@ margin:auto;
 #input[type="submit"]
 {
 	border: #DDEEFF 1px solid;
-	float:right;
 }
 
 #formulaire_inscription input[type="submit"]:hover
