@@ -7,7 +7,7 @@ img
 }
 
 /*	Sélection multiple	*/
-#head, #corps, #menuGauche, #menuDroite, #foot
+#head, #corps, #menuGauche, #menuDroite, #foot,#centre
 {
 	border-style : solid;
 	border-width : 1px;
@@ -22,7 +22,7 @@ img
 #menuGauche, #menuDroite
 {
 	width : 150px;
-	background-color: #BCBCBC;
+	background-color:#3A3A3A;
 }
 
 
@@ -43,9 +43,7 @@ img
 {
 	margin-right : 170px;
 	margin-left : 170px;
-	border-right : none;
-	border-left : none;
-	background-color:#3A3A3A;
+	background-color: #BCBCBC;
 }
 #head
 {
