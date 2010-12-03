@@ -43,6 +43,7 @@ img
 }
 #corps
 {
+	min-height : 400px;
 	margin-right : 170px;
 	margin-left : 170px;
 	background-color: #BCBCBC;
