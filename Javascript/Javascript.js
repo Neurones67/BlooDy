@@ -63,7 +63,7 @@ function verificationConformiteEmail()
 }
 function cacheGenre()
 {
-	var p = document.getElementById(id_auteurs);
+	var p = document.getElementById("id_auteurs");
 	if(p.document.style.display="visible")
 	{
 		p.document.style.display="none";
@@ -71,7 +71,7 @@ function cacheGenre()
 }
 function visibleGenre()
 {
-	var p = document.getElementById(id_auteurs);
+	var p = document.getElementById("id_auteurs");
 	if(p.document.style.display="none")
 	{
 		p.document.style.display="visible";
