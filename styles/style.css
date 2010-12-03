@@ -155,6 +155,7 @@ img
 
 #formulaire_inscription fieldset legend, #formulaire_ajout_bd fieldset legend
 {
+	margin-top:10px
 	padding: 0 10px;
 	border-left: #CCC 1px solid;
 	border-right: #CCC 1px solid;
@@ -171,6 +172,14 @@ img
 	padding-right: 1%;
 	letter-spacing: 1px;
 	margin-top:5px;
+}
+#formulaire_ajout_bd .form_input_jourPublication_moisPublication
+{
+	width:20%;
+}
+#formulaire_ajout_bd .form_input_anneePublication
+{
+	width:40%;
 }
 #formulaire_inscription label:hover, #formulaire_ajout_bd label:hover
 {
