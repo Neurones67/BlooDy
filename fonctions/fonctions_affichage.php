@@ -50,7 +50,7 @@ class Affichage
 		for($i=0; $i < count($tBD) ; $i++)
 		{
 			echo "<tr>"; // début de la ligne
-			echo "<td><a href='/affichage_complet_bds.html?id=".$tBD[0]."' >".$tBD[1]."</a></td>\n";
+			echo "<td><a href='/livre-".$tBD[0].".html' >".$tBD[1]."</a></td>\n";
 	
 			// Boucle pour mettre le reste des informations dans le tableau	
 			for($k=2; $k <= 6 ; $k++)

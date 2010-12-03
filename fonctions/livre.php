@@ -24,6 +24,7 @@ class Livre
 	private $ajdate;
 	private $genre;
 	private $genreid;
+	private $couverture;
 
 	// Besoin d'une connexion MySQL
 	private $mysql;
@@ -57,6 +58,7 @@ class Livre
 		unset($this->serie);
 		unset($this->genre);
 		unset($this->genreid);
+		unset($this->couverture);
 	}
 	public function getValide()
 	{
@@ -66,7 +68,7 @@ class Livre
 	{
 		// Initialise les attributs du livre avec le lid donné à partir de la base de donnée
 		$lid=intval($lid);
-		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.aid,a.anom, a.aprenom,s.snom,g.gnom,g.gid,e.enom,ajdate,u.pseudo FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gid LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,l.couverture,a.aid,a.anom, a.aprenom,s.snom,g.gnom,g.gid,e.enom,ajdate,u.pseudo FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gid LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid WHERE lid='.$lid;
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
@@ -97,6 +99,7 @@ class Livre
 		$this->serie=$data->snom;
 		$this->genreid=$data->gid;
 		$this->aid=$data->aid;
+		$this->couverture=$data->couverture;
 	}
 	// Ajoute un livre à la base de données avec l'ID de l'auteur et l'ID de la série (peut être vide éventuellement)
 	private function ajoutLivre($nom,$isbn,$ean13,$date_publication,$description,$aid,$sid,$uid,$genre)
@@ -242,6 +245,7 @@ class Livre
 		$template=str_replace('{{AJDATE}}',$livre->ajdate,$template);
 		$template=str_replace('{{EDITEUR}}',$livre->editeur,$template);
 		$template=str_replace('{{SERIE}}',$livre->serie,$template);
+		$template=str_replace('{{COUVERTURE}}',$livre->couverture,$template);
 		return $template;
 	}
 	
@@ -293,7 +297,7 @@ class Livre
 	public function listBD()
 	{
 		// Permet de lister toutes les BDs présentes dans la base de données
-		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.aid,a.anom,a.aprenom,s.snom,g.gnom,e.enom,ajdate FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gid LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid';
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.aid,a.anom,a.aprenom,s.snom,g.gnom,e.enom,ajdate,ap.date_achat,ap.etat,ap.emplacement FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gid LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid LEFT JOIN appartient ap ON ap.lid=l.lid WHERE ap.uid='.$uid;
 		return queryToArray($this->mysql->query($sql));
 	}
 	public function listBDutil()
