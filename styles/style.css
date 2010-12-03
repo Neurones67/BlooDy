@@ -109,6 +109,25 @@ img
 {
 	color:#ff5814;
 }
+#menuGauche p,#menuGauche a
+{
+	display: block;
+	height: 1%;
+	padding-top: 6px;
+	padding-right: 10px;
+	padding-bottom: 6px;
+	line-height: 1.5;
+	font-size: 0.9em;
+	text-decoration: none;
+}
+#menuGauche p:hover,#menuGauche a:hover
+{
+	background-color: #000000;
+	background-image: none;
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0% 0%;
+}
 #menuGauche a, #menuGauche a:hover, #menuGauche a:active
 {
 	color:#ff6533;
