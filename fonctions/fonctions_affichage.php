@@ -78,7 +78,11 @@ class Affichage
 		{
 			$res .= "<tr>"; 
 			$res .= "<td>".$tBD['gnom']."</td>";
+<<<<<<< HEAD
 			$res .= "<td><a href='/livre-".$tBD['lid'].".html' >".$tBD['nom']."</a></td>\n";
+=======
+			$res .= "<td><a href='/livre-".$tBD[0].".html' >".$tBD['nom']."</a></td>\n";
+>>>>>>> cfdf866e366f289b4be7b94c301d59236d82c29d
 			$res .= "<td><a href='/auteur-" . $tBD['aid'] . ".html' />" . $tBD['anom'] . "</a></td><td>". $tBD['aprenom'] . "</a></td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
 			$res .= "<td>".$tBD['ean13']."</td>\n";
 			
