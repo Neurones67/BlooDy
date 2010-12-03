@@ -61,17 +61,13 @@ function verificationConformiteEmail()
 	}
 	paragraphe.appendChild(info);
 }
-function cacheGenre()
+function cachevisible()
 {
 	var p = document.getElementById("id_auteurs");
 	if(p.style.display=="visible")
 	{
 		p.style.display="none";
 	}
-}
-function visibleGenre()
-{
-	var p = document.getElementById("id_auteurs");
 	if(p.style.display=="none")
 	{
 		p.style.display="visible";
