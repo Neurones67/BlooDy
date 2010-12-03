@@ -23,8 +23,10 @@ img
 	width : 150px;
 	background-color:#3A3A3A;
 }
-
-
+#menuGauche ul,#menuGauche li
+{
+	color:#ff6533;
+}
 /*	Sélection d'un contenant unique	*/
 #centre
 {
@@ -123,7 +125,6 @@ img
 #formulaire_inscription dd
 {
 	margin: 2px 0;
-	
 }
 
 /* fieldset , legend */
