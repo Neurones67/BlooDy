@@ -227,6 +227,11 @@ img
 	cursor: pointer;
 }
 /*css de la page d'aide*/
+#questionnaire
+{
+	padding-top:10px;
+	padding-bottom:10px;
+}
 #questionnaire a  
 {
 	color:#5F648F;
