@@ -158,4 +158,5 @@ function modification_profil()
 	echo "<input type='submit' value='Mettre à jour'>\n"; 
 	
 	echo "</form>\n";
+}
 ?>
