@@ -228,7 +228,7 @@ img
 /*css de la page d'aide*/
 #questionnaire a  
 {
-	color:#9494BF;
+	color:#5F648F;
 	text-decoration:none;
 }
 #questionnaire a:hover
@@ -240,4 +240,9 @@ img
 {
 	color:#8E80AB;
 	text-decoration:none;
+}
+#questionnaire ul
+{
+	list-style-type:none;
+	padding-left:7px;
 }
