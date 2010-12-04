@@ -129,8 +129,7 @@ function creer_formulaire_recherche()
 	echo "\t<fieldset>\n\t\t<legend>Les informations indispensables</legend>\n";
 	echo "\t\t<dt>Où rechercher :</dt><dd>\tDans ma base : <input type='radio' name='emplacement' value='baseutilisateur' /><br />\n 
 		Dans la base globale : <input type='radio' name='emplacement' value='baseglobale' /></dd>\n";
-	creer_label_champ("Nom de la Bande dessinée", "nomBD");
-	creer_label_champ("Nom de l'auteur", "nomAuteur");
+	creer_label_champ("Terme à rechercher : ", "terme");
 	echo "\t</fieldset>\n";
 	echo "\t<fieldset>\n\t\t<legend>Options avancées</legend>\n";
 	echo "\t\t<dt>Choisir parmi :</dt><dd>Les auteurs <input type='checkbox' checked='checked' value='c_auteurs' /><br />\n
@@ -142,4 +141,21 @@ function creer_formulaire_recherche()
 	echo "<input type='submit' value='OK'>\n";
 	echo "</form>";
 }
+function modification_profil()
+{
+	echo "<form id='profil' method='post' action='' >\n";
+
+	echo "<fieldset>\n\t<legend>Les informations que nous avons sur vous</legend>\n"; 
+
+	creer_label_champ("Pseudonyme","login");
+	creer_label_champ("Mot de passe","password");
+	creer_label_champ("Confirmation du mot de passe","password2");
+	creer_label_champ("E-mail","email");
+	creer_label_champ("Confirmation de l'adresse e-mail","email2");
+
+	echo "</fieldset>\n";
+	echo "<input type='reset' value='Annuler' />\t";	
+	echo "<input type='submit' value='Mettre à jour'>\n"; 
+	
+	echo "</form>\n";
 ?>
