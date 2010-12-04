@@ -335,9 +335,12 @@ class Livre
 		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.aid,a.anom,a.aprenom,s.snom,g.gnom,e.enom,ajdate,ap.date_achat,ap.etat,ap.emplacement FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gid LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid LEFT JOIN appartient ap ON ap.lid=l.lid AND ap.uid='.$uid.'';
 		return queryToArray($this->mysql->query($sql));
 	}
-	public function listBDutil()
+	public function listBDutil($uid=0)
 	{
-		$uid=requestObject('Utilisateurs')->getUid();
+		if($uid==0)
+		{
+			$uid=requestObject('Utilisateurs')->getUid();
+		}
 		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a,aid,a.anom,a.aprenom,s.snom,g.gnom,e.enom,ajdate,ap.date_achat,ap.etat,ap.emplacement FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gid LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid JOIN appartient ap ON ap.lid=l.lid AND ap.uid='.$uid;
 		return queryToArray($this->mysql->query($sql));
 	}

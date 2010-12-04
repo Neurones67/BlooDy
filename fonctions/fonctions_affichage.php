@@ -62,16 +62,19 @@ class Affichage
 	}
 	public function consulter_sa_base()
 	{
-		$livre = new Livre();
+		$user=requestObject('Utilisateurs');
+		if(!$user->estConnecte())
+		{
+			return;
+		}
+		$livre =requestObject('Livre');
 		$tBDs = $livre->listBDutil();
-		$user = new Utilisateurs();
 		// Les titres de chaque colonne
 
 		$res = "";
 		$res .= "<table id='bds'><tr><th>Genre</th><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
 		$res .= "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th>";
-		if($user->estConnecte())
-			$res .= "<th>Ajouter à ma collection</th>";
+		$res .= "<th>Supprimer de ma collection</th>";
 		$res .= "</tr>\n";
 
 		foreach($tBDs as $tBD)
@@ -81,19 +84,7 @@ class Affichage
 			$res .= "<td><a href='/livre-".$tBD['lid'].".html' >".$tBD['nom']."</a></td>\n";
 			$res .= "<td><a href='/auteur-" . $tBD['aid'] . ".html' />" . $tBD['anom'] . "</a></td><td>". $tBD['aprenom'] . "</a></td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
 			$res .= "<td>".$tBD['ean13']."</td>\n";
-			
-			if($user->estConnecte())
-			{
-				if($tBD['etat']<1) // Si on a pas la BD
-				{
-					$res .= "<td><input type='checkbox' name='BD[]' value='" . $tBD['lid'] . "' /></td>";
-				}
-				else
-				{
-					$res .= "<td>;)</td>";
-				}
-			}
-
+			$res .= "<td><input type='checkbox' name='BD[]' value='" . $tBD['lid'] . "' /></td>";
 			$res .= "</tr>\n";
 		}
 		$res .= "</table>\n";
@@ -102,9 +93,9 @@ class Affichage
 	}
 	public function consultation_bd()
 	{
-		$livre = new Livre();
+		$livre =requestObject('Livre');
 		$tBDs = $livre->listBD();
-		$user = new Utilisateurs();
+		$user=requestObject('Utilisateurs');
 		// Les titres de chaque colonne
 
 		$res = "";
