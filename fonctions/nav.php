@@ -97,7 +97,7 @@ class Nav
 		if($addr="REFERER")
 		{
 			$addr=$_SERVER['HTTP_REFERER'];
-			$addrname="Page précédente";
+			$addrname="la page précédente";
 		}
 		if(empty($addrname))
 		{
@@ -105,7 +105,7 @@ class Nav
 		}
 		if($addr="/")
 		{
-			$addrname="Page d'Accueil";
+			$addrname="la page d'Accueil";
 		}
 		$template=str_replace('{{ADDR}}',$addr,$template);
 		$template=str_replace('{{ADDRNAME}}',$addrname,$template);
