@@ -52,17 +52,17 @@ img
 	border-bottom : none;
 	text-align : center;
 }
-/*#barreDeNavigation
+#barreDeNavigation
 {
 	border : solid 1px #000;
 	border-top : none;	
 	background-color : gray;
 	padding : 0px;
-}*/
-#barreDeNavigation
+}
+/*#barreDeNavigation
 {
 	background-image: url('/images/imageconnection.png');
-}
+}*/
 #menuConnexion
 {
 	float:left;
