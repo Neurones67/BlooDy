@@ -226,16 +226,16 @@ img
 	cursor: pointer;
 }
 /*css de la page d'aide*/
-#menuGauche a,  
+#questionnaire a,  
 {
 	color:#9494BF;
 	text-decoration:none;
 }
-#menuGauche a:hover
+#questionnaire a:hover
 {
 	color:#8080DE;
 }
-#menuGauche a:active
+#questionnaire a:active
 {
 	color:#8E80AB;
 }
