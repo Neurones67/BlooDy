@@ -18,10 +18,12 @@ class Utilisateurs
 	
 	// variables utiles
 	private $mysql; // Connexion à la base de données
+	private $connexionm;
 	public function __construct($uid=0)
 	{
 		// Demande de l'objet MySQL
 		$this->mysql=requestObject('MySQL');
+		$this->connexionm="";
 		if($uid!=0) // Si on demande un utilisateur existant (0 étant l'utilisateur non connecté anonyme)
 		{
 			// on initialise les données de l'utilisateur
@@ -63,6 +65,7 @@ class Utilisateurs
 		unset($this->ipinscription);
 		unset($this->uetat);
 		unset($this->cvalidation);
+		unset($this->connexionm);
 	}
 	private function initData($uid)
 	{
@@ -201,6 +204,12 @@ class Utilisateurs
 					$template=requestObject('Nav')->userErrorHandler("Vous avez oublié de renseigner les champs suivants",$errors);
 			}
 		}
+		$this->connexionm=$template;
+	}
+	public function connexionM()
+	{
+		$template=$this->connexionm;
+		$this->connexionm="";
 		return $template;
 	}
 	private function auth($pseudo,$password)

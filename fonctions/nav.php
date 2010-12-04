@@ -91,4 +91,10 @@ class Nav
 		}
 		return $template;
 	}
+	public function delayedRedirect($addr="/")
+	{
+		$template=trim(file_get_contents(PARTIAL.'redirect.xhtml'));
+		$template=str_replace('{{ADDR}}',$addr,$template;
+		return $template;
+	}
 }
