@@ -1,3 +1,21 @@
 {{HEADER:Recherche}}
 <h2>Voici la page de recherche</h2>
+<h2>Recherche avancée</h2> 
+<form id="formulaire_recherche_avancee" method="post" action='' > 
+	<fieldset> 
+		<legend>Les informations indispensables</legend> 
+		<dt>Où rechercher :</dt><dd>Dans ma base : <input type='radio' name='emplacement' value='baseutilisateur' /><br /> 
+		 
+		Dans la base globale : <input type='radio' name='emplacement' value='baseglobale' /></dd> 
+		<dt><label for="terme" >Terme à rechercher : </label></dt> 
+		<dd><input id="terme" name="terme" type="text" /></dd> 
+		</fieldset> 
+		<fieldset> 
+		<legend>Options avancées</legend> 
+		<dt>Choisir parmi :</dt><dd>Les auteurs <input type='checkbox' checked='checked' value='c_auteurs' /><br /> 
+		Les séries <input type='checkbox' checked='checked' value='c_series' /><br /> 
+		Les BD <input type='checkbox' checked='checked' value='c_bd' /></dd> 
+	</fieldset> 
+<input type='reset' value='Annuler' />	<input type='submit' value='OK'> 
+</form>
 {{FOOTER}}
