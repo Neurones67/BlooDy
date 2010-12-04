@@ -71,6 +71,17 @@ img
 {
 	border: #CCC 1px solid;
 }
+#barreDeNavigation a  
+{
+	color:#222D37;
+	text-decoration:none;
+	font-size:15px;
+}
+#questionnaire a:hover
+{
+	color:#DBC398;
+	text-decoration:none;
+}
 #menuConnexion
 {
 	float:left;
