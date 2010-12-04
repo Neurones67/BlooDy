@@ -209,24 +209,24 @@ img
 	border: #DDEEFF 1px solid;
 }
 
-#formulaire_inscription input[type="submit"]:hover
+#formulaire_inscription input[type="submit"]:hover,#formulaire_ajout_bd input[type="submit"]:hover
 {
 	background-color: #66CC33;
 	cursor: pointer;
 }
 
-#formulaire_inscription input[type="reset"]
+#formulaire_inscription input[type="reset"],#formulaire_ajout_bd input[type="reset"]
 {
 	border: #DDEEFF 1px solid;
 }
 
-#formulaire_inscription input[type="reset"]:hover
+#formulaire_inscription input[type="reset"]:hover,#formulaire_ajout_bd input[type="reset"]:hover
 {
 	background-color: #E6484D;
 	cursor: pointer;
 }
 /*css de la page d'aide*/
-#questionnaire a,  
+#questionnaire a  
 {
 	color:#9494BF;
 	text-decoration:none;
@@ -234,8 +234,10 @@ img
 #questionnaire a:hover
 {
 	color:#8080DE;
+	text-decoration:none;
 }
 #questionnaire a:active
 {
 	color:#8E80AB;
+	text-decoration:none;
 }
