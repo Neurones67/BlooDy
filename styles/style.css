@@ -71,6 +71,15 @@ img
 {
 	border: #CCC 1px solid;
 }
+#barreDeNavigation a  
+{
+	color:#222D37;
+	font-size:12px;
+}
+#questionnaire a:hover
+{
+	color:#DBC398;
+}
 #menuConnexion
 {
 	float:left;
