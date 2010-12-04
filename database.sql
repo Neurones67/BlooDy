@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: bd
 -- ------------------------------------------------------
--- Server version	5.1.49-1
+-- Server version	5.1.49-2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -52,16 +52,6 @@ CREATE TABLE `appartient` (
   `emplacement` text COLLATE utf8_bin
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `appartient`
---
-
-LOCK TABLES `appartient` WRITE;
-/*!40000 ALTER TABLE `appartient` DISABLE KEYS */;
-/*!40000 ALTER TABLE `appartient` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `auteurs`
 --
@@ -76,18 +66,10 @@ CREATE TABLE `auteurs` (
   `biographie` text COLLATE utf8_bin,
   `adnaissance` date DEFAULT NULL,
   `avalide` tinyint(1) DEFAULT NULL,
+  `aprenom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`aid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auteurs`
---
-
-LOCK TABLES `auteurs` WRITE;
-/*!40000 ALTER TABLE `auteurs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auteurs` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `demande_ami`
@@ -105,15 +87,6 @@ CREATE TABLE `demande_ami` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `demande_ami`
---
-
-LOCK TABLES `demande_ami` WRITE;
-/*!40000 ALTER TABLE `demande_ami` DISABLE KEYS */;
-/*!40000 ALTER TABLE `demande_ami` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `editeurs`
 --
 
@@ -128,15 +101,6 @@ CREATE TABLE `editeurs` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `editeurs`
---
-
-LOCK TABLES `editeurs` WRITE;
-/*!40000 ALTER TABLE `editeurs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `editeurs` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `genre`
 --
 
@@ -147,17 +111,8 @@ CREATE TABLE `genre` (
   `gid` int(11) NOT NULL AUTO_INCREMENT,
   `gnom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`gid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `genre`
---
-
-LOCK TABLES `genre` WRITE;
-/*!40000 ALTER TABLE `genre` DISABLE KEYS */;
-/*!40000 ALTER TABLE `genre` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `jetons_auth`
@@ -175,14 +130,6 @@ CREATE TABLE `jetons_auth` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `jetons_auth`
---
-
-LOCK TABLES `jetons_auth` WRITE;
-/*!40000 ALTER TABLE `jetons_auth` DISABLE KEYS */;
-/*!40000 ALTER TABLE `jetons_auth` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `livres`
@@ -193,6 +140,7 @@ DROP TABLE IF EXISTS `livres`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `livres` (
   `lid` int(11) NOT NULL AUTO_INCREMENT,
+  `aid` int(11) NOT NULL,
   `nom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `isbn` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `ean13` varchar(50) COLLATE utf8_bin DEFAULT NULL,
@@ -207,17 +155,8 @@ CREATE TABLE `livres` (
   `ajuid` int(11) DEFAULT NULL,
   `ajdate` int(11) DEFAULT NULL,
   PRIMARY KEY (`lid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `livres`
---
-
-LOCK TABLES `livres` WRITE;
-/*!40000 ALTER TABLE `livres` DISABLE KEYS */;
-/*!40000 ALTER TABLE `livres` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `series`
@@ -263,17 +202,9 @@ CREATE TABLE `utilisateurs` (
   `uetat` int(1) NOT NULL,
   `cvalidation` varchar(30) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `utilisateurs`
---
-
-LOCK TABLES `utilisateurs` WRITE;
-/*!40000 ALTER TABLE `utilisateurs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `utilisateurs` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -284,5 +215,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-11-05 15:15:32
+-- Dump completed on 2010-12-04 16:24:24
 
