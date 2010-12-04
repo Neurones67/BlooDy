@@ -103,7 +103,7 @@ class Nav
 		{
 			$addrname=$addr;
 		}
-		if($addr="/")
+		if($addr=="/")
 		{
 			$addrname="la page d'Accueil";
 		}
