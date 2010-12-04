@@ -201,7 +201,7 @@ class Livre
 		return $template;
 	}
 	// Permet d'ajouter un livre à sa collection
-	private function ajoutCollection($lid,$uid,$date_dachat="",$etat="",$emplacement="")
+	private function ajoutCollection($lid,$uid,$date_dachat="",$etat=1,$emplacement="")
 	{
 		// Protection des variables
 		$uid=intval($uid);
@@ -222,6 +222,41 @@ class Livre
 			unset($livre);
 			return false;
 		}
+	}
+	public function ajoutCollectionGroupe()
+	{
+		$user=requestObject('Utilisateurs');
+		$template="";
+		if(!$user->estConnecte()) // Si l'utilisateur n'est pas connecté, c'est pas la peine de continuer...
+		{
+			return;
+		}
+		$uid=$user->getUid();
+		if(isset($_POST['BD']) and !empty($_POST['BD']))
+		{
+			$sql='INSERT INTO appartient(uid,lid,date_achat,etat,emplacement) VALUES';
+			for($i=0;$i<count($_POST['BD']);$i++)
+			{
+				$lid=intval($_POST['BD'][$i]);
+				$sql.='("'.$uid.'","'.$lid.'","","1","")';
+				if($i<(count($_POST['BD'])-1))
+				{
+					$sql.=',';
+				}
+			}
+			if(isset($lid))
+			{
+				if($this->mysql->query($sql))
+				{
+					$template='<div class="message">Les BDs ont bien été rajoutées à votre collection !</div>';
+				}
+				else
+				{
+					$template='<div class="erreur">Erreur lors de l\'enregistrement des BDs dans votre collection';
+				}
+			}
+		}
+		return $template;
 	}
 	// Permet de rempalcer les tags d'un template par les données contenues dans l'objet $livre
 	public function affichLivre($template,$livre)
@@ -277,7 +312,6 @@ class Livre
 		$sql='SELECT gid,gnom FROM genre ORDER BY gid';
 		return queryToArray($this->mysql->query($sql));
 	}
-
 	public function creer_liste_genres($selected=0)
 	{
 		$liste = $this->listGenres();
