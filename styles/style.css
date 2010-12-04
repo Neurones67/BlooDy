@@ -225,3 +225,17 @@ img
 	background-color: #E6484D;
 	cursor: pointer;
 }
+/*css de la page d'aide*/
+#menuGauche a,  
+{
+	color:#9494BF;
+	text-decoration:none;
+}
+#menuGauche a:hover
+{
+	color:#8080DE;
+}
+#menuGauche a:active
+{
+	color:#8E80AB;
+}
