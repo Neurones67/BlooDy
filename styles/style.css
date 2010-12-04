@@ -246,3 +246,11 @@ img
 	list-style-type:none;
 	padding-left:7px;
 }
+#questionnaire h2
+{
+	padding-left: 20px;
+}
+#questionnaire p
+{
+	padding-left: 15px;
+}
