@@ -13,6 +13,13 @@ class Utilisateurs
 	private $bdpublique;
 	private $accueiltype;
 	private $ipinscrition;
+	/*
+		État de l'utilisateur:
+		<0 => Non valide, non enregistré
+		0  => Enregistré, pas encore validé
+		1  => Enregistré, validé
+		2  => Enregistré, demande de changement de mot de passe/email actif
+	*/
 	private $uetat;
 	private $cvalidation;
 	
@@ -118,7 +125,7 @@ class Utilisateurs
 		$pseudo=$this->mysql->real_escape_string($pseudo);
 		$password=$this->passhash($password);
 		$email=$this->mysql->real_escape_string($email);
-		$sql='INSERT INTO utilisateurs(pseudo,motdepasse,email,dinscription,ipinscription) VALUES("'.$pseudo.'","'.$password.'","'.$email.'","'.time().'","'.$_SERVER['REMOTE_ADDR'].'")';
+		$sql='INSERT INTO utilisateurs(pseudo,motdepasse,email,dinscription,ipinscription,uetat) VALUES("'.$pseudo.'","'.$password.'","'.$email.'","'.time().'","'.$_SERVER['REMOTE_ADDR'].'",1)';
 		$res=$this->mysql->query($sql);
 		return $this->mysql->insert_id;	
 	}
@@ -217,7 +224,7 @@ class Utilisateurs
 		// Authentifie un utilisateur avec son pseudo et son mot de passe
 		$pseudo=$this->mysql->real_escape_string($pseudo);
 		$password=$this->passhash($password);
-		$sql='SELECT uid FROM utilisateurs WHERE pseudo="'.$pseudo.'" AND motdepasse="'.$password.'"';
+		$sql='SELECT uid FROM utilisateurs WHERE pseudo="'.$pseudo.'" AND motdepasse="'.$password.'" AND uetat>0';
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
