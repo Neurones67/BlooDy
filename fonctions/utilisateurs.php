@@ -204,7 +204,7 @@ class Utilisateurs
 					$template=requestObject('Nav')->userErrorHandler("Vous avez oublié de renseigner les champs suivants",$errors);
 			}
 		}
-		$this->connexionm=$template;
+		return $template;
 	}
 	public function connexionM()
 	{
@@ -337,17 +337,18 @@ class Utilisateurs
 		
 			if($this->auth($_POST['id_Connexion'],$_POST['id_MotDePasse']))
 			{
-				return 'Connexion réussie';
+				$template= 'Connexion réussie';
 			}
 			else
 			{
-				return 'Connexion échouée';
+				$template= 'Connexion échouée';
 			}
 		}
 		else
 		{
-			return 'Vous n\'avez pas remplis tous les champs';
+			$template= 'Vous n\'avez pas remplis tous les champs';
 		}
+		$this->connexionm=$template;
 	}
 	public function deconnexion()
 	{
