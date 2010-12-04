@@ -64,7 +64,7 @@ function verificationConformiteEmail()
 function cachevisible(id)
 {
 	var p = document.getElementById(id);
-	if(p.style.display=="none")
+	if(p.style.display!='block')
 	{
 		p.style.display='block';
 	}
