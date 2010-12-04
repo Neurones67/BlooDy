@@ -91,10 +91,24 @@ class Nav
 		}
 		return $template;
 	}
-	public function delayedRedirect($addr="/")
+	public function delayedRedirect($addr="/",$addrname="")
 	{
 		$template=trim(file_get_contents(PARTIAL.'redirect.xhtml'));
+		if($addr="REFERER")
+		{
+			$addr=$_SERVER['HTTP_REFERER'];
+			$addrname="Page précédente";
+		}
+		if(empty($addrname))
+		{
+			$addrname=$addr;
+		}
+		if($addr="/")
+		{
+			$addrname="Page d'Accueil";
+		}
 		$template=str_replace('{{ADDR}}',$addr,$template);
+		$template=str_replace('{{ADDRNAME}}',$addrname,$template);
 		return $template;
 	}
 }
