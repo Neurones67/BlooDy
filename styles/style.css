@@ -75,10 +75,11 @@ img
 {
 	color:#222D37;
 	text-decoration:none;
+	font-size:10px;
 }
 #questionnaire a:hover
 {
-	color:#1C354D;
+	color:#679D8A;
 	text-decoration:none;
 }
 #menuConnexion
