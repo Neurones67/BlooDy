@@ -13,6 +13,8 @@ class Utilisateurs
 	private $bdpublique;
 	private $accueiltype;
 	private $ipinscrition;
+	private $dinscription;
+	private $avatar;
 	/*
 		État de l'utilisateur:
 		<0 => Non valide, non enregistré
@@ -70,6 +72,7 @@ class Utilisateurs
 		unset($this->bdpublique);
 		unset($this->accueiltype);
 		unset($this->ipinscription);
+		unset($this->dinscription);
 		unset($this->uetat);
 		unset($this->cvalidation);
 		unset($this->connexionm);
@@ -77,19 +80,21 @@ class Utilisateurs
 	private function initData($uid)
 	{
 		$uid=intval($uid);
-		$sql='SELECT uid,pseudo,email,description,bdpublique,accueiltype,ipinscription,uetat,cvalidation FROM utilisateurs WHERE uid='.$uid;
+		$sql='SELECT uid,pseudo,email,avatar,description,bdpublique,accueiltype,ipinscription,uetat,cvalidation,dinscription FROM utilisateurs WHERE uid='.$uid;
 		$req= $this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
 			$this->uid=$uid;
 			$this->pseudo=$data->pseudo;
 			$this->email=$data->email;
-			$this->descrption=$data->description;
+			$this->avatar=$data->avatar;
+			$this->description=stripslashes($data->description);
 			$this->bdpublique=$data->bdpublique;
 			$this->accueiltype=$data->accueiltype;
 			$this->ipinscription=$data->ipinscription;
 			$this->uetat=$data->uetat;
 			$this->cvalidation=$data->cvalidation;
+			$this->dinscription=$data->dinscription;
 			return true;
 		}
 		else
@@ -246,6 +251,26 @@ class Utilisateurs
 		$sql='UPDATE utilisateurs SET motdepasse="'.$npassword.'" WHERE uid='.$id;
 		return $this->mysql->query($sql);
 	}
+	public function updateProfil()
+	{
+		if(!$this->estConnecte())
+			return;
+		$template="";
+		if(isset($_POST['description']) and !empty($_POST['description']))
+		{
+			$description=$this->mysql->real_escape_string(addslashes($_POST['description']));
+			$sql='UPDATE utilisateurs SET description="'.$description.'" WHERE uid='.$this->uid.'';
+			if($this->mysql->query($sql))
+			{
+				$template="Mise à jour de votre profil réussie !";
+			}
+			else
+			{
+				$template="Echec de la mise à jour de votre profil";
+			}
+		}
+		return $template;
+	}
 	public function passwordForm()
 	{
 		if(!$this->estConnecte())
@@ -364,5 +389,18 @@ class Utilisateurs
 		session_destroy();
 		session_unset();
 		unset($this);
+	}
+	public function affichUser($template,$user)
+	{
+		$template=str_replace('{{UID}}',$user->uid,$template);
+		$template=str_replace('{{PSEUDO}}',$user->pseudo,$template);
+		$template=str_replace('{{EMAIL}}',$user->email,$template);
+		$template=str_replace('{{DESCRIPTION}}',htmlspecialchars($user->description),$template);
+		$template=str_replace('{{AVATAR}}',$user->avatar,$template);
+		$template=str_replace('{{DATEINSCR}}',$user->date_publication,$template);
+		$template=str_replace('{{JOURINSCR}}',date('j',$user->dinscription),$template);
+		$template=str_replace('{{MOISINSCR}}',date('n',$user->dinscription),$template);
+		$template=str_replace('{{ANNEEINSCR}}',date('Y',$user->dinscription),$template);
+		return $template;
 	}
 }
