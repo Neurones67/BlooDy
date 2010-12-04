@@ -258,6 +258,42 @@ class Livre
 		}
 		return $template;
 	}
+	public function supprCollectionGroupe()
+	{
+		$user=requestObject('Utilisateurs');
+		$template="";
+		if(!$user->estConnecte())
+		{
+			return;
+		}
+		$uid=$user->getUid();
+		if(isset($_POST['BD']) and !empty($_POST['BD']))
+		{
+			$sql='DELETE FROM appartient WHERE uid='.$uid.' AND lid IN (';
+			for($i=0;$i<count($_POST['BD']);$i++)
+			{
+				$lid=intval($_POST['BD'][$i]);
+				$sql.=$lid;
+				if($i<(count($_POST['BD'])-1))
+				{
+					$sql.=',';
+				}
+			}
+			$sql.=')';
+			if(isset($lid))
+			{
+				if($this->mysql->query($sql))
+				{
+					$template='<div class="message">Les BDs ont bien été supprimées de votre collection !</div>';
+				}
+				else
+				{
+					$template='<div class="erreur">Erreur lors de la suppresion des BDs de votre collection';
+				}
+			}
+		}
+		return $template;
+	}
 	// Permet de rempalcer les tags d'un template par les données contenues dans l'objet $livre
 	public function affichLivre($template,$livre)
 	{
