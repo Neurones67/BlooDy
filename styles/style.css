@@ -67,6 +67,10 @@ img
 	background-color : gray;
 	padding : 0px;
 }
+#barreDeNavigation input
+{
+	border: #CCC 1px solid;
+}
 #menuConnexion
 {
 	float:left;
