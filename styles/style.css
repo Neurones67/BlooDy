@@ -24,11 +24,11 @@ img
 	background-color:#3A3A3A;
 }
 /*	Sélection d'un contenant unique	*/
-#centre
+/*#centre
 {
 	overflow: hidden;
 	background-color:#3A3A3A;
-}
+}*/
 #body
 {
 	min-width : 1100px;
