@@ -91,6 +91,7 @@ img
 #menuGauche
 {
 	float : left;
+	background-image:url('/images/menugauche.png');
 }
 #menuDroite
 {
