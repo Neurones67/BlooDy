@@ -94,7 +94,7 @@ class Nav
 	public function delayedRedirect($addr="/",$addrname="")
 	{
 		$template=trim(file_get_contents(PARTIAL.'redirect.xhtml'));
-		if($addr="REFERER")
+		if($addr=="REFERER")
 		{
 			$addr=$_SERVER['HTTP_REFERER'];
 			$addrname="la page précédente";
