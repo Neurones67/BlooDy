@@ -73,6 +73,7 @@ class Auteur
 			}
 			$template='</ul>';
 		}
+		return $template;
 	}
 	public function ajout($nom,$prenom="",$biographie="",$datenaissance="",$aphoto="")
 	{
