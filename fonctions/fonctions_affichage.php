@@ -142,8 +142,8 @@ class Affichage
 		$auteur = requestObject('Auteur');
 
 		$tBDs = $livre->recherche($motclef);
-		$tSeries = $livre->recherche($motclef);
-		$tAuteurs = $->recherche($motclef);
+		$tSeries = $serie->recherche($motclef);
+		$tAuteurs = $auteur->recherche($motclef);
 		
 		// Les titres de chaque colonne
 		
