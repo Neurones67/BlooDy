@@ -80,7 +80,7 @@ class Affichage
 		foreach($tBDs as $tBD)
 		{
 			$res .= "<tr>"; 
-			$res .= "<td>".$tBD['gnom']."</td>";
+			$res .= "<td><img src='/images/genre_'".$tBD['gnom']."'.png alt='image_genre' /></td>";
 			$res .= "<td><a href='/livre-".$tBD['lid'].".html' >".$tBD['nom']."</a></td>\n";
 			$res .= "<td><a href='/auteur-" . $tBD['aid'] . ".html' />" . $tBD['anom'] . "</a></td><td>". $tBD['aprenom'] . "</a></td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
 			$res .= "<td>".$tBD['ean13']."</td>\n";
@@ -108,7 +108,7 @@ class Affichage
 		foreach($tBDs as $tBD)
 		{
 			$res .= "<tr>"; 
-			$res .= "<td>".$tBD['gnom']."</td>";
+			$res .= "<td><img src='/images/genre_'".$tBD['gnom']."'.png alt='image_genre' /></td>";
 			$res .= "<td><a href='/livre-".$tBD['lid'].".html' >".$tBD['nom']."</a></td>\n";
 			$res .= "<td><a href='/auteur-" . $tBD['aid'] . ".html' />" . $tBD['anom'] . "</a></td><td>". $tBD['aprenom'] . "</a></td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
 			$res .= "<td>".$tBD['ean13']."</td>\n";
