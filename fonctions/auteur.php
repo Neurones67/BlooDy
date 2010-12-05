@@ -77,4 +77,31 @@ class Auteur
 			return false;
 		}
 	}
+	public function ajoutForm()
+	{
+		$template="";
+		if(isset($_POST['nomAuteur'],$_POST['prenomAuteur'],$_POST['jourNaissance'],$_POST['moisNaissance'],$_POST['anneeNaissance'],$_POST['biographie']) and !empty($_POST['nomAuteur']))
+		{
+			$nom=$_POST['nomAuteur'];
+			$prenom=$_POST['prenomAuteur'];
+			$biographie=$_POST['biographie'];
+			$myear=intval($_POST['anneeNaissance'])%2100;
+			if($myear<100)
+			{
+				$myear=$myear+1900;
+			}
+			$mmonth=intval($_POST['moisNaissance'])%13;
+			$mday=intval($_POST['jourNaissance'])%31;
+			$mdate='"'.$myear.'-'.$mmonth.'-'.$mday.'"';
+			if($this->ajout($nom,$prenom,$biographie,$mdate))
+			{
+				$template="<div class='message'>L'auteur a bien été ajouté !</div>";
+			}
+			else
+			{
+				$template="<div class='erreur'>Erreur lors de l'enregistrement de l'auteur";
+			}
+		}
+		return $template;
+	}
 }
