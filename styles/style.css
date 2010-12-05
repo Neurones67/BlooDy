@@ -280,12 +280,6 @@ h2
 	background-color: #66CC33;
 	cursor: pointer;
 }
-
-#formulaire_inscription input[type="reset"],#formulaire_ajout_bd input[type="reset"],#formulaire_recherche_avancee input[type="reset"],#id_motdepasseperdu input[type="reset"],#formulaire_ajout_auteur input[type="reset"]
-{
-	border: #DDEEFF 1px solid;
-}
-
 #formulaire_inscription input[type="reset"]:hover,#formulaire_ajout_bd input[type="reset"]:hover,#formulaire_recherche_avancee input[type="reset"]:hover,#id_motdepasseperdu input[type="reset"]:hover,#formulaire_ajout_auteur input[type="reset"]:hover
 {
 	background-color: #E6484D;
