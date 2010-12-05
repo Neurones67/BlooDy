@@ -242,6 +242,10 @@ h2
 {
 	width:10%;
 }
+#formulaire_ajout_bd textarea
+{
+	margin-top:10px;
+}
 #formulaire_inscription label:hover, #formulaire_ajout_bd label:hover,#formulaire_recherche_avancee label:hover,#id_motdepasseperdu label:hover
 {
 	font-weight: bold;
