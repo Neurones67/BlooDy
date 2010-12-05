@@ -1,18 +1,32 @@
 {{HEADER:Mon Profil}}
 <h2>Bienvenue sur votre profil</h2>
-<form id='profil' method='post' action='' > 
+<form id='changer_mdp' method='post' action='' > 
 	<fieldset> 
-		<legend>Les informations que nous avons sur vous</legend> 
-		<dt><label for="login" >Pseudonyme</label></dt> 
-		<dd><input id="login" name="login" type="text" /></dd> 
-		<dt><label for="password" >Mot de passe</label></dt> 
+		<legend>Changer son mot de passe</legend> 
+		<dt><label for="ancienpass" >Ancien mot de passe</label></dt> 
+		<dd><input id="ancienpass" name="ancienpass" type="text" /></dd> 
+		<dt><label for="password" >Nouveau mot de passe</label></dt> 
 		<dd><input id="password" name="password" type="text" /></dd> 
 		<dt><label for="password2" >Confirmation du mot de passe</label></dt> 
 		<dd><input id="password2" name="password2" type="text" /></dd> 
+	</fieldset> 
+	<input type='reset' value='Annuler' /><input type='submit' value='Mettre à jour'> 
+</form> 
+<form id='changer_mail' method='post' action='' > 
+	<fieldset> 
+		<legend>Changer son adresse e-mail</legend> 
 		<dt><label for="email" >E-mail</label></dt> 
 		<dd><input id="email" name="email" type="text" /></dd> 
 		<dt><label for="email2" >Confirmation de l'adresse e-mail</label></dt> 
 		<dd><input id="email2" name="email2" type="text" /></dd> 
+	</fieldset> 
+	<input type='reset' value='Annuler' /><input type='submit' value='Mettre à jour'> 
+</form> 
+<form id='changer_description' method='post' action='' > 
+	<fieldset> 
+		<legend>Changer sa description</legend> 
+		<dt><label for="description" >Description</label></dt> 
+		<dd><textarea id="description" name="description" /></dd> 
 	</fieldset> 
 	<input type='reset' value='Annuler' /><input type='submit' value='Mettre à jour'> 
 </form> 
