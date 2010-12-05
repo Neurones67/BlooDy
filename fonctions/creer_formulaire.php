@@ -61,7 +61,7 @@ function creer_formulaire_inscription()
 	# Ajout de l'envoi d'une image représentant l'utilisateur
 	echo "</fieldset>\n";
 	echo "<input type='reset' value='Annuler' />\t";	
-	echo "<input type='submit' value='OK'>\n"; 
+	echo "<input type='submit' value='OK' />\n"; 
 	
 	echo "</form>\n";
 }
@@ -89,7 +89,7 @@ function creer_formulaire_ajout_auteur()
 	echo "</fieldset>\n";
 
 	echo "<input type='reset' value='Annuler' />\t";	
-	echo "<input type='submit' value='OK'>\n"; 
+	echo "<input type='submit' value='OK' />\n"; 
 
 	echo "</form>\n";
 }
@@ -117,7 +117,7 @@ function creer_formulaire_ajout_bd()
 	echo "</fieldset>\n";
 
 	echo "<input type='reset' value='Annuler' />\t";	
-	echo "<input type='submit' value='OK'>\n"; 
+	echo "<input type='submit' value='OK' />\n"; 
 
 	echo "</form>\n";
 }
@@ -138,7 +138,7 @@ function creer_formulaire_recherche()
 	echo "\t</fieldset>\n";
 
 	echo "<input type='reset' value='Annuler' />\t";
-	echo "<input type='submit' value='OK'>\n";
+	echo "<input type='submit' value='OK' />\n";
 	echo "</form>";
 }
 function modification_profil()
@@ -155,7 +155,7 @@ function modification_profil()
 
 	echo "</fieldset>\n";
 	echo "<input type='reset' value='Annuler' />\t";	
-	echo "<input type='submit' value='Mettre à jour'>\n"; 
+	echo "<input type='submit' value='Mettre à jour' />\n"; 
 	
 	echo "</form>\n";
 }
