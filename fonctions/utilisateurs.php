@@ -386,7 +386,7 @@ class Utilisateurs
 		}
 		if($this->uetat>1)
 		{
-			$sql='UPDATE utilisateurs SET uetat=1,cvalidation="" WHERE uid='.$uid;
+			$sql='UPDATE utilisateurs SET uetat=1,cvalidation="" WHERE uid='.$this->getUid();
 			$this->mysql->query($sql);
 		}
 		$this->connexionm=$template;
@@ -412,7 +412,7 @@ class Utilisateurs
 				$email=str_replace('{{IP}}',$_SERVER['REMOTE_ADDR'],$email);
 				$email=str_replace('{{CONFIRMCODE}}',$hash,$email);
 				$mailo=new Email();
-				var_dump($mailo->send($user->getEmail(),"Redéfinition de votre mot de passe",$email,$user->getLogin()));
+				$mailo->send($user->getEmail(),"Redéfinition de votre mot de passe",$email,$user->getLogin());
 				$template='<div class="message">Un e-mail avec les informations concernants la redéfinition de votre mot de passe vient de vous être envoyé</div>';
 			}
 			else
@@ -434,6 +434,7 @@ class Utilisateurs
 					$user->updatePassword($uid,$_POST['password']);
 					$sql='UPDATE utilisateurs SET uetat=1,cvalidation="" WHERE uid='.$uid;
 					$this->mysql->query($sql);
+					$template="<div class='message'>Mot de passe mis à jour avec succès ! Vous pouvez maintenant vous connecter</div>";
 				}
 				else
 				{
