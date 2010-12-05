@@ -386,7 +386,7 @@ class Utilisateurs
 		}
 		if($this->uetat>1)
 		{
-			$sql='UPDATE utilisateurs SET uetat=1,cvalidation="" WHERE uid='.$uid;
+			$sql='UPDATE utilisateurs SET uetat=1,cvalidation="" WHERE uid='.$this->getUid();
 			$this->mysql->query($sql);
 		}
 		$this->connexionm=$template;
