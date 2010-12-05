@@ -73,3 +73,29 @@ function cachevisible(id)
 		p.style.display='none';
 	}
 }
+function verificationMotDePasses(id,id2,p)
+{
+	var paragraphe = document.getElementById("p");
+	var old_contenu = paragraphe.firstChild;
+        paragraphe.removeChild(old_contenu);
+	paragraphe.style.color="red";
+	if(document.getElementById('id').value != document.getElementById('id2').value)
+	{
+                //Ajout de l'information incorrect
+                var info = document.createTextNode("Erreur: Mots de passe différents");
+	}
+	else
+	{
+                //Ajout de l'information correct
+		if(document.getElementById('password2').value == "")
+		{
+			 var info = document.createTextNode("Erreur: Mots de passe différents");
+		}
+		else
+		{
+		        var info = document.createTextNode("Mot de passe correct");
+		        paragraphe.style.color="green"
+		}
+	}
+paragraphe.appendChild(info); 
+}
