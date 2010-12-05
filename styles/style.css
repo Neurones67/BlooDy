@@ -325,11 +325,14 @@ h2
 /* présentation des tableaux*/
 #bds tr,#bds td,#bds a
 {
-	border: solid 1px black;
 	text-align:center;
 	font-size: 8pt;
 	font-family: Verdana;
 	color:#000;
+}
+#bds tr,#bds td
+{
+	border: solid 1px black;
 }
 #bds a:hover
 {
