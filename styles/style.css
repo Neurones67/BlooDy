@@ -257,7 +257,8 @@ img
 #formulaire_recherche_avancee input[type="checkbox"],#formulaire_recherche_avancee input[type="radio"]
 {
 	cursor:pointer;
-	width:5%;
+	width:2%;
+	margin-right:15px;
 }
 /*css de la page d'aide*/
 #questionnaire
