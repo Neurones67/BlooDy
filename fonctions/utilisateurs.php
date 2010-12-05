@@ -401,7 +401,7 @@ class Utilisateurs
 			{
 				$user=new Utilisateurs($data[0]);
 				$hash=$user->genConfirmCode();
-				$sql='UPDATE utilisateurs SET cvalidation="'.$hash.'",uetat=3 WHERE uid='.$uid;
+				$sql='UPDATE utilisateurs SET cvalidation="'.$hash.'",uetat=3 WHERE uid='.$user->getUid();
 				$this->mysql->query($sql);
 				$email=trim(file_get_contents(PARTIAL.'mail_lostpassword'));
 				$email=str_replace('{{PSEUDO}}',$user->getLogin(),$email);
