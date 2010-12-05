@@ -74,7 +74,7 @@
  	}
  	public function recherche($enom)
  	{
- 		$enom=$this->mysql_real_escape_string($enom);
+ 		$enom=$this->mysql->real_escape_string($enom);
  		$sql="SELECT eid,enom FROM editeurs WHERE UPPER(enom) LIKE UPPER('%".$enom."%')";
  		return queryToArray($this->mysql->query($sql));
  	}

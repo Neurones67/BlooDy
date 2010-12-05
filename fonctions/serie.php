@@ -74,7 +74,7 @@
  	}
  	public function recherche($snom)
  	{
- 		$snom=$this->mysql_real_escape_string($snom);
+ 		$snom=$this->mysql->real_escape_string($snom);
  		$sql="SELECT sid,snom FROM series WHERE UPPER(snom) LIKE UPPER('%".$snom."%')";
  		return queryToArray($this->mysql->query($sql));
  	}

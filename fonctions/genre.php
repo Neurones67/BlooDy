@@ -63,7 +63,7 @@
  	}
  	public function recherche($gnom)
  	{
- 		$gnom=$this->mysql_real_escape_string($gnom);
+ 		$gnom=$this->mysql->real_escape_string($gnom);
  		$sql="SELECT gid,gnom FROM genre WHERE UPPER(gnom) LIKE UPPER('%".$gnom."%')";
  		return queryToArray($this->mysql->query($sql));
  	}
