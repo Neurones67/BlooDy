@@ -271,7 +271,7 @@ class Utilisateurs
 			if($this->mysql->query($sql))
 			{
 				$template="<div class='message'>Mise à jour de votre profil réussie !</div>";
-				$this->description=$description;
+				$this->description=stripslashes($_POST['description']);
 			}
 			else
 			{
