@@ -189,14 +189,14 @@ h2
 }
 
 /* fieldset , legend */
-#formulaire_inscription fieldset ,#formulaire_ajout_bd fieldset,#formulaire_recherche_avancee fieldset
+#formulaire_inscription fieldset ,#formulaire_ajout_bd fieldset,#formulaire_recherche_avancee fieldset,#id_motdepasseperdu
 {
 	margin-bottom: 1px;
 	border: #CCC 1px solid;
 }
 
 
-#formulaire_inscription fieldset legend, #formulaire_ajout_bd fieldset legend,#formulaire_recherche_avancee fieldset legend
+#formulaire_inscription fieldset legend, #formulaire_ajout_bd fieldset legend,#formulaire_recherche_avancee fieldset legend,#id_motdepasseperdu fieldset legend
 {
 	margin-top:10px;
 	padding: 0 10px;
