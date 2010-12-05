@@ -302,8 +302,8 @@ class Livre
 		$template=str_replace('{{ISBN}}',$livre->isbn,$template);
 		$template=str_replace('{{EAN13}}',$livre->ean13,$template);
 		$template=str_replace('{{DATEPUB}}',$livre->date_publication,$template);
-		$template=str_replace('{{JOURPUB}}',date('j',$livre->date_publication),$template);
-		$template=str_replace('{{MOISPUB}}',date('n',$livre->date_publication),$template);
+		$template=str_replace('{{JOURPUB}}',date('d',$livre->date_publication),$template);
+		$template=str_replace('{{MOISPUB}}',date('m',$livre->date_publication),$template);
 		$template=str_replace('{{ANNEEPUB}}',date('Y',$livre->date_publication),$template);
 		$template=str_replace('{{GENRES}}',$this->creer_liste_genres($livre->genreid),$template);
 		$template=str_replace('{{NOMAUTEUR}}',$livre->auteurn,$template);
