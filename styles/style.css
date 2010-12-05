@@ -18,7 +18,8 @@ h2
 	background-repeat:no-repeat;
 	margin-top: 1px;
 	background-position: top center;
-	text-align: center; 
+	text-align: center;
+	line-height: 45px; 
 }
 #questionnaire h2
 {
