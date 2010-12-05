@@ -176,7 +176,7 @@ h2
 	display: none;
 }
 /*formulaire */
-#formulaire_inscription, #formulaire_ajout_bd,#formulaire_recherche_avancee
+#formulaire_inscription, #formulaire_ajout_bd,#formulaire_recherche_avancee,#id_motdepasseperdu
 {
 	width: 80%;
 	margin:auto;
