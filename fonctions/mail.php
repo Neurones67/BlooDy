@@ -24,7 +24,7 @@ class EMail
 			"port"=>"25");
 		$this->mailobject=Mail::factory($this->backend,$this->params);
 		$this->headers=array(
-			"From"=> "BlooDy <contact@bloodybd.fr",
+			"From"=> "BlooDy <contact@bloodybd.fr>",
 			"Sender"=> "BlooDy <contact@bloodybd.fr>",
 			"Reply-To"=> "BlooDy <contact@bloodybd.fr>",
 			"Content-Type" => "text/plain; charset=UTF-8",
