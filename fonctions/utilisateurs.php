@@ -288,13 +288,13 @@ class Utilisateurs
 		{
 			$errors=array();
 			$pass=$this->passhash($_POST['ancienpass']);
-			$req='SELECT id FROM utilisateurs WHERE pseudo="'.$this->pseudo.'" AND motdepasse="'.$pass.'"';
+			$req='SELECT uid FROM utilisateurs WHERE pseudo="'.$this->pseudo.'" AND motdepasse="'.$pass.'"';
 			$req=$this->mysql->query($req);
 			if($data=$req->fetch_array())
 			{
 				if($_POST['password']==$_POST['password2'])
 				{
-					if($this->updatePassword($this->id,$_POST['password']))
+					if($this->updatePassword($this->uid,$_POST['password']))
 					{
 						$template='<div class="message">Mot de passe changé avec succès !</div>';
 					}
@@ -330,7 +330,7 @@ class Utilisateurs
 			}
 			else if($_POST['email']==$_POST['email2'])
 			{
-				if($this->updateEmail($this->id,$_POST['email']))
+				if($this->updateEmail($this->uid,$_POST['email']))
 				{
 					$template='<div class="message">Adresse email changée avec succès !</div>';
 				}
