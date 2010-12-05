@@ -271,6 +271,7 @@ class Utilisateurs
 			if($this->mysql->query($sql))
 			{
 				$template="<div class='message'>Mise à jour de votre profil réussie !</div>";
+				$this->description=$description;
 			}
 			else
 			{
@@ -321,6 +322,7 @@ class Utilisateurs
 		if(!$this->estConnecte())
 			return;
 		$template="";
+		$errors=array();
 		if(isset($_POST['email'],$_POST['email2'])and !empty($_POST['email']) and !empty($_POST['email2']))
 		{
 
