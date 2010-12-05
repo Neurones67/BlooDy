@@ -62,6 +62,7 @@ class Auteur
 	}
 	public function rechercheForm()
 	{
+		$template="";
 		if(isset($_POST['motcle']) and !empty($_POST['motcle']))
 		{
 			$motcle=$_POST['motcle'];
@@ -69,7 +70,7 @@ class Auteur
 			$template='<ul>';
 			foreach($data as $auteur)
 			{
-				$template.='<li><a href="/auteur-'.$auteur['aid'].'">'.$auteur['anom'].' '.$auteur['aprenom'].'</a> Né le '.$auteur['adnaissance'].' <a href="/auteur-'.$auteur['aid'].'?delete=true">Supprimer</a></li>';
+				$template.='<li><a href="/auteur-'.$auteur['aid'].'.html">'.$auteur['anom'].' '.$auteur['aprenom'].'</a> Né le '.$auteur['adnaissance'].' <a href="/auteur-'.$auteur['aid'].'.html?delete=true">Supprimer</a></li>';
 			}
 			$template.='</ul>';
 		}
