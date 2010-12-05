@@ -192,12 +192,21 @@ img
 	color: #999;
 }
 /*label*/
-#formulaire_inscription dt, #formulaire_ajout_bd dt,#formulaire_recherche_avancee dt
+#formulaire_inscription dt, #formulaire_ajout_bd dt
 {
 	background-color: #FFCC66;
 	display: block;
 	width:50%;
 	float: left;
+	padding-right: 1%;
+	letter-spacing: 1px;
+	margin-top:5px;
+}
+#formulaire_recherche_avancee dt
+{
+	background-color: #FFCC66;
+	display: block;
+	width:50%;
 	padding-right: 1%;
 	letter-spacing: 1px;
 	margin-top:5px;
@@ -258,7 +267,6 @@ img
 {
 	cursor:pointer;
 	width:2%;
-	margin-right:15px;
 }
 /*css de la page d'aide*/
 #questionnaire
