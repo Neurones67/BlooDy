@@ -369,16 +369,16 @@ class Utilisateurs
 		
 			if($this->auth($_POST['id_Connexion'],$_POST['id_MotDePasse']))
 			{
-				$template= 'Connexion réussie';
+				$template= '<div class="message">Connexion réussie</div>';
 			}
 			else
 			{
-				$template= 'Connexion échouée';
+				$template= '<div class="erreur">Connexion échouée</div>';
 			}
 		}
 		else
 		{
-			$template= 'Vous n\'avez pas remplis tous les champs';
+			$template= '<div class="erreur">CVous n\'avez pas remplis tous les champs</div>';
 		}
 		if($this->uetat>1)
 		{
