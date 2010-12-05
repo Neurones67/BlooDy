@@ -64,7 +64,7 @@
  	public function recherche($gnom)
  	{
  		$gnom=$this->mysql_real_escape_string($gnom);
- 		$sql="SELECT gid FROM genre WHERE UPPER(gnom) LIKE UPPER('%".$gnom."%')";
+ 		$sql="SELECT gid,gnom FROM genre WHERE UPPER(gnom) LIKE UPPER('%".$gnom."%')";
  		return queryToArray($this->mysql->query($sql));
  	}
  	public function liste()
