@@ -133,77 +133,77 @@ class Affichage
 	}
 	public function resultat_recherche()
 	{
+		$res = "";
 		if(isset($_POST['terme']) and !empty($_POST['terme']))
+		{
+		
 			$motclef = $_POST['terme'];
 
-		$user = requestObject('Utilisateurs');
-		$livre = requestObject('Livre');
-		$serie = requestObject('Serie');
-		$auteur = requestObject('Auteur');
-
-		$tBDs = $livre->recherche($motclef);
-		$tSeries = $serie->recherche($motclef);
-		$tAuteurs = $auteur->recherche($motclef);
+			$user = requestObject('Utilisateurs');
+			$livre = requestObject('Livre');
+			$serie = requestObject('Serie');
+			$auteur = requestObject('Auteur');
+	
+			$tBDs = $livre->recherche($motclef);
+			$tSeries = $serie->recherche($motclef);
+			$tAuteurs = $auteur->recherche($motclef);
 		
-		// Les titres de chaque colonne
+			// Les titres de chaque colonne
 		
-		// Les auteurs
-		$res = "<h2>Les Auteurs</h2>\n";
-		$res .= "<table id='auteurs'><tr><th>Nom de l'auteur</th><th>Prénom de l'auteur</th><th>Date de naissance</th></tr>\n";
-
-		foreach($tAuteurs as $tAut)
-		{
-			$res .= "<tr>"; 
-			$res .= "<td><a href='/auteur-".$tAut['aid'].".html' >".$tAut['anom']."</a></td>\n";
-			$res .= "<td><a href='/auteur-" . $tAut['aid'] . ".html' />" . $tAut['aprenom'] . "</a></td><td>". $tAut['adnaissance'] . "</td>\n";
-			$res .= "</tr>\n";
-		}
-		$res .= "</table>\n";
-		
-		$res .= "<h2>Les séries</h2>\n";
-
-		// Les Séries
-		$res .= "<table id='series' ><tr><th>Nom de la série</th></tr>\n";
-
-		foreach($tBDs as $tBD)
-			$res .= "<tr><td>" . $tBD['nom'] . "</td></tr>\n";
-		
-		$res .= "</table>\n";
-
-		// Les Bandes Dessinées 
-		$res .= "<h2>Les bandes dessinées</h2>\n";
-
-		$res .= "<table id='bds'><tr><th>Genre</th><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
-		$res .= "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th>";
-		if($user->estConnecte())
-			$res .= "<th>Ajouter à ma collection</th>";
-		$res .= "</tr>\n";
-
-		foreach($tBDs as $tBD)
-		{
-			$res .= "<tr>"; 
-			$res .= "<td><img src='/images/genre_".$tBD['gnom'].".png' alt='image_genre' /></td>";
-			$res .= "<td><a href='/livre-".$tBD['lid'].".html' >".$tBD['nom']."</a></td>\n";
-			$res .= "<td><a href='/auteur-" . $tBD['aid'] . ".html' />" . $tBD['anom'] . "</a></td><td>". $tBD['aprenom'] . "</a></td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
-			$res .= "<td>".$tBD['ean13']."</td>\n";
-			
-			if($user->estConnecte())
+			// Les auteurs
+			$res .= "<h2>Les Auteurs</h2>\n";
+			$res .= "<table id='auteurs'><tr><th>Nom de l'auteur</th><th>Prénom de l'auteur</th><th>Date de naissance</th></tr>\n";
+	
+			foreach($tAuteurs as $tAut)
 			{
-				if($tBD['etat']<1) // Si on a pas la BD
-				{
-					$res .= "<td><input type='checkbox' name='BD[]' value='" . $tBD['lid'] . "' /></td>";
-				}
-				else
-				{
-					$res .= "<td>;)</td>";
-				}
+				$res .= "<tr>"; 
+				$res .= "<td><a href='/auteur-".$tAut['aid'].".html' >".$tAut['anom']."</a></td>\n";
+				$res .= "<td><a href='/auteur-" . $tAut['aid'] . ".html' />" . $tAut['aprenom'] . "</a></td><td>". $tAut['adnaissance'] . "</td>\n";
+				$res .= "</tr>\n";
 			}
-
+			$res .= "</table>\n";
+			
+			$res .= "<h2>Les séries</h2>\n";
+	
+			// Les Séries
+			$res .= "<table id='series' ><tr><th>Nom de la série</th></tr>\n";
+	
+			foreach($tBDs as $tBD)
+				$res .= "<tr><td>" . $tBD['nom'] . "</td></tr>\n";
+			
+			$res .= "</table>\n";
+	
+			// Les Bandes Dessinées 
+			$res .= "<h2>Les bandes dessinées</h2>\n";
+	
+			$res .= "<table id='bds'><tr><th>Genre</th><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
+			$res .= "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th>";
+			if($user->estConnecte())
+				$res .= "<th>Ajouter à ma collection</th>";
 			$res .= "</tr>\n";
+	
+			foreach($tBDs as $tBD)
+			{
+				$res .= "<tr>"; 
+				$res .= "<td><img src='/images/genre_".$tBD['gnom'].".png' alt='image_genre' /></td>";
+			$res .= "<td><a href='/livre-".$tBD['lid'].".html' >".$tBD['nom']."</a></td>\n";
+				$res .= "<td><a href='/auteur-" . $tBD['aid'] . ".html' />" . $tBD['anom'] . "</a></td><td>". $tBD['aprenom'] . "</a></td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
+					$res .= "<td>".$tBD['ean13']."</td>\n";
+				
+				if($user->estConnecte())
+				{
+					if($tBD['etat']<1) // Si on a pas la BD
+						$res .= "<td><input type='checkbox' name='BD[]' value='" . $tBD['lid'] . "' /></td>";
+					else
+						$res .= "<td>;)</td>";
+				}
+	
+				$res .= "</tr>\n";
+			}
+			$res .= "</table>\n";
 		}
-		$res .= "</table>\n";
 
 		return $res;
+		
 	}
-}
 ?>
