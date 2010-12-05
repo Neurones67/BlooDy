@@ -118,6 +118,10 @@ class Utilisateurs
 	{
 		return $this->email;
 	}
+	public function getDescription()
+	{
+		return $this->description;
+	}
 	private function passhash($password)
 	{
 		// Permet de chiffrer un mot de passe
