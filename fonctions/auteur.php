@@ -71,8 +71,9 @@ class Auteur
 			{
 				$template.='<li><a href="/auteur-'.$auteur['aid'].'">'.$auteur['anom'].' '.$auteur['aprenom'].'</a> Né le '.$auteur['adnaissance'].' <a href="/auteur-'.$auteur['aid'].'?delete=true">Supprimer</a></li>';
 			}
-			$template='</ul>';
+			$template.='</ul>';
 		}
+		return $template;
 	}
 	public function ajout($nom,$prenom="",$biographie="",$datenaissance="",$aphoto="")
 	{
