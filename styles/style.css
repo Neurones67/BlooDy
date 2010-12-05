@@ -251,7 +251,7 @@ h2
 {
 	font-weight: bold;
 }
-#formulaire_inscription .form_label_nostyle, #formulaire_ajout_bd .form_label_nostyle,#id_motdepasseperdu .form_label_nostyle
+#formulaire_inscription .form_label_nostyle, #formulaire_ajout_bd .form_label_nostyle,#id_motdepasseperdu .form_label_nostyle,#formulaire_ajout_auteur .form_label_nostyle
 {
 	background: none;
 }
