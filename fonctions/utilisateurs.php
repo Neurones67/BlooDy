@@ -266,11 +266,11 @@ class Utilisateurs
 			$sql='UPDATE utilisateurs SET description="'.$description.'" WHERE uid='.$this->uid.'';
 			if($this->mysql->query($sql))
 			{
-				$template="Mise à jour de votre profil réussie !";
+				$template="<div class='message'>Mise à jour de votre profil réussie !</div>";
 			}
 			else
 			{
-				$template="Echec de la mise à jour de votre profil";
+				$template="<div class='erreur'>Echec de la mise à jour de votre profil</div>";
 			}
 		}
 		return $template;
@@ -280,17 +280,17 @@ class Utilisateurs
 		if(!$this->estConnecte())
 			return;
 		$template="";
-		if(isset($_POST['opasswd'],$_POST['npasswd'],$_POST['npasswd2']) and !empty($_POST['opasswd']) and !empty($_POST['npasswd']) and !empty($_POST['npasswd2']))
+		if(isset($_POST['ancienpass'],$_POST['password'],$_POST['password2']) and !empty($_POST['ancienpass']) and !empty($_POST['password']) and !empty($_POST['password2']))
 		{
 			$errors=array();
-			$pass=$this->passhash($_POST['opasswd']);
+			$pass=$this->passhash($_POST['ancienpass']);
 			$req='SELECT id FROM utilisateurs WHERE pseudo="'.$this->pseudo.'" AND motdepasse="'.$pass.'"';
 			$req=$this->mysql->query($req);
 			if($data=$req->fetch_array())
 			{
-				if($_POST['npasswd']==$_POST['npasswd2'])
+				if($_POST['password']==$_POST['password2'])
 				{
-					if($this->updatePassword($this->id,$_POST['npasswd']))
+					if($this->updatePassword($this->id,$_POST['password']))
 					{
 						$template='<div class="message">Mot de passe changé avec succès !</div>';
 					}
@@ -317,37 +317,27 @@ class Utilisateurs
 		if(!$this->estConnecte())
 			return;
 		$template="";
-		if(isset($_POST['password'],$_POST['email'],$_POST['email2']) and !empty($_POST['password']) and !empty($_POST['email']) and !empty($_POST['email2']))
+		if(isset($_POST['email'],$_POST['email2'])and !empty($_POST['email']) and !empty($_POST['email2']))
 		{
-			$errors=array();
-			$pass=sha1(md5(stripslashes($_POST['password'])));
-			$req='SELECT id FROM utilisateurs WHERE pseudo="'.$this->pseudo.'" AND motdepasse="'.$pass.'"';
-			$req=$this->mysql->query($req);
-			if($data=$req->fetch_array())
+
+			if(!preg_match('/^[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+(\.[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+)*@(([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){1,63}\.)+([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){2,63}$/i',$_POST['email']))
 			{
-				if(!preg_match('/^[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+(\.[-a-z0-9!#$%&\'*+\/=?^_`{|}~]+)*@(([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){1,63}\.)+([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){2,63}$/i',$_POST['email']))
+				$errors[]="L'adresse email n'est pas valide";
+			}
+			else if($_POST['email']==$_POST['email2'])
+			{
+				if($this->updateEmail($this->id,$_POST['email']))
 				{
-					$errors[]="L'adresse email n'est pas valide";
-				}
-				else if($_POST['email']==$_POST['email2'])
-				{
-					if($this->updateEmail($this->id,$_POST['email']))
-					{
-						$template='<div class="message">Adresse email changée avec succès !</div>';
-					}
-					else
-					{
-						$errors[]='Impossible de changer l\'adresse email';
-					}
+					$template='<div class="message">Adresse email changée avec succès !</div>';
 				}
 				else
 				{
-					$errors[]='Les deux adresses email ne correspondent pas';
+					$errors[]='Impossible de changer l\'adresse email';
 				}
 			}
 			else
 			{
-				$errors[]='Mot de passe incorrect';
+				$errors[]='Les deux adresses email ne correspondent pas';
 			}
 			$template.=requestObject('Nav')->userErrorHandler('Le script ne peut pas changer votre adresse email',$errors);
 		}
