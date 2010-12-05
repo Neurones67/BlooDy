@@ -133,12 +133,46 @@ class Affichage
 	}
 	public function resultat_recherche()
 	{
-		$livre =requestObject('Livre');
-		$tBDs = $livre->listBD();
-		$user=requestObject('Utilisateurs');
-		// Les titres de chaque colonne
+		if(isset($_POST['terme']) and !empty($_POST['terme']))
+			$motclef = $_POST['terme'];
 
-		$res = "";
+		$user = requestObject('Utilisateurs');
+		$livre = requestObject('Livre');
+		$serie = requestObject('Serie');
+		$auteur = requestObject('Auteur');
+
+		$tBDs = $livre->recherche($motclef);
+		$tSeries = $livre->recherche($motclef);
+		$tAuteurs = $->recherche($motclef);
+		
+		// Les titres de chaque colonne
+		
+		// Les auteurs
+		$res = "<h2>Les Auteurs</h2>\n";
+		$res .= "<table id='auteurs'><tr><th>Nom de l'auteur</th><th>Prénom de l'auteur</th><th>Date de naissance</th></tr>\n";
+
+		foreach($tAuteurs as $tAut)
+		{
+			$res .= "<tr>"; 
+			$res .= "<td><a href='/auteur-".$tAut['aid'].".html' >".$tAut['anom']."</a></td>\n";
+			$res .= "<td><a href='/auteur-" . $tAut['aid'] . ".html' />" . $tAut['aprenom'] . "</a></td><td>". $tAut['adnaissance'] . "</td>\n";
+			$res .= "</tr>\n";
+		}
+		$res .= "</table>\n";
+		
+		$res .= "<h2>Les séries</h2>\n";
+
+		// Les Séries
+		$res .= "<table id='series' ><tr><th>Nom de la série</th></tr>\n";
+
+		foreach($tBDs as $tBD)
+			$res .= "<tr><td>" . $tBD['nom'] . "</td></tr>\n";
+		
+		$res .= "</table>\n";
+
+		// Les Bandes Dessinées 
+		$res .= "<h2>Les bandes dessinées</h2>\n";
+
 		$res .= "<table id='bds'><tr><th>Genre</th><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
 		$res .= "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th>";
 		if($user->estConnecte())
