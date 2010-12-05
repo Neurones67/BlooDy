@@ -408,7 +408,7 @@ class Utilisateurs
 				$email=str_replace('{{IP}}',$_SERVER['REMOTE_ADDR'],$email);
 				$email=str_replace('{{CONFIRMCODE}}',$hash,$email);
 				$mailo=new Email();
-				$mailo->send($user->email,"Redéfinition de votre mot de passe",$email,$user->getLogin());
+				var_dump($mailo->send($user->email,"Redéfinition de votre mot de passe",$email,$user->getLogin()));
 				$template='<div class="message">Un e-mail avec les informations concernants la redéfinition de votre mot de passe vient de vous être envoyé</div>';
 			}
 			else
