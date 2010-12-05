@@ -121,8 +121,8 @@ class Utilisateurs
 	}
 	private function genConfirmCode()
 	{
-		// Génère une chaine aléatoire de 5 caractères pour les codes de confirmations
-		return substr(sha1(md5(sha1(mt_rand().time().'BlooDy'))),5,5);
+		// Génère une chaine aléatoire de 10 caractères pour les codes de confirmations
+		return substr(sha1(md5(sha1(mt_rand().time().'BlooDy'))),0,10);
 	}
 	private function register($pseudo,$password,$email)
 	{
@@ -380,8 +380,70 @@ class Utilisateurs
 		{
 			$template= 'Vous n\'avez pas remplis tous les champs';
 		}
+		if($this->uetat>1)
+		{
+			$sql='UPDATE utilisateurs SET uetat=1,cvalidation="" WHERE uid='.$uid;
+			$this->mysql->query($sql);
+		}
 		$this->connexionm=$template;
 	}
+	public function motdepasseperdu()
+	{
+		$template="";
+		if(isset($_POST['email'],$_POST['pseudo']) and !empty($_POST['email']) and !empty($_POST['pseudo']))
+		{
+			$email=$this->mysql->real_escape_string($_POST['email']);
+			$pseudo=$this->mysql->real_escape_string($_POST['pseudo']);
+			
+			$sql='SELECT uid FROM utilisateurs WHERE UPPER(pseudo)=UPPER("'.$pseudo.'") AND LOWER(email)=LOWER("'.$email.'")';
+			$req=$this->mysql->query($sql);
+			if($data=$req->fetch_row())
+			{
+				$user=new Utilisateurs($data[0]);
+				$hash=$user->genConfirmCode();
+				$sql='UPDATE utilisateurs SET cvalidation="'.$hash.'",uetat=3 WHERE uid='.$uid;
+				$this->mysql->query($sql);
+				$email=trim(file_get_contents(PARTIAL.'mail_lostpassword'));
+				$email=str_replace('{{PSEUDO}}',$user->getLogin(),$email);
+				$email=str_replace('{{IP}}',$_SERVER['REMOTE_ADDR'],$email);
+				$email=str_replace('{{CONFIRMCODE}}',$hash,$email);
+				$mailo=new Email();
+				$mailo->send($user->email,"Redéfinition de votre mot de passe",$email,$user->getLogin());
+				$template='<div class="message">Un e-mail avec les informations concernants la redéfinition de votre mot de passe vient de vous être envoyé</div>';
+			}
+			else
+			{
+				$template='<div class="erreur">Utilisateur introuvable</div>';
+			}
+		}
+		elseif(isset($_GET['confirmcode']) and !empty($_GET['confirmcode']))
+		{
+			$hash=$this->mysql->real_escape_string($_GET['confirmcode']);
+			$sql='SELECT uid FROM utilisateurs WHERE cvalidation="'.$hash.'"';
+			$req=$this->mysql->query($sql);
+			if($data=$req->fetch_row())
+			{
+				$uid=$data[0];
+				$user=new Utilisateurs($uid);
+				if(isset($_POST['password'],$_POST['password2']) and !empty($_POST['password']) and !empty($_POST['password2']))
+				{
+					$user->updatePassword($uid,$_POST['password']);
+					$sql='UPDATE utilisateurs SET uetat=1,cvalidation="" WHERE uid='.$uid;
+					$this->mysql->query($sql);
+				}
+				else
+				{
+					$template=file_get_contents(PARTIAL.'password_form.xhtml');
+				}
+			}
+			else
+			{
+				$template="<div class='erreur'>Aucune demande de redéfinition de mot de passe trouvée pour ce code";
+			}
+		}
+		return $template;
+	}
+				
 	public function deconnexion()
 	{
 		$this->uid=-1;
