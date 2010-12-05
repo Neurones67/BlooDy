@@ -168,8 +168,8 @@ class Affichage
 			// Les Séries
 			$res .= "<table id='series' ><tr><th>Nom de la série</th></tr>\n";
 	
-			foreach($tBDs as $tBD)
-				$res .= "<tr><td>" . $tBD['nom'] . "</td></tr>\n";
+			foreach($tSeries as $tS)
+				$res .= "<tr><td>" . $tS['nom'] . "</td></tr>\n";
 			
 			$res .= "</table>\n";
 	
@@ -188,7 +188,7 @@ class Affichage
 				$res .= "<td><img src='/images/genre_".$tBD['gnom'].".png' alt='image_genre' /></td>";
 			$res .= "<td><a href='/livre-".$tBD['lid'].".html' >".$tBD['nom']."</a></td>\n";
 				$res .= "<td><a href='/auteur-" . $tBD['aid'] . ".html' />" . $tBD['anom'] . "</a></td><td>". $tBD['aprenom'] . "</a></td><td>" . $tBD['enom']."</td><td>" . $tBD['isbn'] . "</td>\n";
-					$res .= "<td>".$tBD['ean13']."</td>\n";
+				$res .= "<td>".$tBD['ean13']."</td>\n";
 				
 				if($user->estConnecte())
 				{
@@ -206,4 +206,5 @@ class Affichage
 		return $res;
 		
 	}
+}
 ?>
