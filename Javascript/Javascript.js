@@ -11,14 +11,14 @@ function verificationMotDePasse()
 	if(document.getElementById('password').value != document.getElementById('password2').value)
 	{
                 //Ajout de l'information incorrect
-                var info = document.createTextNode("Erreur: Mots de passe différents");
+                var info = document.createTextNode("Mots de passe différents");
 	}
 	else
 	{
                 //Ajout de l'information correct
 		if(document.getElementById('password2').value == "")
 		{
-			 var info = document.createTextNode("Erreur: Mots de passe différents");
+			 var info = document.createTextNode("Mots de passe différents");
 		}
 		else
 		{
@@ -32,21 +32,24 @@ function verificationEmail()
 {
 	var paragraphe = document.getElementById("erreurEmail");
 	var old_contenu = paragraphe.firstChild;
-        paragraphe.removeChild(old_contenu);
-	if(document.getElementById('email').value != document.getElementById('email2').value)
+	if(old_contenu.value != "Syntaxe de l'Email fausse ")
 	{
-                //Ajout de l'information incorrect
-                var info = document.createTextNode("Erreur: Email différents ");
-		paragraphe.style.color="red";
-                paragraphe.appendChild(info);
+		paragraphe.removeChild(old_contenu);
+		if(document.getElementById('email').value != document.getElementById('email2').value)
+		{
+		        //Ajout de l'information incorrect
+		        var info = document.createTextNode("Erreur: Email différents ");
+			paragraphe.style.color="red";
+		        paragraphe.appendChild(info);
+		}
+		else
+		{
+		        //Ajout de l'information correct
+				var info = document.createTextNode("Email correct ");
+		        	paragraphe.style.color="green";
+		        	paragraphe.appendChild(info);
+		} 
 	}
-	else
-	{
-                //Ajout de l'information correct
-			var info = document.createTextNode("Email correct ");
-                	paragraphe.style.color="green";
-                	paragraphe.appendChild(info);
-	} 
 }
 function verificationConformiteEmail()
 {
