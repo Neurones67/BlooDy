@@ -38,7 +38,7 @@ function verificationEmail()
 		if(document.getElementById('email').value != document.getElementById('email2').value)
 		{
 		        //Ajout de l'information incorrect
-		        var info = document.createTextNode("Erreur: Email différents ");
+		        var info = document.createTextNode("Email différents ");
 			paragraphe.style.color="red";
 		        paragraphe.appendChild(info);
 		}
