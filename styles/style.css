@@ -234,13 +234,13 @@ h2
 	letter-spacing: 1px;
 	margin-top:5px;
 }
-#formulaire_ajout_bd .form_input_jourPublication_moisPublication
+#formulaire_ajout_bd input[name="jourPublication"],#formulaire_ajout_bd input[name="moisPublication"]
 {
-	width:20%;
+	width:7%;
 }
-#formulaire_ajout_bd .form_input_anneePublication
+#formulaire_ajout_bd input[name="anneePublication"]
 {
-	width:40%;
+	width:10%;
 }
 #formulaire_inscription label:hover, #formulaire_ajout_bd label:hover,#formulaire_recherche_avancee label:hover,#id_motdepasseperdu label:hover
 {
@@ -354,4 +354,8 @@ h2
 { 
 	empty-cells:show;
 	border-collapse:collapse;
+	margin-top:5px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-bottom:5px;
 }
