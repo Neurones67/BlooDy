@@ -1,3 +1,5 @@
+{{HEADER:Ajouter un Auteur}}
+{{Auteur:AjoutForm}}
 	<h2>Ajout d'un auteur</h2> 
 	<form id="formulaire_ajout_auteur" method="post" action='' > 
 	<fieldset> 
@@ -12,7 +14,8 @@
 	<fieldset> 
 		<legend>Les informations complémentaires (facultatives)</legend> 
 		<dt><label for='biographie'>Sa biographie</label></dt> 
-		<dd><textarea id='biographie' rows='5' cols='60'>Veuillez entrer la biographie de l'auteur</textarea></dd> 
+		<dd><textarea id='biographie' rows='5' cols='60' name="biographie">Veuillez entrer la biographie de l'auteur</textarea></dd> 
 	</fieldset> 
 	<input type='reset' value='Annuler' />	<input type='submit' value='OK'> 
 	</form> 
+{{FOOTER}}
