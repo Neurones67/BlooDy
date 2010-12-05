@@ -24,11 +24,12 @@ img
 	background-color:#3A3A3A;
 }
 /*	Sélection d'un contenant unique	*/
-/*#centre
+#centre
 {
 	overflow: hidden;
 	background-color:#3A3A3A;
-}*/
+	border-left: none;
+}
 #body
 {
 	min-width : 1100px;
@@ -41,7 +42,7 @@ img
 	min-height : 400px;
 	margin-right : 170px;
 	margin-left : 170px;
-	background-color: #BCBCBC;
+	background-color: #DEDEDE;
 	border-bottom: none;
 	border-top: none;
 }
@@ -91,7 +92,7 @@ img
 #menuGauche
 {
 	float : left;
-	background-image:url('/images/menuGauche.png');
+	background-image:url('/images/menugauche2.png');
 }
 #menuDroite
 {
