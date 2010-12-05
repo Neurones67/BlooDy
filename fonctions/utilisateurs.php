@@ -441,6 +441,10 @@ class Utilisateurs
 				$template="<div class='erreur'>Aucune demande de redéfinition de mot de passe trouvée pour ce code";
 			}
 		}
+		else
+		{
+			$template=file_get_contents(PARTIAL.'motdepasseperdu.xhtml');
+		}
 		return $template;
 	}
 				
