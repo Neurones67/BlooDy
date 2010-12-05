@@ -9,7 +9,7 @@
 		<dt><label for="password" >Mot de passe :</label></dt> 
 		<dd><input id="password" name="password" type="password" /></dd> 
 		<dt><label for="password2" >Confirmer mot de passe :</label></dt> 
-		<dd><input id="password2" name="password2" type="password"  onblur="VerificationMotDePasses('password','password2','erreurEmail')"  /></dd>
+		<dd><input id="password2" name="password2" type="password"  onblur="verificationMotDePasses()"  /></dd>
 		<p id='erreurMotDePasse'> </p>  
 		<dt><label for="email" >E-mail :</label></dt> 
 		<dd><input id="email" name="email" type="text" onblur='verificationConformiteEmail()'/></dd> 
