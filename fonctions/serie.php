@@ -80,7 +80,7 @@
  	}
  	public function liste()
  	{
- 		$sql='SELECT sid,snom,svalide FROM ser';
+ 		$sql='SELECT sid,snom,svalide FROM series';
  		return queryToArray($this->mysql->query($sql));
  	}
  }
