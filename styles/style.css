@@ -20,15 +20,15 @@ img
 }
 #menuGauche, #menuDroite
 {
-	width : 150px;
+	width : 170px;
 	background-color:#3A3A3A;
 }
 /*	Sélection d'un contenant unique	*/
-#centre
+/*#centre
 {
 	overflow: hidden;
 	background-color:#3A3A3A;
-}
+}*/
 #body
 {
 	min-width : 1100px;
@@ -61,7 +61,7 @@ img
 }*/
 #barreDeNavigation
 {
-	background-image: url('/images/menuco.png');
+	background-image: url('/images/menuco2.png');
 	border : solid 1px #000;
 	border-top : none;	
 	background-color : gray;
@@ -91,7 +91,7 @@ img
 #menuGauche
 {
 	float : left;
-	background-image:url('/images/menugauche.png');
+	background-image:url('/images/menuGauche.png');
 }
 #menuDroite
 {
