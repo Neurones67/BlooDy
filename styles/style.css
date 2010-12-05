@@ -185,27 +185,27 @@ h2
 	display: none;
 }
 /*formulaire */
-#formulaire_inscription, #formulaire_ajout_bd,#formulaire_recherche_avancee,#id_motdepasseperdu,#formulaire_ajout_auteur,#changer_mdp,#changer_mail
+#formulaire_inscription, #formulaire_ajout_bd,#formulaire_recherche_avancee,#id_motdepasseperdu,#formulaire_ajout_auteur,#changer_mdp,#changer_mail,#changer_description
 {
 	width: 80%;
 	margin:auto;
 }
 
 
-#formulaire_inscription dd, #formulaire_ajout_bd dd,#formulaire_recherche_avancee dd,#id_motdepasseperdu dd,#formulaire_ajout_auteur dd,#changer_mdp dd,#changer_mail dd
+#formulaire_inscription dd, #formulaire_ajout_bd dd,#formulaire_recherche_avancee dd,#id_motdepasseperdu dd,#formulaire_ajout_auteur dd,#changer_mdp dd,#changer_mail dd,#changer_description dd
 {
 	margin: 2px 0;
 }
 
 /* fieldset , legend */
-#formulaire_inscription fieldset ,#formulaire_ajout_bd fieldset,#formulaire_recherche_avancee fieldset,#id_motdepasseperdu,#formulaire_ajout_auteur,#changer_mdp,#changer_mail
+#formulaire_inscription fieldset ,#formulaire_ajout_bd fieldset,#formulaire_recherche_avancee fieldset,#id_motdepasseperdu fieldset,#formulaire_ajout_auteur fieldset,#changer_mdp fieldset,#changer_mail fieldset,#changer_description fieldset
 {
 	margin-bottom: 1px;
 	border: #CCC 1px solid;
 }
 
 
-#formulaire_inscription fieldset legend, #formulaire_ajout_bd fieldset legend,#formulaire_recherche_avancee fieldset legend,#id_motdepasseperdu fieldset legend,#formulaire_ajout_auteur fieldset legend,#changer_mdp fieldset legend,#changer_mail fieldset legend
+#formulaire_inscription fieldset legend, #formulaire_ajout_bd fieldset legend,#formulaire_recherche_avancee fieldset legend,#id_motdepasseperdu fieldset legend,#formulaire_ajout_auteur fieldset legend,#changer_mdp fieldset legend,#changer_mail fieldset legend,#changer_description fieldset legend
 {
 	margin-top:10px;
 	padding: 0 10px;
@@ -215,7 +215,7 @@ h2
 	color: #999;
 }
 /*label*/
-#formulaire_inscription dt, #formulaire_ajout_bd dt,#id_motdepasseperdu dt,#formulaire_ajout_auteur dt,#changer_mdp dt,#changer_mail dt
+#formulaire_inscription dt, #formulaire_ajout_bd dt,#id_motdepasseperdu dt,#formulaire_ajout_auteur dt,#changer_mdp dt,#changer_mail dt,#changer_description dt
 {
 	background-color: #FFCC66;
 	display: block;
@@ -242,12 +242,12 @@ h2
 {
 	width:10%;
 }
-#formulaire_ajout_bd textarea,#formulaire_ajout_auteur textarea,#changer_mdp textarea
+#formulaire_ajout_bd textarea,#formulaire_ajout_auteur textarea,#changer_mdp textarea,#changer_description textarea
 {
 	margin-top:10px;
 	border: #CCC 1px solid
 }
-#formulaire_inscription label:hover, #formulaire_ajout_bd label:hover,#formulaire_recherche_avancee label:hover,#id_motdepasseperdu label:hover,#formulaire_ajout_auteur label:hover,#changer_mdp label:hover,#changer_mail:hover
+#formulaire_inscription label:hover, #formulaire_ajout_bd label:hover,#formulaire_recherche_avancee label:hover,#id_motdepasseperdu label:hover,#formulaire_ajout_auteur label:hover,#changer_mdp label:hover,#changer_mail label:hover,#changer_description label:hover
 {
 	font-weight: bold;
 }
@@ -255,7 +255,7 @@ h2
 {
 	background: none;
 }
-#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select,#formulaire_ajout_auteur input,#formulaire_ajout_auteur select,#changer_mail select,#changer_mail input
+#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select,#formulaire_ajout_auteur input,#formulaire_ajout_auteur select,#changer_mail select,#changer_mail input,#changer_description input, #changer_description select
 {
 	width:40%;
 	margin-top:4px;
@@ -263,7 +263,7 @@ h2
 	border: #CCC 1px solid;
 }
 
-#formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus, #formulaire_ajout_bd input:hover, #formulaire_ajout_bd select:hover, #formulaire_ajout_bd input:focus, #formulaire_ajout_bd select:focus,#formulaire_recherche_avancee input:hover, #formulaire_recherche_avancee select:hover, #formulaire_recherche_avancee input:focus, #formulaire_recherche_avancee:focus,#id_motdepasseperdu select:hover,#id_motdepasseperdu input:hover, #id_motdepasseperdu select:focus,#id_motdepasseperdu input:focus,#formulaire_ajout_auteur input:hover,#formulaire_ajout_auteur input:focus,#formulaire_ajout_auteur select:hover,#formulaire_ajout_auteur select:focus,#changer_mdp select:hover,#changer_mdp select:focus,#changer_mdp input:hover,#changer_mdp input:focus,#changer_mail input:focus,#changer_mail input:hover,#changer_mail select:focus,#changer_mail select:hover
+#formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus, #formulaire_ajout_bd input:hover, #formulaire_ajout_bd select:hover, #formulaire_ajout_bd input:focus, #formulaire_ajout_bd select:focus,#formulaire_recherche_avancee input:hover, #formulaire_recherche_avancee select:hover, #formulaire_recherche_avancee input:focus, #formulaire_recherche_avancee:focus,#id_motdepasseperdu select:hover,#id_motdepasseperdu input:hover, #id_motdepasseperdu select:focus,#id_motdepasseperdu input:focus,#formulaire_ajout_auteur input:hover,#formulaire_ajout_auteur input:focus,#formulaire_ajout_auteur select:hover,#formulaire_ajout_auteur select:focus,#changer_mdp select:hover,#changer_mdp select:focus,#changer_mdp input:hover,#changer_mdp input:focus,#changer_mail input:focus,#changer_mail input:hover,#changer_mail select:focus,#changer_mail select:hover,#changer_description select:hover,#changer_description select:focus,#changer_description input:hover,#changer_description input:focus
 {
 	border: #999 1px solid;
 	background-color: #DDEEFF;
@@ -275,12 +275,12 @@ h2
 	border: #DDEEFF 1px solid;
 }
 
-#formulaire_inscription input[type="submit"]:hover,#formulaire_ajout_bd input[type="submit"]:hover,#formulaire_recherche_avancee input[type="submit"]:hover,#id_motdepasseperdu input[type="submit"]:hover,#formulaire_ajout_auteur input[type="submit"]:hover,#changer_mdp input[type="submit"]:hover,#changer_mail input[type="submit"]:hover
+#formulaire_inscription input[type="submit"]:hover,#formulaire_ajout_bd input[type="submit"]:hover,#formulaire_recherche_avancee input[type="submit"]:hover,#id_motdepasseperdu input[type="submit"]:hover,#formulaire_ajout_auteur input[type="submit"]:hover,#changer_mdp input[type="submit"]:hover,#changer_mail input[type="submit"]:hover,#changer_description input[type="submit"]:hover
 {
 	background-color: #66CC33;
 	cursor: pointer;
 }
-#formulaire_inscription input[type="reset"]:hover,#formulaire_ajout_bd input[type="reset"]:hover,#formulaire_recherche_avancee input[type="reset"]:hover,#id_motdepasseperdu input[type="reset"]:hover,#formulaire_ajout_auteur input[type="reset"]:hover,#changer_mdp input[type="reset"],#changer_mail input[type="reset"]
+#formulaire_inscription input[type="reset"]:hover,#formulaire_ajout_bd input[type="reset"]:hover,#formulaire_recherche_avancee input[type="reset"]:hover,#id_motdepasseperdu input[type="reset"]:hover,#formulaire_ajout_auteur input[type="reset"]:hover,#changer_mdp input[type="reset"]:hover,#changer_mail input[type="reset"]:hover,#changer_description input[type="reset"]:hover
 {
 	background-color: #E6484D;
 	cursor: pointer;
