@@ -33,6 +33,8 @@ require_once('utilisateurs.php');
 require_once('livre.php'); 
 require_once('auteur.php');
 require_once('editeur.php');
+require_once('serie.php');
+require_once('genre.php');
 require_once('fonctions_affichage.php');
 require_once('mail.php');
 
