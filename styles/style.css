@@ -157,6 +157,7 @@ h2
 	line-height: 1.5;
 	text-decoration: none;
 }
+#menuGauche
 #menuGauche p:hover,#menuGauche a:hover
 {
 	background-color: #000000;
@@ -182,7 +183,7 @@ h2
 }
 
 
-#formulaire_inscription dd, #formulaire_ajout_bd dd,#formulaire_recherche_avancee dd
+#formulaire_inscription dd, #formulaire_ajout_bd dd,#formulaire_recherche_avancee dd,#id_motdepasseperdu dd
 {
 	margin: 2px 0;
 }
@@ -205,7 +206,7 @@ h2
 	color: #999;
 }
 /*label*/
-#formulaire_inscription dt, #formulaire_ajout_bd dt
+#formulaire_inscription dt, #formulaire_ajout_bd dt,#id_motdepasseperdu dt
 {
 	background-color: #FFCC66;
 	display: block;
@@ -232,7 +233,7 @@ h2
 {
 	width:40%;
 }
-#formulaire_inscription label:hover, #formulaire_ajout_bd label:hover,#formulaire_recherche_avancee label:hover
+#formulaire_inscription label:hover, #formulaire_ajout_bd label:hover,#formulaire_recherche_avancee label:hover,#id_motdepasseperdu label:hover
 {
 	font-weight: bold;
 }
@@ -240,7 +241,7 @@ h2
 {
 	background: none;
 }
-#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select
+#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select
 {
 	width:40%;
 	margin-top:4px;
@@ -248,7 +249,7 @@ h2
 	border: #CCC 1px solid;
 }
 
-#formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus, #formulaire_ajout_bd input:hover, #formulaire_ajout_bd select:hover, #formulaire_ajout_bd input:focus, #formulaire_ajout_bd select:focus,#formulaire_recherche_avancee input:hover, #formulaire_recherche_avancee select:hover, #formulaire_recherche_avancee input:focus, #formulaire_recherche_avancee:focus
+#formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus, #formulaire_ajout_bd input:hover, #formulaire_ajout_bd select:hover, #formulaire_ajout_bd input:focus, #formulaire_ajout_bd select:focus,#formulaire_recherche_avancee input:hover, #formulaire_recherche_avancee select:hover, #formulaire_recherche_avancee input:focus, #formulaire_recherche_avancee:focus,#id_motdepasseperdu select:hover,#id_motdepasseperdu input:hover, #id_motdepasseperdu select:focus,#id_motdepasseperdu input:focus
 {
 	border: #999 1px solid;
 	background-color: #DDEEFF;
@@ -260,18 +261,18 @@ h2
 	border: #DDEEFF 1px solid;
 }
 
-#formulaire_inscription input[type="submit"]:hover,#formulaire_ajout_bd input[type="submit"]:hover,#formulaire_recherche_avancee input[type="submit"]:hover
+#formulaire_inscription input[type="submit"]:hover,#formulaire_ajout_bd input[type="submit"]:hover,#formulaire_recherche_avancee input[type="submit"]:hover,#id_motdepasseperdu input[type="submit"]:hover
 {
 	background-color: #66CC33;
 	cursor: pointer;
 }
 
-#formulaire_inscription input[type="reset"],#formulaire_ajout_bd input[type="reset"],#formulaire_recherche_avancee input[type="reset"]
+#formulaire_inscription input[type="reset"],#formulaire_ajout_bd input[type="reset"],#formulaire_recherche_avancee input[type="reset"],#id_motdepasseperdu input[type="reset"]
 {
 	border: #DDEEFF 1px solid;
 }
 
-#formulaire_inscription input[type="reset"]:hover,#formulaire_ajout_bd input[type="reset"]:hover,#formulaire_recherche_avancee input[type="reset"]:hover
+#formulaire_inscription input[type="reset"]:hover,#formulaire_ajout_bd input[type="reset"]:hover,#formulaire_recherche_avancee input[type="reset"]:hover,#id_motdepasseperdu input[type="reset"]:hover
 {
 	background-color: #E6484D;
 	cursor: pointer;
