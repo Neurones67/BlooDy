@@ -32,7 +32,7 @@ function verificationEmail()
 {
 	var paragraphe = document.getElementById("erreurEmail");
 	var old_contenu = paragraphe.firstChild;
-	if(old_contenu.value != "Syntaxe de l'Email fausse ")
+	if(old_contenu != "Syntaxe de l'Email fausse ")
 	{
 		paragraphe.removeChild(old_contenu);
 		if(document.getElementById('email').value != document.getElementById('email2').value)
