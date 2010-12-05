@@ -91,7 +91,7 @@ class Auteur
 				$myear=$myear+1900;
 			}
 			$mmonth=intval($_POST['moisNaissance'])%13;
-			$mday=intval($_POST['jourNaissance']%31;
+			$mday=intval($_POST['jourNaissance'])%31;
 			$mdate='"'.$myear.'-'.$mmonth.'-'.$mday.'"';
 			if($this->ajout($nom,$prenom,$biographie,$mdate))
 			{
