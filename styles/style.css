@@ -323,10 +323,17 @@ h2
 	margin-right: 15px;
 }
 /* présentation des tableaux*/
-#bds th,#bds tr,#bds td
+#bds tr,#bds td
 {
 	border: solid 1px black;
-	text-align:center; 
+	text-align:center;
+}
+#bds th
+{
+	background-color:#527376;
+	font-family: Verdana;
+	color: #cccccc;
+	font-size: 8pt;
 }
 #bds 
 { 
