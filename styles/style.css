@@ -152,12 +152,18 @@ h2
 	list-style-type:none;
 	padding-left:7px;
 }
+#menuDroite p
+{
+	color:#ff5814;
+	font-weight: bold;
+	font-size: 18px;
+}
 #menuGauche p
 {
 	color:#ff5814;
 	font-weight: bold;
 	cursor: pointer;
-	font-size: 15px	
+	font-size: 15px;	
 }
 #menuGauche p,#menuGauche a
 {
