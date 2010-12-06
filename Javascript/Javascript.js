@@ -42,7 +42,6 @@ function verificationEmail()
 	}
 	else if(document.getElementById('email2').value != "")
 	{
-		paragraphe.removeChild(old_contenu);
 		if(document.getElementById('email').value != document.getElementById('email2').value)
 		{
 		        //Ajout de l'information incorrect
