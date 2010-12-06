@@ -193,7 +193,7 @@ h2
 }
 
 
-#formulaire_inscription dd, #formulaire_ajout_bd dd,#formulaire_recherche_avancee dd,#id_motdepasseperdu dd,#formulaire_ajout_auteur dd,#changer_mdp dd,#changer_mail dd,#changer_description dd
+#formulaire_inscription dd, #formulaire_ajout_bd dd,#formulaire_recherche_avancee dd,#id_motdepasseperdu dd,#formulaire_ajout_auteur dd,#changer_mdp dd,#changer_mail dd,#changer_description dd,#recherche_auteur dd
 {
 	margin: 2px 0;
 }
@@ -216,7 +216,7 @@ h2
 	color: #999;
 }
 /*label*/
-#formulaire_inscription dt, #formulaire_ajout_bd dt,#id_motdepasseperdu dt,#formulaire_ajout_auteur dt,#changer_mdp dt,#changer_mail dt,#changer_description dt
+#formulaire_inscription dt, #formulaire_ajout_bd dt,#id_motdepasseperdu dt,#formulaire_ajout_auteur dt,#changer_mdp dt,#changer_mail dt,#changer_description dt,#recherche_auteur dt
 {
 	background-color: #FFCC66;
 	display: block;
