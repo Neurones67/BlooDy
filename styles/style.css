@@ -286,10 +286,15 @@ h2
 	background-color: #E6484D;
 	cursor: pointer;
 }
-#formulaire_recherche_avancee input[type="checkbox"],#formulaire_recherche_avancee input[type="radio"],#consultation_ajout input[type="checkbox"]
+#formulaire_recherche_avancee input[type="checkbox"],#formulaire_recherche_avancee input[type="radio"]
 {
 	cursor:pointer;
 	width:2%;
+}
+#consultation_ajout input[type="checkbox"]
+{
+	cursor:pointer;
+	width:20%;
 }
 /*css de la page d'aide*/
 #questionnaire
