@@ -26,44 +26,39 @@ function verificationMotDePasse()
 		        paragraphe.style.color="green"
 		}
 	}
-paragraphe.appendChild(info); 
+	paragraphe.appendChild(info); 
 }
 function verificationEmail()
 {
 	var paragraphe = document.getElementById("erreurEmail");
 	var old_contenu = paragraphe.firstChild;
-	if(old_contenu != "Syntaxe de l'Email fausse ")
-	{
-		paragraphe.removeChild(old_contenu);
-		if(document.getElementById('email').value != document.getElementById('email2').value)
-		{
-		        //Ajout de l'information incorrect
-		        var info = document.createTextNode("Email différents ");
-			paragraphe.style.color="red";
-		        paragraphe.appendChild(info);
-		}
-		else
-		{
-		        //Ajout de l'information correct
-				var info = document.createTextNode("Email correct ");
-		        	paragraphe.style.color="green";
-		        	paragraphe.appendChild(info);
-		} 
-	}
-}
-function verificationConformiteEmail()
-{
-	var paragraphe = document.getElementById("erreurEmail");
 	var expr = new RegExp('^[-a-z0-9!#$%&\'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&\'*+/=?^_`{|}~]+)*@(([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){1,63}\.)+([a-z0-9]([-a-z0-9]*[a-z0-9]+)?){2,63}$',"i");
 	var old_contenu = paragraphe.firstChild;
         paragraphe.removeChild(old_contenu);
 	paragraphe.style.color="red";
 	if(!document.getElementById("email").value.match(expr))
 	{
-		var info = document.createTextNode("Syntaxe de l'Email fausse ");
+		var info = document.createTextNode("Adresse e-mail incorrecte")
+	}
+	else if(document.getElementById('email2').value != "")
+	{
+		paragraphe.removeChild(old_contenu);
+		if(document.getElementById('email').value != document.getElementById('email2').value)
+		{
+		        //Ajout de l'information incorrect
+		        var info = document.createTextNode("Les deux adresses e-mail ne sont pas identiques");
+			paragraphe.style.color="red";
+		}
+		else
+		{
+		        //Ajout de l'information correct
+			var info = document.createTextNode("Adresse e-mail correcte");
+		        paragraphe.style.color="green";
+		} 
 	}
 	paragraphe.appendChild(info);
 }
+
 function cachevisible(id)
 {
 	var p = document.getElementById(id);
