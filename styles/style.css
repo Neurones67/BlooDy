@@ -256,7 +256,7 @@ h2
 {
 	background: none;
 }
-#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select,#formulaire_ajout_auteur input,#formulaire_ajout_auteur select,#changer_mail select,#changer_mail input,#changer_description input, #changer_description select,#changer_mdp select,#changer_mdp input,#consultation_ajout input
+#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select,#formulaire_ajout_auteur input,#formulaire_ajout_auteur select,#changer_mail select,#changer_mail input,#changer_description input, #changer_description select,#changer_mdp select,#changer_mdp input,#consultation_ajout input,#consultation_suppr input
 {
 	width:40%;
 	margin-top:4px;
@@ -276,12 +276,12 @@ h2
 	border: #DDEEFF 1px solid;
 }
 
-#formulaire_inscription input[type="submit"]:hover,#formulaire_ajout_bd input[type="submit"]:hover,#formulaire_recherche_avancee input[type="submit"]:hover,#id_motdepasseperdu input[type="submit"]:hover,#formulaire_ajout_auteur input[type="submit"]:hover,#changer_mdp input[type="submit"]:hover,#changer_mail input[type="submit"]:hover,#changer_description input[type="submit"]:hover,#consultation_ajout input[type="submit"]:hover
+#formulaire_inscription input[type="submit"]:hover,#formulaire_ajout_bd input[type="submit"]:hover,#formulaire_recherche_avancee input[type="submit"]:hover,#id_motdepasseperdu input[type="submit"]:hover,#formulaire_ajout_auteur input[type="submit"]:hover,#changer_mdp input[type="submit"]:hover,#changer_mail input[type="submit"]:hover,#changer_description input[type="submit"]:hover,#consultation_ajout input[type="submit"]:hover,#consultation_suppr input[type="submit"]:hover
 {
 	background-color: #66CC33;
 	cursor: pointer;
 }
-#formulaire_inscription input[type="reset"]:hover,#formulaire_ajout_bd input[type="reset"]:hover,#formulaire_recherche_avancee input[type="reset"]:hover,#id_motdepasseperdu input[type="reset"]:hover,#formulaire_ajout_auteur input[type="reset"]:hover,#changer_mdp input[type="reset"]:hover,#changer_mail input[type="reset"]:hover,#changer_description input[type="reset"]:hover,#consultation_ajout input[type="reset"]:hover
+#formulaire_inscription input[type="reset"]:hover,#formulaire_ajout_bd input[type="reset"]:hover,#formulaire_recherche_avancee input[type="reset"]:hover,#id_motdepasseperdu input[type="reset"]:hover,#formulaire_ajout_auteur input[type="reset"]:hover,#changer_mdp input[type="reset"]:hover,#changer_mail input[type="reset"]:hover,#changer_description input[type="reset"]:hover,#consultation_ajout input[type="reset"]:hover,#consultation_suppr input[type="reset"]:hover
 {
 	background-color: #E6484D;
 	cursor: pointer;
@@ -291,7 +291,7 @@ h2
 	cursor:pointer;
 	width:2%;
 }
-#consultation_ajout input[type="checkbox"]
+#consultation_ajout input[type="checkbox"],#consultation_suppr input[type="checkbox"]
 {
 	cursor:pointer;
 	width:15%;
