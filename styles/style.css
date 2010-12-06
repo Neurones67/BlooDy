@@ -359,3 +359,15 @@ h2
 	margin-right:5px;
 	margin-bottom:5px;
 }
+/*classe erreur*/
+.erreur
+{
+	color:#CB8D8D;
+	padding-right:15px;
+}
+.message
+{
+	color:#7e6e6e;
+	padding-right:15px;
+}
+}
