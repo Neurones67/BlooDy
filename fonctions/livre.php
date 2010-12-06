@@ -154,7 +154,7 @@ class Livre
 	// Permet de traiter le formulaire d'ajout/modification d'une BD
 	public function ajoutForm()
 	{
-		$template=trim(file_get_contents(PARTIAL.'ajout_bd.xhtml'));
+		$template="";
 		$param=requestObject('Param');
 		$lid=intval($param->getValue());
 		if(isset($_POST['lid'],$_POST['nomBD'], $_POST['nomAuteur'], $_POST['prenomAuteur'],$_POST['noISBN'],$_POST['noEAN13'],$_POST['genre'],$_POST['jourPublication'],$_POST['moisPublication'],$_POST['anneePublication'],$_POST['synopsis']) and !empty($_POST['nomBD']) and !empty($_POST['nomAuteur']))
@@ -177,11 +177,11 @@ class Livre
 
 				if($lid=$this->ajoutLivre($_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',requestObject('Utilisateurs')->getUid(),$_POST['genre']))
 				{
-					$template.="Livre enregistré sous l'identifiant ".$lid;
+					$template.="<div class='message'>Livre enregistré sous l'identifiant ".$lid."</div>";
 				}
 				else
 				{
-					$template.="Echec de l'enregistrement";
+					$template.="<div class='erreur'>Echec de l'enregistrement</div>";
 				}
 			}
 			else
@@ -189,14 +189,15 @@ class Livre
 				// BD existante => modification
 				if($this->update($lid,$_POST['nomBD'],$_POST['noISBN'],$_POST['noEAN13'],$date_publication,$_POST['synopsis'],$aid,'',$_POST['genre']))
 				{
-					$template.="BD mise à jour avec succès";
+					$template.="<div class='message'>BD mise à jour avec succès</div>";
 				}
 				else
 				{
-					$template.="Echec de la mise à jour";
+					$template.="<div class='erreur'>Echec de la mise à jour</div>";
 				}
 			}
 		}
+		$template.=trim(file_get_contents(PARTIAL.'ajout_bd.xhtml'));
 		$livre=new Livre($lid);
 		$template=$this->affichLivre($template,$livre);
 		return $template;
