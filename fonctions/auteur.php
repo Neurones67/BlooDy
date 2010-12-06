@@ -70,7 +70,7 @@ class Auteur
 			$template='<ul>';
 			foreach($data as $auteur)
 			{
-				$template.='<li><a href="/auteur-'.$auteur['aid'].'.html">'.$auteur['anom'].' '.$auteur['aprenom'].'</a> Né le '.$auteur['adnaissance'].' <a href="/auteur-'.$auteur['aid'].'.html?delete=true">Supprimer</a></li>';
+				$template.='<li><a href="/auteur-'.$auteur['aid'].'.html">'.$auteur['anom'].' '.$auteur['aprenom'].'</a> Né le '.$auteur['adnaissance'].' <!--<a href="/auteur-'.$auteur['aid'].'.html?delete=true">Supprimer</a>--></li>';
 			}
 			$template.='</ul>';
 		}
