@@ -88,7 +88,12 @@ class Affichage
 			$res .= "</tr>\n";
 		}
 		$res .= "</table>\n";
-
+				
+		if(!$user->estConnecte())
+		{
+			$res .= "<input type='reset' value='Annuler' />";
+			$res .= "<input type='submit' value='Supprimer' />";
+		}
 		return $res;
 	}
 	public function consultation_bd()
@@ -129,6 +134,11 @@ class Affichage
 		}
 		$res .= "</table>\n";
 
+		if($user->estConnecte())
+		{
+			$res .= "<input type='reset' value='Annuler' />";
+			$res .= "<input type='submit' value='Ajouter' />";
+		}
 		return $res;
 	}
 	public function resultat_recherche()
@@ -203,8 +213,12 @@ class Affichage
 			$res .= "</table>\n";
 		}
 
+		if($user->estConnecte())
+		{
+			$res .= "<input type='reset' value='Annuler' />";
+			$res .= "<input type='submit' value='Ajouter' />";
+		}
 		return $res;
-		
 	}
 }
 ?>
