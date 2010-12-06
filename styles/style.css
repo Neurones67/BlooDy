@@ -294,7 +294,7 @@ h2
 #consultation_ajout input[type="checkbox"],#consultation_suppr input[type="checkbox"]
 {
 	cursor:pointer;
-	width:15%;
+	width:11%;
 	margin:auto;
 }
 /*css de la page d'aide*/
