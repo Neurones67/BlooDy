@@ -360,7 +360,7 @@ h2
 	margin-bottom:5px;
 }
 /*classe erreur*/
-.erreur .error
+.erreur, .error
 {
 	color:#CB8D8D;
 	padding-right:15px;
