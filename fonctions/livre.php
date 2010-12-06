@@ -388,7 +388,7 @@ class Livre
 		$uid=requestObject('Utilisateurs')->getUid();
 		// Protection du motclé :
 		$motcle=$this->mysql->real_escape_string($motcle);
-		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.aid,a.aprenom,a.anom,s.snom,g.gnom,e.enom,ajdate,ap.date_achat,ap.etat,ap.emplacement FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gnom LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid LEFT JOIN appartient ap ON ap.lid=l.lid AND ap.uid='.$uid.' WHERE l.nom LIKE "%'.$motcle.'%"';
+		$sql='SELECT l.lid,l.nom,l.isbn,l.ean13,l.date_publication,l.lvalide,l.description,a.aid,a.aprenom,a.anom,s.snom,g.gnom,e.enom,ajdate,ap.date_achat,ap.etat,ap.emplacement FROM livres l JOIN auteurs a ON l.aid=a.aid LEFT JOIN series s ON l.serie=s.sid LEFT JOIN genre g ON l.genre=g.gid LEFT JOIN editeurs e ON e.eid=l.editeur LEFT JOIN utilisateurs u ON l.ajuid=u.uid LEFT JOIN appartient ap ON ap.lid=l.lid AND ap.uid='.$uid.' WHERE l.nom LIKE "%'.$motcle.'%"';
 		return queryToArray($this->mysql->query($sql));
 	}
 }
