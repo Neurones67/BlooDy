@@ -89,7 +89,7 @@ class Affichage
 		}
 		$res .= "</table>\n";
 				
-		if(!$user->estConnecte())
+		if($user->estConnecte())
 		{
 			$res .= "<input type='reset' value='Annuler' />";
 			$res .= "<input type='submit' value='Supprimer' />";
