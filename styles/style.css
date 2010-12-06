@@ -377,8 +377,12 @@ h2
 	font-size:1.1em;
 }
 /*affichage complet*/
-#affichageCompletBD p
+#affichageCompletBD image
 {
 	float:left;
+	margin-right:5px;
+	margin-left:5px;
+	margin-top:5px;
+	margin-bottom:5px;
 }
 
