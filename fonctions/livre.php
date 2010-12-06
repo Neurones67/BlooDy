@@ -137,7 +137,7 @@ class Livre
 		$ean13=$this->mysql->real_escape_string($ean13);
 		$date_publication=$this->mysql->real_escape_string($date_publication);
 		$description=$this->mysql->real_escape_string($description);
-		$description=intval($genre);
+		$genre=intval($genre);
 		$aid=intval($aid);
 		$sid=intval($sid);
 		$livre=new Livre($lid);
