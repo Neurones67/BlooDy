@@ -248,7 +248,7 @@ h2
 	margin-top:10px;
 	border: #CCC 1px solid
 }
-#formulaire_inscription label:hover, #formulaire_ajout_bd label:hover,#formulaire_recherche_avancee label:hover,#id_motdepasseperdu label:hover,#formulaire_ajout_auteur label:hover,#changer_mdp label:hover,#changer_mail label:hover,#changer_description label:hover
+#formulaire_inscription label:hover, #formulaire_ajout_bd label:hover,#formulaire_recherche_avancee label:hover,#id_motdepasseperdu label:hover,#formulaire_ajout_auteur label:hover,#changer_mdp label:hover,#changer_mail label:hover,#changer_description label:hover,#recherche_auteur label:hover
 {
 	font-weight: bold;
 }
@@ -256,7 +256,7 @@ h2
 {
 	background: none;
 }
-#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select,#formulaire_ajout_auteur input,#formulaire_ajout_auteur select,#changer_mail select,#changer_mail input,#changer_description input, #changer_description select,#changer_mdp select,#changer_mdp input,#consultation_ajout input,#consultation_suppr input
+#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select,#formulaire_ajout_auteur input,#formulaire_ajout_auteur select,#changer_mail select,#changer_mail input,#changer_description input, #changer_description select,#changer_mdp select,#changer_mdp input,#consultation_ajout input,#consultation_suppr input,#recherche_auteur input,#recherche_auteur select
 {
 	width:40%;
 	margin-top:4px;
@@ -264,7 +264,7 @@ h2
 	border: #CCC 1px solid;
 }
 
-#formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus, #formulaire_ajout_bd input:hover, #formulaire_ajout_bd select:hover, #formulaire_ajout_bd input:focus, #formulaire_ajout_bd select:focus,#formulaire_recherche_avancee input:hover, #formulaire_recherche_avancee select:hover, #formulaire_recherche_avancee input:focus, #formulaire_recherche_avancee:focus,#id_motdepasseperdu select:hover,#id_motdepasseperdu input:hover, #id_motdepasseperdu select:focus,#id_motdepasseperdu input:focus,#formulaire_ajout_auteur input:hover,#formulaire_ajout_auteur input:focus,#formulaire_ajout_auteur select:hover,#formulaire_ajout_auteur select:focus,#changer_mdp select:hover,#changer_mdp select:focus,#changer_mdp input:hover,#changer_mdp input:focus,#changer_mail input:focus,#changer_mail input:hover,#changer_mail select:focus,#changer_mail select:hover,#changer_description select:hover,#changer_description select:focus,#changer_description input:hover,#changer_description input:focus
+#formulaire_inscription input:hover, #formulaire_inscription select:hover, #formulaire_inscription input:focus, #formulaire_inscription select:focus, #formulaire_ajout_bd input:hover, #formulaire_ajout_bd select:hover, #formulaire_ajout_bd input:focus, #formulaire_ajout_bd select:focus,#formulaire_recherche_avancee input:hover, #formulaire_recherche_avancee select:hover, #formulaire_recherche_avancee input:focus, #formulaire_recherche_avancee:focus,#id_motdepasseperdu select:hover,#id_motdepasseperdu input:hover, #id_motdepasseperdu select:focus,#id_motdepasseperdu input:focus,#formulaire_ajout_auteur input:hover,#formulaire_ajout_auteur input:focus,#formulaire_ajout_auteur select:hover,#formulaire_ajout_auteur select:focus,#changer_mdp select:hover,#changer_mdp select:focus,#changer_mdp input:hover,#changer_mdp input:focus,#changer_mail input:focus,#changer_mail input:hover,#changer_mail select:focus,#changer_mail select:hover,#changer_description select:hover,#changer_description select:focus,#changer_description input:hover,#changer_description input:focus,#recherche_auteur input:focus,#recherche_auteur input:hover,#recherche_auteur select:focus, #recherche_auteur select:hover
 {
 	border: #999 1px solid;
 	background-color: #DDEEFF;
