@@ -256,7 +256,7 @@ h2
 {
 	background: none;
 }
-#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select,#formulaire_ajout_auteur input,#formulaire_ajout_auteur select,#changer_mail select,#changer_mail input,#changer_description input, #changer_description select,#changer_mdp select,#changer_mdp input
+#formulaire_inscription input, #formulaire_inscription select, #formulaire_ajout_bd input, #formulaire_ajout_bd select, #formulaire_recherche_avancee input, #formulaire_recherche_avancee select,#id_motdepasseperdu input,#id_motdepasseperdu select,#formulaire_ajout_auteur input,#formulaire_ajout_auteur select,#changer_mail select,#changer_mail input,#changer_description input, #changer_description select,#changer_mdp select,#changer_mdp input,#consultation_ajout input
 {
 	width:40%;
 	margin-top:4px;
