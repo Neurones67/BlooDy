@@ -111,4 +111,22 @@ class Nav
 		$template=str_replace('{{ADDRNAME}}',$addrname,$template);
 		return $template;
 	}
+	public function needConnected()
+	{
+		$user=requestObject('Utilisateurs');
+		if(!$user->estConnecte())
+		{
+			header('302: Found');
+			header('location: /');
+		}
+	}
+	public function needDeconnected()
+	{
+		$user=requestObject('Utilisateurs');
+		if($user->estConnecte())
+		{
+			header('302: Found');
+			header('location: /');
+		}
+	}
 }
