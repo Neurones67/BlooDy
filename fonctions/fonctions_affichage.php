@@ -211,13 +211,13 @@ class Affichage
 				$res .= "</tr>\n";
 			}
 			$res .= "</table>\n";
+			if($user->estConnecte())
+			{
+				$res .= "<input type='reset' value='Annuler' />";
+				$res .= "<input type='submit' value='Ajouter' />";
+			}
 		}
 
-		if($user->estConnecte())
-		{
-			$res .= "<input type='reset' value='Annuler' />";
-			$res .= "<input type='submit' value='Ajouter' />";
-		}
 		return $res;
 	}
 }
