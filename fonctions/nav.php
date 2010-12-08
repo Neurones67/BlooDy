@@ -118,8 +118,8 @@ class Nav
 		{
 			header('302: Found');
 			header('location: /');
+			exit();
 		}
-		exit();
 	}
 	public function needDeconnected()
 	{
@@ -128,7 +128,7 @@ class Nav
 		{
 			header('302: Found');
 			header('location: /');
+			exit();
 		}
-		exit();
 	}
 }
