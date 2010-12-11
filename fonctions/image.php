@@ -51,6 +51,7 @@ class Image
 		{
 			$template="<div class='error'>Une erreur est survenue, pas de fichiers ? Pas bon format ?</div>";
 		}
+		return $template;
 			
 	}
 	public function uploadCover()
@@ -70,6 +71,7 @@ class Image
 		{
 			$template="<div class='error'>Une erreur est survenue, pas de fichiers ? Pas bon format ?</div>";
 		}
+		return $template;
 			
 	}
 	// Fonction pour redimentionner une image, Merci à Cédric :)
