@@ -38,13 +38,13 @@ class Image
 		$user=requestObject('Utilisateurs');
 		if($file=$this->uploadImage())
 		{
-			$npath=AVATARS.'/'.basename($file['name']);
+			$npath=AVATARS.$user->getUid().'_'.basename($file['name']);
 			$info = pathinfo($file['name']);
-			$pathredim=AVATARS.basename($file['name'],'.'.$info['extension']).'32_32'.'.'.$info['extension'];
+			$pathredim=AVATARS.$user->geTUid().'_'.basename($file['name'],'.'.$info['extension']).'_32_32'.'.'.$info['extension'];
 			move_uploaded_file($file['tmp_name'],$npath);
 			$this->redim_img($npath,32,32,$pathredim);
 			$pathnav=str_replace(ROOT,'/',$pathredim);
-			$user->updateAvatar($user->geTUid(),$pathnav);
+			$user->updateAvatar($user->getUid(),$pathnav);
 			$template='<div class="message">Votre avatar a bien été enregistré : <img src="'.$pathnav.'" alt="avatar" /> </div>';
 		}
 		else
