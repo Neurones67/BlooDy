@@ -259,6 +259,14 @@ class Utilisateurs
 		$sql='UPDATE utilisateurs SET motdepasse="'.$npassword.'" WHERE uid='.$id;
 		return $this->mysql->query($sql);
 	}
+	public function updateAvatar($id,$navatar)
+	{
+		if(!$this->estConnecte())
+			return;
+		$navatar=$this->mysql->real_escape_string($navatar);
+		$sql='UPDATE utilisateurs SET avatar="'.$navatar.'" WHERE uid='.$id;
+		return $this->mysql->query($sql);
+	}
 	public function updateProfil()
 	{
 		if(!$this->estConnecte())

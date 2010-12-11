@@ -151,6 +151,14 @@ class Livre
 			return false;
 		}
 	}
+	public function updateCover($lid,$ncover)
+	{
+		if(!$this->estConnecte())
+			return;
+		$ncover=$this->mysql->real_escape_string($ncover);
+		$sql='UPDATE lives SET couvertures="'.$ncover.'" WHERE lid='.$lid;
+		return $this->mysql->query($sql);
+	}
 	// Permet de traiter le formulaire d'ajout/modification d'une BD
 	public function ajoutForm()
 	{

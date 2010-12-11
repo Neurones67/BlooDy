@@ -33,5 +33,11 @@
 		<dd><textarea id="description" rows='5' cols='60' name="description">{{Utilisateurs:getDescription}}</textarea></dd> 
 	</fieldset> 
 	<input type='reset' value='Annuler' /><input type='submit' value='Mettre à jour'> 
-</form> 
+</form>
+{{Image:uploadAvatar}}
+<form id="changer_avatar" method="post" action="" enctype="multipart/form-data">   
+          <input type="hidden" name="MAX_FILE_SIZE" value="2097152">   
+          <input type="file" name="nomfichier">  
+          <input type="submit" value="Envoyer">  
+</form>
 {{FOOTER}}

@@ -18,13 +18,16 @@ function microtime_diff($a, $b) {
 define('ROOT', $_SERVER['DOCUMENT_ROOT'].'/'); // Répertoire racine du site
 define('FONCTIONS', ROOT.'fonctions/'); // Répertoire où se trouvent les fonctions
 define('STYLES', ROOT.'styles/'); // Répertoire où se trouvent les documents de style (css/images)
-define('JS', ROOT.'js/'); // Répertoire où se trouvent les scripts Javascript
+define('AVATARS', ROOT.'avatars/'); // Répertoire où se trouvent les avatars
+define('COUVERTURES', ROOT.'couvertures/'); // Répertoire où se trouvent les scripts Javascript
+define('JS', ROOT.'js/'); // Répertoire où se trouvent les scripts Javascript 
 define('PARTIAL',STYLES.'partial/'); // Répertoire où se trouvent les templates HTML partiels (juste une partie d'une page)
 define('PROOT',STYLES.'root/'); // Répertoire où se trouvent les template HTML des pages à la racine du site
 
 // On inclu les informations d'identifications à la base de donnée
 include('password.php');
 //Inclusion des différentes classes écrites
+
 require_once('templates.php');
 require_once('nav.php');
 require_once('param.php');
@@ -37,6 +40,7 @@ require_once('serie.php');
 require_once('genre.php');
 require_once('fonctions_affichage.php');
 require_once('mail.php');
+require_once('image.php');
 
 // Initialisation de la variable globale qui va stocker les différents objets (pour un accès direct depuis n'importe où)
 $GLOBALS['object']=array();
