@@ -42,9 +42,9 @@ class Image
 			$info = pathinfo($file['name']);
 			$pathredim=AVATARS.basename($file['name'],'.'.$info['extension']).'32_32'.'.'.$info['extension'];
 			move_uploaded_file($file['tmp_name'],$npath);
-			$this->redim_img($patht,32,32,$pathredmim);
+			$this->redim_img($npath,32,32,$pathredim);
 			$pathnav=str_replace(ROOT,'/',$pathredim);
-			$user->updateAvatar($pathnav,$user->geTUid());
+			$user->updateAvatar($user->geTUid(),$pathnav);
 			$template='<div class="message">Votre avatar a bien été enregistré : <img src="'.$pathnav.'" alt="avatar" /> </div>';
 		}
 		else
@@ -62,7 +62,7 @@ class Image
 			$info = pathinfo($file['name']);
 			$pathredim=COUVERTURES.basename($file['name'],'.'.$info['extension']).'32_32'.'.'.$info['extension'];
 			move_uploaded_file($file['tmp_name'],$npath);
-			$this->redim_img($patht,32,32,$pathredmim);
+			$this->redim_img($npath,32,32,$pathredim);
 			$pathnav=str_replace(ROOT,'/',$pathredim);
 			$template='<div class="message">La couverture a bien été enregistré : <img src="'.$pathnav.'" alt="avatar" /> </div>';
 		}
