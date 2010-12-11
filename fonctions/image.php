@@ -23,7 +23,7 @@ class Image
 			$patht=$_FILES['nomfichier']['tmp_name'];
 			if(file_exists($patht) and in_array($type,$this->formats) and in_array(image_type_to_mime_type(exif_imagetype($patht)),$this->formats))
 			{
-				$res=$patht;
+				$res=$_FILES['nomfichier'];
 			}
 			else
 			{
@@ -36,13 +36,13 @@ class Image
 	{
 		$template="";
 		$user=requestObject('Utilisateurs');
-		if($patht=$this->uploadImage())
+		if($file=$this->uploadImage())
 		{
-			$npath=AVATARS.'/'.basename($patht);
-			$info = pathinfo($file);
-			$pathredim=AVATARS.'/'.basename($patht,'.'.$info['extension']).'32_32'.'.'.$info['extension'];
-			move_uploaded_file($patht,$npath);
-			redim_img($patht,32,32,$pathredmim);
+			$npath=AVATARS.'/'.basename($file['name']);
+			$info = pathinfo($file['name']);
+			$pathredim=AVATARS.basename($file['name'],'.'.$info['extension']).'32_32'.'.'.$info['extension'];
+			move_uploaded_file($file['tmp_name'],$npath);
+			$this->redim_img($patht,32,32,$pathredmim);
 			$pathnav=str_replace(ROOT,'/',$pathredim);
 			$user->updateAvatar($pathnav,$user->geTUid());
 			$template='<div class="message">Votre avatar a bien été enregistré : <img src="'.$pathnav.'" alt="avatar" /> </div>';
@@ -56,13 +56,13 @@ class Image
 	public function uploadCover()
 	{
 		$template="";
-		if($patht=$this->uploadImage())
+		if($file=$this->uploadImage())
 		{
-			$npath=AVATARS.'/'.basename($patht);
-			$info = pathinfo($file);
-			$pathredim=COUVERTURES.'/'.basename($patht,'.'.$info['extension']).'32_32'.'.'.$info['extension'];
-			move_uploaded_file($patht,$npath);
-			redim_img($patht,32,32,$pathredmim);
+			$npath=COUVERTURES.'/'.basename($file['name']);
+			$info = pathinfo($file['name']);
+			$pathredim=COUVERTURES.basename($file['name'],'.'.$info['extension']).'32_32'.'.'.$info['extension'];
+			move_uploaded_file($file['tmp_name'],$npath);
+			$this->redim_img($patht,32,32,$pathredmim);
 			$pathnav=str_replace(ROOT,'/',$pathredim);
 			$template='<div class="message">La couverture a bien été enregistré : <img src="'.$pathnav.'" alt="avatar" /> </div>';
 		}
