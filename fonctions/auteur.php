@@ -120,4 +120,15 @@ class Auteur
 		}
 		return $template;
 	}
+	public function affichAuteur($template,$auteur)
+	{
+		$template=str_replace('{{NOMAUTEUR}}',$auteur->anom,$template);
+		$template=str_replace('{{PRENOMAUTEUR}}',$auteur->aprenom,$template);
+		$template=str_replace('{{DATEAUTEUR}}',$auteur->adnaissance,$template);
+		$template=str_replace('{{IDAUTEUR}}',$auteur->aid,$template);
+		$template=str_replace('{{BIOGRAPHIE}}',$auteur->abiographie,$template);
+		$template=str_replace('{{PHOTO}}',$auteur->aphoto,$template);
+
+		return $template;
+	}
 }
