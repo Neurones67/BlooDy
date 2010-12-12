@@ -158,21 +158,22 @@ class Affichage
 			$livre = requestObject('Livre');
 			$serie = requestObject('Serie');
 			$auteur = requestObject('Auteur');
+			$affichage = requestObject('Affichage');
 		
 			if(isset($_POST['c_auteurs']))
 			{
 				$tAuteurs = $auteur->recherche($motclef);
-				$res = this->recherche_auteurs($tAuteurs);
+				$res = $affichage->recherche_auteurs($tAuteurs);
 			}
 			if(isset($_POST['c_series']))
 			{
 				$tSeries = $serie->recherche($motclef);
-				$res .= this->recherche_series($tSeries);
+				$res .= $affichage->recherche_series($tSeries);
 			}
 			if(isset($_POST['c_bd']))
 			{	
 				$tBDs = $livre->recherche($motclef);
-				$res .= this->recherche_bds($tBDs, $user);
+				$res .= $affichage->recherche_bds($tBDs, $user);
 			
 				if($user->estConnecte()) // Si l'utilisateur est connecté alors il peut ajouter des BDs
 				{
