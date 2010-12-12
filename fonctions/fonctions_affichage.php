@@ -160,7 +160,6 @@ class Affichage
 			$auteur = requestObject('Auteur');
 			$affichage = requestObject('Affichage');
 		
-			$res = "";
 			if(isset($_POST['c_auteurs']))
 			{
 				$tAuteurs = $auteur->recherche($motclef);
