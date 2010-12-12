@@ -1,65 +1,6 @@
 <?php
 class Affichage
 {
-	// On passe à cette fonction le tableau contenant les informations utiles à afficher de façon très compacte
-	// On passe son identifiant unique (t[0]), son nom, son prénom, sa date de naissance
-	public static function affichage_tcompact_auteurs()
-	{
-		$livre = new Livre();
-		$tAut = "A CHANGER !!!!!!!!!"; // C'est vrai.
-		// Tout d'abord, on donne les titres de chaque colonne
-		echo "<table id='auteurs'><tr><th>Nom de l'auteur</th><th>Prénom de l'auteur</th><th>Date de naissance</th></tr>\n";
-		for($i=0; $i < count($tAut) ; $i++)
-		{
-			echo "<tr>"; // début de la ligne
-			echo "<td><a href='/affichage_complet_auteurs.html?id=".$tAut[0]."' >".$tAut[1]."</a>\n";
-			echo "</td><td>".$tAut[2]."</td><td>".$tAut[3]."</td>\n";
-			echo "</tr>\n"; // fin de la ligne
-		}
-		echo "</table>\n";
-	}
-
-	// Même chose mais avec les collections, on passe l'identifiant unique, le nom de collection, 
-	// Le nom de l'auteur, le prénom de l'auteur, et le nom de l'éditeur
-	public static function affichage_tcompact_collections()
-	{
-		$tCol = "A CHANGER !!!!!!!!!!!!!!!!!!!"; // Oui faut pas oublier.
-		// Tout d'abord, on donne les titres de chaque colonne
-		echo "<table id='collections'><tr><th>Nom de la collection</th><th>Nom de l'auteur</th>\n";
-		echo "<th>Prénom de l'auteur</th><th>Nom de l'éditeur</th></tr>\n";
-
-		for($i=0; $i < count($tCol) ; $i++)
-		{
-			echo "<tr>"; // début de la ligne
-			echo "<td><a href='/affichage_complet_collections.html?id=".$tCol[0]."' >".$tCol[1]."</a></td>\n";
-			echo "<td>".$tCol[2]."</td><td>".$tCol[3]."</td><td>".$tCol[4]."</td>\n";
-			echo "</tr>\n"; // fin de la ligne
-		}
-		echo "</table>\n";
-	}
-
-	// Même chose mais pour l'affichage des BDs :)
-	// On passe l'id, le nom de la BD, le nom et prénom de l'auteur, la date de publication, le nom de l'éditeur et le numéro ISBN et d'ean13 
-	public static function affichage_tcompact_bds()
-	{
-		$tBD = "A CHANGER !!!!!!!!!!!!!!!!!!!"; // Oui faut pas oublier.
-		// Tout d'abord, on donne les titres de chaque colonne
-		echo "<table id='bds'><tr><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
-		echo "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th></tr>\n";
-
-		for($i=0; $i < count($tBD) ; $i++)
-		{
-			echo "<tr>"; // début de la ligne
-			echo "<td><a href='/livre-".$tBD[0].".html' >".$tBD[1]."</a></td>\n";
-	
-			// Boucle pour mettre le reste des informations dans le tableau	
-			for($k=2; $k <= 6 ; $k++)
-				echo "<td>".$tBD[$k]."</td>";
-
-			echo "</tr>\n"; // fin de la ligne
-		}
-		echo "</table>\n";
-	}
 	public function consulter_sa_base()
 	{
 		$user=requestObject('Utilisateurs');
@@ -141,27 +82,10 @@ class Affichage
 		}
 		return $res;
 	}
-	public function resultat_recherche()
+	public function recherche_auteurs($tAuteurs)
 	{
-		$res = "";
-		if(isset($_POST['terme']) and !empty($_POST['terme']))
-		{
-		
-			$motclef = $_POST['terme'];
-
-			$user = requestObject('Utilisateurs');
-			$livre = requestObject('Livre');
-			$serie = requestObject('Serie');
-			$auteur = requestObject('Auteur');
-	
-			$tBDs = $livre->recherche($motclef);
-			$tSeries = $serie->recherche($motclef);
-			$tAuteurs = $auteur->recherche($motclef);
-		
-			// Les titres de chaque colonne
-		
 			// Les auteurs
-			$res .= "<h2>Les Auteurs</h2>\n";
+			$res = "<h2>Les Auteurs</h2>\n";
 			$res .= "<table id='auteurs'><tr><th>Nom de l'auteur</th><th>Prénom de l'auteur</th><th>Date de naissance</th></tr>\n";
 	
 			foreach($tAuteurs as $tAut)
@@ -172,8 +96,12 @@ class Affichage
 				$res .= "</tr>\n";
 			}
 			$res .= "</table>\n";
-			
-			$res .= "<h2>Les séries</h2>\n";
+
+			return $res;
+	}
+	public function recherche_series($tSeries)
+	{
+			$res = "<h2>Les séries</h2>\n";
 	
 			// Les Séries
 			$res .= "<table id='series' ><tr><th>Nom de la série</th></tr>\n";
@@ -182,9 +110,13 @@ class Affichage
 				$res .= "<tr><td>" . $tS['nom'] . "</td></tr>\n";
 			
 			$res .= "</table>\n";
-	
+
+			return $res;
+	}
+	public function recherche_bds($tBDs, $user)
+	{
 			// Les Bandes Dessinées 
-			$res .= "<h2>Les bandes dessinées</h2>\n";
+			$res = "<h2>Les bandes dessinées</h2>\n";
 	
 			$res .= "<table id='bds'><tr><th>Genre</th><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
 			$res .= "<th>Nom de l'éditeur</th><th>ISBN</th><th>EAN13</th>";
@@ -211,10 +143,42 @@ class Affichage
 				$res .= "</tr>\n";
 			}
 			$res .= "</table>\n";
-			if($user->estConnecte())
+			
+			return $res;
+	}
+	public function resultat_recherche()
+	{
+		$res = "";
+		if(isset($_POST['terme']) and !empty($_POST['terme']))
+		{
+		
+			$motclef = $_POST['terme'];
+
+			$user = requestObject('Utilisateurs');
+			$livre = requestObject('Livre');
+			$serie = requestObject('Serie');
+			$auteur = requestObject('Auteur');
+		
+			if(isset($_POST['c_auteurs']))
 			{
-				$res .= "<input type='reset' value='Annuler' />";
-				$res .= "<input type='submit' value='Ajouter' />";
+				$tAuteurs = $auteur->recherche($motclef);
+				$res = this->recherche_auteurs($tAuteurs);
+			}
+			if(isset($_POST['c_series']))
+			{
+				$tSeries = $serie->recherche($motclef);
+				$res .= this->recherche_series($tSeries);
+			}
+			if(isset($_POST['c_bd']))
+			{	
+				$tBDs = $livre->recherche($motclef);
+				$res .= this->recherche_bds($tBDs, $user);
+			
+				if($user->estConnecte()) // Si l'utilisateur est connecté alors il peut ajouter des BDs
+				{
+					$res .= "<input type='reset' value='Annuler' />";
+					$res .= "<input type='submit' value='Ajouter' />";
+				}
 			}
 		}
 
