@@ -206,6 +206,22 @@ class Affichage
 
 		return $res;
 	}
+	public function afficherUtilisateurs()
+	{
+		$user = requestObject('Utilisateurs');
+		$affichage = requestObject('Affichage');
+		$res = "";
+		$utilisateurs = $users->listeUtilisateurs();
+		if($affichage->tableauEstVide($utilisateurs))
+		{
+			$res .= "<h2>Les utilisateurs</h2>\n\t<p>Il n'y a pas d'utilisatuers ici ! Vous n'existez même pas ! oups?</p>";
+		}
+		else
+		{
+			$res .= $affichage->recherche_amis($utilisateurs, $user);
+		}
+		return $res;
+	}
 	public function tableauEstVide($t)
 	{
 		$i = 0;
@@ -214,6 +230,41 @@ class Affichage
 			$i++;
 		}
 		return $i == 0;
+	}
+	public function recherche_amis($tamis, $user)
+	{
+			// Les Bandes Dessinées 
+			$res = "<h2>Les bandes dessinées</h2>\n";
+	
+			$res .= "<table id='amis'><tr><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
+			if($user->estConnecte())
+				$res .= "<th>Ajouter à mes amis</th>";
+			$res .= "</tr>\n";
+	
+			foreach($tamis as $tami)
+			{
+				$res .= "<tr>"; 
+				$res .= "<td>" . $tami['pseudo'] . "</td><td>" . $tami['dinscription'] . "</td><td>" . $tami['uetat'] . "</td>";
+				if($user->estConnecte())
+				{
+					/* À modifier quand je saurai quoi mettre
+					if($tami['etat']<1) // Si on a pas la BD
+						$res .= "<td><input type='checkbox' name='amis[]' value='" . $tami['uid'] . "' /></td>";
+					else
+						$res .= "<td>Vous possédez déjà cette personne</td>";
+					*/
+				}
+	
+				$res .= "</tr>\n";
+			}
+			$res .= "</table>\n";
+			
+			if($user->estConnecte()) // Si l'utilisateur est connecté alors il peut ajouter des amis
+			{
+				$res .= "<input type='reset' value='Annuler' />";
+				$res .= "<input type='submit' value='Ajouter' />";
+			}
+			return $res;
 	}
 }
 ?>

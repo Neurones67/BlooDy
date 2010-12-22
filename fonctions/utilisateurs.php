@@ -478,4 +478,10 @@ class Utilisateurs
 		$template=str_replace('{{ANNEEINSCR}}',date('Y',$user->dinscription),$template);
 		return $template;
 	}
+	public static function listeUtilisateurs()
+	{
+		$mysql = requestObject('MySQL');
+		$sql='SELECT pseudo,email,dinscription,ipinscription,uetat FROM utilisateurs';
+		return queryToArray($mysql->query($sql));
+	}
 }
