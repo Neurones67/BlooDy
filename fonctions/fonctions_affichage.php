@@ -3,14 +3,20 @@ class Affichage
 {
 	public function consulter_sa_base()
 	{
-		$user=requestObject('Utilisateurs');
+		$livre = requestObject('Livre');
+		$affichage = requestObject('Affichage');
+		$user = requestObject('Utilisateurs');
 		if(!$user->estConnecte())
 		{
 			return;
 		}
-		$livre =requestObject('Livre');
 		$tBDs = $livre->listBDutil();
 		// Les titres de chaque colonne
+
+		if($affichage->tableauEstVide($tBDs))
+		{
+			return "<p>Vous n'avez pas encore de bande dessinée, je vous conseille de consulter notre base de donnée ! :)</p>\n";
+		}
 
 		$res = "";
 		$res .= "<table id='bds'><tr><th>Genre</th><th>Nom de la Bande Dessinée</th><th>Nom de l'auteur</th><th>Prénom de l'auteur</th>\n";
