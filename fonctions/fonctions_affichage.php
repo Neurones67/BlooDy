@@ -107,7 +107,7 @@ class Affichage
 			$res .= "<table id='series' ><tr><th>Nom de la série</th></tr>\n";
 	
 			foreach($tSeries as $tS)
-				$res .= "<tr><td>" . $tS['nom'] . "</td></tr>\n";
+				$res .= "<tr><td>" . $tS['snom'] . "</td></tr>\n";
 			
 			$res .= "</table>\n";
 
