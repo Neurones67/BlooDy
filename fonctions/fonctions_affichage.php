@@ -163,27 +163,57 @@ class Affichage
 			if(isset($_POST['c_auteurs']))
 			{
 				$tAuteurs = $auteur->recherche($motclef);
-				$res .= $affichage->recherche_auteurs($tAuteurs);
+				if($affichage->tableauEstVide($tAuteurs))
+				{
+					$res .= "<h2>Les auteurs</h2>\n\t<p>Pas d'auteurs correspondant</p>\n";
+				}
+				else
+				{
+					$res .= $affichage->recherche_auteurs($tAuteurs);
+				}
 			}
 			if(isset($_POST['c_series']))
 			{
 				$tSeries = $serie->recherche($motclef);
-				$res .= $affichage->recherche_series($tSeries);
+				if($affichage->tableauEstVide($tSeries))
+				{
+					$res .= "<h2>Les Séries</h2>\n\t<p>Pas de série correspondant à ce terme</p>\n";
+				}
+				else
+				{
+					$res .= $affichage->recherche_series($tSeries);
+				}
 			}
 			if(isset($_POST['c_bd']))
 			{	
 				$tBDs = $livre->recherche($motclef);
-				$res .= $affichage->recherche_bds($tBDs, $user);
-			
-				if($user->estConnecte()) // Si l'utilisateur est connecté alors il peut ajouter des BDs
+				if($affichage->tableauEstVide($tBDs))
 				{
-					$res .= "<input type='reset' value='Annuler' />";
-					$res .= "<input type='submit' value='Ajouter' />";
+					$res .= "<h2>Les bandes dessinées</h2>\n\t<p>Pas de BD correspondant à ce terme</p>\n";
+				}
+				else
+				{
+					$res .= $affichage->recherche_bds($tBDs, $user);
+			
+					if($user->estConnecte()) // Si l'utilisateur est connecté alors il peut ajouter des BDs
+					{
+						$res .= "<input type='reset' value='Annuler' />";
+						$res .= "<input type='submit' value='Ajouter' />";
+					}
 				}
 			}
 		}
 
 		return $res;
+	}
+	public function tableauEstVide($t)
+	{
+		$i = 0;
+		foreach($t as $truc)
+		{
+			$i++;
+		}
+		return $i == 0;
 	}
 }
 ?>
