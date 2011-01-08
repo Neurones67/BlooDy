@@ -239,10 +239,7 @@ class Affichage
 	}
 	public function recherche_amis($tamis, $user)
 	{
-			// Les Bandes Dessinées 
-			$res = "<h2>La liste des utilisateurs</h2>\n";
-	
-			$res .= "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
+			$res = "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
 			if($user->estConnecte())
 				$res .= "<th>Ajouter à mes amis</th>";
 			$res .= "</tr>\n";
