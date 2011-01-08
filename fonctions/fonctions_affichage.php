@@ -261,12 +261,10 @@ class Affichage
 
 			if($user->estConnecte())
 			{
-				/* À modifier quand je saurai quoi mettre
-				if($tami['etat']<1) // Si la personne ne fait pas encore partie des amis
+				if(!empty($tami['date_ajout'])) // Si la personne ne fait pas encore partie des amis
 					$res .= "<td><input type='checkbox' name='amis[]' value='" . $tami['uid'] . "' /></td>";
 				else
 					$res .= "<td>Vous possédez déjà cette personne</td>";
-				*/
 			}
 				$res .= "</tr>\n";
 		}
