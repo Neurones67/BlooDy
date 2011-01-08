@@ -240,9 +240,9 @@ class Affichage
 	public function recherche_amis($tamis, $user)
 	{
 			// Les Bandes Dessinées 
-			$res = "<h2>Les bandes dessinées</h2>\n";
+			$res = "<h2>La liste des utilisateurs</h2>\n";
 	
-			$res .= "<table id='amis'><tr><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
+			$res .= "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
 			if($user->estConnecte())
 				$res .= "<th>Ajouter à mes amis</th>";
 			$res .= "</tr>\n";
@@ -250,11 +250,12 @@ class Affichage
 			foreach($tamis as $tami)
 			{
 				$res .= "<tr>"; 
+				// Affichage de l'avatar de la personne MANQUANT
 				$res .= "<td>" . $tami['pseudo'] . "</td><td>" . $tami['dinscription'] . "</td><td>" . $tami['uetat'] . "</td>";
 				if($user->estConnecte())
 				{
 					/* À modifier quand je saurai quoi mettre
-					if($tami['etat']<1) // Si on a pas la BD
+					if($tami['etat']<1) // Si la personne ne fait pas encore partie des amis
 						$res .= "<td><input type='checkbox' name='amis[]' value='" . $tami['uid'] . "' /></td>";
 					else
 						$res .= "<td>Vous possédez déjà cette personne</td>";
