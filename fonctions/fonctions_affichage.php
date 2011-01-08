@@ -252,7 +252,13 @@ class Affichage
 
 			$res .= "<tr>"; 
 			$res .= "<td><img src='$adresseImage' alt='avatar de " . $tami['pseudo'] . "' />\n"; 
-			$res .= "<td>" . $tami['pseudo'] . "</td><td>" . $tami['dinscription'] . "</td><td>" . $tami['uetat'] . "</td>\n";
+			$res .= "<td>" . $tami['pseudo'] . "</td><td>" . $tami['dinscription'] . "</td>\n";
+			
+			if($tami['uetat'] == 0)
+				$res .= "<td>Connecté</td>\n";
+			else
+				$res .= "<td>Non connecté</td>\n";
+
 			if($user->estConnecte())
 			{
 				/* À modifier quand je saurai quoi mettre
