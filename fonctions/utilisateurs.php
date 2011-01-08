@@ -480,8 +480,15 @@ class Utilisateurs
 	}
 	public static function listeUtilisateurs()
 	{
-		$mysql = requestObject('MySQL');
-		$sql='SELECT pseudo,email,dinscription,ipinscription,uetat FROM utilisateurs';
-		return queryToArray($mysql->query($sql));
+		if($this->estConnecte())
+		{
+			$uid=$this->getUid();
+			$sql='SELECT u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat,a.date_ajout FROM utilisateurs u LEFT JOIN amis a ON (a.euid=u.uid AND a.duid='.$uid.') OR (a.euid='.$uid.' AND a.duid=u.uid) ORDER BY u.pseudo';
+		}
+		else
+		{
+			$sql='SELECT u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat FROM utilisateurs u ORDER BY u.pseudo';
+		}
+		return queryToArray($this->mysql->query($sql));
 	}
 }
