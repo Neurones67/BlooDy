@@ -41,8 +41,8 @@ class Image
 			$pathredim=$folder.$filename.basename($file['name'],'.'.$info['extension']).'_'.$xlimit.'_'.$ylimit.'.'.$info['extension'];
 			move_uploaded_file($file['tmp_name'],$npath);
 			$this->redim_img($npath,$xlimit,$ylimit,$pathredim);
-			$pathnav=str_replace(ROOT,'/',$pathredim);
-			return $npath;
+			$pathnav=
+			return str_replace(ROOT,'/',$npath);
 		}
 		else
 		{
