@@ -52,12 +52,12 @@ class Image
 	{
 		$template="";
 		$user=requestObject('Utilisateurs');
-		if(isset($_FILES['nomfichier']) && $pathnav=$this->saveImage(AVATARS,$user->getUid().'_',32,32))
+		if($pathnav=$this->saveImage(AVATARS,$user->getUid().'_',32,32))
 		{
 			$user->updateAvatar($user->getUid(),$pathnav);
 			$template='<div class="message">Votre avatar a bien été enregistré : <img src="'.$pathnav.'" alt="avatar" /> </div>';
 		}
-		else
+		else if(isset($_FILES['nomfichier']))
 		{
 			$template="<div class='error'>Une erreur est survenue, pas de fichiers ? Pas bon format ?</div>";
 		}
@@ -67,10 +67,10 @@ class Image
 	public function uploadCover()
 	{
 		$template="";
-		if(isset($_POST['lid']) and !empty($_POST['lid']))
+		if(isset($_FILES['nomfichier']) && isset($_POST['lid']) and !empty($_POST['lid']))
 		{
 			$lid=intval($_POST['lid']);
-			if(isset($_FILES['nomfichier']) && $pathnav=$this->saveImage(COUVERTURES,$lid.'_',32,32))
+			if($pathnav=$this->saveImage(COUVERTURES,$lid.'_',32,32))
 			{
 				$sql='UPDATE livres SET couverture="'.$pathnav.'" WHERE lid='.$lid;
 				if($this->mysql->query($sql))
