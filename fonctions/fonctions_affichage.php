@@ -73,7 +73,7 @@ class Affichage
 				}
 				else
 				{
-					$res .= "<td>;)</td>";
+					$res .= "<td>X</td>";
 				}
 			}
 
