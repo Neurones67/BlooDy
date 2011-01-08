@@ -105,6 +105,27 @@ class Affichage
 
 			return $res;
 	}
+	public function creerLiensLettres($nomPage)
+	{
+		$res = "<p>";
+		$tCar = {"0","1","2","3","4","5","6","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		foreach($tCar as $lettre)
+		{
+			if(isset($_GET['lettre']) && $_GET['lettre'] != $lettre)
+			{
+				$res .= "<a href='" . $nomPage . "?lettre=$lettre&page=1'>$lettre</a>";
+			}
+			else
+			{
+				$res .= $lettre;
+			}
+
+			if($lettre != "z")
+				$res .= " | "; // Pour faire joli
+		}
+		$res .= "</p>";
+		return $res;
+	}
 	public function recherche_series($tSeries)
 	{
 			$res = "<h2>Les séries</h2>\n";
