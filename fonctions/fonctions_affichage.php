@@ -143,7 +143,7 @@ class Affichage
 					if($tBD['etat']<1) // Si on a pas la BD
 						$res .= "<td><input type='checkbox' name='BD[]' value='" . $tBD['lid'] . "' /></td>";
 					else
-						$res .= "<td>;)</td>";
+						$res .= "<td>X</td>";
 				}
 	
 				$res .= "</tr>\n";
@@ -239,36 +239,61 @@ class Affichage
 	}
 	public function recherche_amis($tamis, $user)
 	{
-			$res = "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
+		$image = requestObject('Image');
+
+		$res = "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
+		if($user->estConnecte())
+			$res .= "<th>Ajouter à mes amis</th>";
+		$res .= "</tr>\n";
+	
+		foreach($tamis as $tami)
+		{
+			$adresseImage = $image->image_redim($tami['avatar'], 32, 32);
+
+			$res .= "<tr>"; 
+			$res .= "<td><img src='$adresseImage' alt='avatar de " . $tami['pseudo'] . "' />\n"; 
+			$res .= "<td>" . $tami['pseudo'] . "</td><td>" . $tami['dinscription'] . "</td><td>" . $tami['uetat'] . "</td>\n";
 			if($user->estConnecte())
-				$res .= "<th>Ajouter à mes amis</th>";
-			$res .= "</tr>\n";
-	
-			foreach($tamis as $tami)
 			{
-				$res .= "<tr>"; 
-				// Affichage de l'avatar de la personne MANQUANT
-				$res .= "<td>" . $tami['pseudo'] . "</td><td>" . $tami['dinscription'] . "</td><td>" . $tami['uetat'] . "</td>";
-				if($user->estConnecte())
-				{
-					/* À modifier quand je saurai quoi mettre
-					if($tami['etat']<1) // Si la personne ne fait pas encore partie des amis
-						$res .= "<td><input type='checkbox' name='amis[]' value='" . $tami['uid'] . "' /></td>";
-					else
-						$res .= "<td>Vous possédez déjà cette personne</td>";
-					*/
-				}
-	
+				/* À modifier quand je saurai quoi mettre
+				if($tami['etat']<1) // Si la personne ne fait pas encore partie des amis
+					$res .= "<td><input type='checkbox' name='amis[]' value='" . $tami['uid'] . "' /></td>";
+				else
+					$res .= "<td>Vous possédez déjà cette personne</td>";
+				*/
+			}
 				$res .= "</tr>\n";
-			}
-			$res .= "</table>\n";
+		}
+		$res .= "</table>\n";
 			
-			if($user->estConnecte()) // Si l'utilisateur est connecté alors il peut ajouter des amis
+		if($user->estConnecte()) // Si l'utilisateur est connecté alors il peut ajouter des amis
+		{
+			$res .= "<input type='reset' value='Annuler' />";
+			$res .= "<input type='submit' value='Ajouter' />";
+		}
+		return $res;
+	}
+	public function affichage_compact_bd($tBD)
+	{
+		$image = requestObject('Image');
+
+		$res = "";
+		if(empty($tBD))
+			$res .= "<p>Vous n'avez rien à afficher</p>";
+		else
+		{
+			foreach($tBD as $BD)
 			{
-				$res .= "<input type='reset' value='Annuler' />";
-				$res .= "<input type='submit' value='Ajouter' />";
+				$adresseImage = $image->image_redim($BD['couverture'], 100, 100);
+				$res .= "<div class='affichage_compact'>\n";
+				$res .= "\t<p>" . $BD['nom'] . "</p>\n";
+				$res .= "\t<img src='$adresseImage' alt='Image de " . $BD['nom'] . "' />\n";
+				$res .= "\t<p>Genre :" . $BD['gnom'] . "</p>\n";
+				$res .= "\t<p>Auteur :" . $BD['anom'] . "</p>\n";
+				$res .= "</div>";
 			}
-			return $res;
+		}
+		return $res;
 	}
 }
 ?>
