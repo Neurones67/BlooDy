@@ -32,18 +32,29 @@ class Image
 		}
 		return $res;
 	}
+	public function saveImage($folder,$filename,$xlimit,$ylimit)
+	{
+		if($file=$this->uploadImage())
+		{
+			$info=pathinfo($file['name']);
+			$npath=$folder.$filename.basename($file['name']);
+			$pathredim=$folder.$filename.basename($file['name'],'.'.$info['extension']).'_'.$xlimit.'_'.$ylimit.'.'.$info['extension'];
+			move_uploaded_file($file['tmp_name'],$npath);
+			$this->redim_img($npath,$xlimit,$ylimit,$pathredim);
+			$pathnav=str_replace(ROOT,'/',$pathredim);
+			return $npath;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function uploadAvatar()
 	{
 		$template="";
 		$user=requestObject('Utilisateurs');
-		if($file=$this->uploadImage())
+		if($pathnav=$this->saveImage(AVATARS,$user->getUid().'_',32,32))
 		{
-			$npath=AVATARS.$user->getUid().'_'.basename($file['name']);
-			$info = pathinfo($file['name']);
-			$pathredim=AVATARS.$user->geTUid().'_'.basename($file['name'],'.'.$info['extension']).'_32_32'.'.'.$info['extension'];
-			move_uploaded_file($file['tmp_name'],$npath);
-			$this->redim_img($npath,32,32,$pathredim);
-			$pathnav=str_replace(ROOT,'/',$pathredim);
 			$user->updateAvatar($user->getUid(),$pathnav);
 			$template='<div class="message">Votre avatar a bien été enregistré : <img src="'.$pathnav.'" alt="avatar" /> </div>';
 		}
@@ -57,22 +68,68 @@ class Image
 	public function uploadCover()
 	{
 		$template="";
-		if($file=$this->uploadImage())
+		if(isset($_POST['lid']) and !empty($_POST['lid']))
 		{
-			$npath=COUVERTURES.'/'.basename($file['name']);
-			$info = pathinfo($file['name']);
-			$pathredim=COUVERTURES.basename($file['name'],'.'.$info['extension']).'32_32'.'.'.$info['extension'];
-			move_uploaded_file($file['tmp_name'],$npath);
-			$this->redim_img($npath,32,32,$pathredim);
-			$pathnav=str_replace(ROOT,'/',$pathredim);
-			$template='<div class="message">La couverture a bien été enregistré : <img src="'.$pathnav.'" alt="avatar" /> </div>';
-		}
-		else
-		{
-			$template="<div class='error'>Une erreur est survenue, pas de fichiers ? Pas bon format ?</div>";
+			$lid=intval($_POST['lid']);
+			if($pathnav=$this->saveImage(COUVERTURES,$lid.'_',32,32))
+			{
+				$sql='UPDATE livres SET couverture="'.$pathnav.'" WHERE lid='.$lid;
+				if($this->mysql->query($sql))
+				{
+					$template='<div class="message">La couverture a bien été enregistré : <img src="'.$pathnav.'" alt="cover" /> </div>';
+				}
+				else
+				{
+					$template='<div class="error">Enregistrement impossible</div>';
+				}
+			}
+			else
+			{
+				$template="<div class='error'>Une erreur est survenue, pas de fichiers ? Pas bon format ?</div>";
+			}
 		}
 		return $template;
 			
+	}
+	public function uploadPhoto() // Upload d'une photo d'un auteur
+	{
+		$template="";
+		if(isset($_POST['aid']) and !empty($_POST['aid']))
+		{
+			$aid=intval($_POST['aid']);
+			if($pathnav=$this->saveImage(PHOTOS,$aid.'_',32,32))
+			{
+				$sql='UPDATE auteurs SET photo="'.$pathnav.'" WHERE aid='.$aid;
+				if($this->mysql->query($sql))
+				{
+					$template='<div class="message">La photo de l\'auteur a bien été enregistrée : <img src="'.$pathnav.'" alt="photo" /></div>';
+				}
+				else
+				{
+					$template='<div class="error">Enregistrement impossible</div>';
+				}
+			}
+			else
+			{
+				$template='<div class="error">Une erreur est survenue, pas de fichiers ? pas le bon format ?</div>';
+			}
+		}
+		return $template;
+	}
+	// Fonction qui permet de demander une image redimentionnée à un tel format
+	function image_redim($adresseimage,$max_l,$max_h)
+	{
+		$path=ROOT.$adresseimage;
+		$info=pathinfo($path);
+		$dir=$info['dirname'];
+		$ext=$info['extension'];
+		$name=$info['filename'];
+		$npath=$dir.'/'.$name.'_'.$max_l.'_'.$max_h.'.'.$ext;
+		if(!file_exists($npath))
+		{
+			redim_img($path,$max_l,$max_h,$npath);
+		}
+		return str_replace(ROOT,'/',$npath);
 	}
 	// Fonction pour redimentionner une image, Merci à Cédric :)
 	function redim_img($adresseimage, $max_l, $max_h, $emplacement)
