@@ -119,16 +119,23 @@ class Image
 	function image_redim($adresseimage,$max_l,$max_h)
 	{
 		$path=ROOT.$adresseimage;
-		$info=pathinfo($path);
-		$dir=$info['dirname'];
-		$ext=$info['extension'];
-		$name=$info['filename'];
-		$npath=$dir.'/'.$name.'_'.$max_l.'_'.$max_h.'.'.$ext;
-		if(!file_exists($npath))
+		if(file_exists($path))
 		{
-			redim_img($path,$max_l,$max_h,$npath);
+			$info=pathinfo($path);
+			$dir=$info['dirname'];
+			$ext=$info['extension'];
+			$name=$info['filename'];
+			$npath=$dir.'/'.$name.'_'.$max_l.'_'.$max_h.'.'.$ext;
+			if(!file_exists($npath))
+			{
+				redim_img($path,$max_l,$max_h,$npath);
+			}
+			return str_replace(ROOT,'/',$npath);
 		}
-		return str_replace(ROOT,'/',$npath);
+		else
+		{
+			return false;
+		}
 	}
 	// Fonction pour redimentionner une image, Merci à Cédric :)
 	function redim_img($adresseimage, $max_l, $max_h, $emplacement)
