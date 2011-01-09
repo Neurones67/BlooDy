@@ -510,11 +510,11 @@ class Utilisateurs
 		if($this->estConnecte())
 		{
 			$uid=$this->getUid();
-			$sql='SELECT u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat,a.date_ajout,u.avatar FROM utilisateurs u LEFT JOIN amis a ON (a.euid=u.uid AND a.duid='.$uid.') OR (a.euid='.$uid.' AND a.duid=u.uid) ORDER BY u.pseudo';
+			$sql='SELECT u.uid,u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat,a.date_ajout,u.avatar FROM utilisateurs u LEFT JOIN amis a ON (a.euid=u.uid AND a.duid='.$uid.') OR (a.euid='.$uid.' AND a.duid=u.uid) ORDER BY u.pseudo';
 		}
 		else
 		{
-			$sql='SELECT u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat,u.avatar FROM utilisateurs u ORDER BY u.pseudo';
+			$sql='SELECT u.uid,u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat,u.avatar FROM utilisateurs u ORDER BY u.pseudo';
 		}
 		return queryToArray($this->mysql->query($sql));
 	}
