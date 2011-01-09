@@ -394,7 +394,7 @@ class Utilisateurs
 			$res=true;
 			foreach($_POST['amis'] as $ami)
 			{
-				if(!$this->ajoutAmi($duid))
+				if(!$this->ajoutAmi($ami))
 				{
 					$res=false;
 				}
