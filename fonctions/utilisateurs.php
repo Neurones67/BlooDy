@@ -548,4 +548,16 @@ class Utilisateurs
 		}
 		return queryToArray($this->mysql->query($sql));
 	}
+	public function afficheComplet()
+	{
+		$param=requestObject('Param');
+		$uid=intval($param->getValue());
+		if($uid>0)
+		{
+			$template=file_get_contents(PARTIAL.'auteur_complet.xhtml')
+			$ouser=new Utilisateurs($uid);
+			$template=$this->afficheUser($template,$user);
+			return $remplate;
+		}
+	}
 }
