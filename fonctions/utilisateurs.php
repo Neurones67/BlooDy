@@ -563,7 +563,7 @@ class Utilisateurs
 			$template=file_get_contents(PARTIAL.'membre_complet.xhtml');
 			$ouser=new Utilisateurs($uid);
 			$template=$this->affichUser($template,$ouser);
-			return $remplate;
+			return $template;
 		}
 	}
 }
