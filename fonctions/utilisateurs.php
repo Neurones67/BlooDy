@@ -370,6 +370,22 @@ class Utilisateurs
 		$sql='SELECT uid,pseudo,email FROM utilisateurs ORDER BY uid';
 		return queryToArray($this->mysql->query($sql));
 	}
+	public function ajoutAmi($duid) // Permet d'ajouter un ami
+	{
+		$uid=$this->getUid();
+		$sql1='SELECT a.duid FROM amis a WHERE (a.euid='.$uid.' AND a.duid='.$duid.') OR (a.euid='.$duid.' AND a.duid='.$uid.')';
+		$res1=$this->mysql->query($sql1);
+		if($res1->fetch_row())
+		{
+			// On est déjà ami avec la personne.
+		}
+		else
+		{
+			// on est pas déjà ami, on ajoute.
+			$sql2='INSERT INTO amis(euid,duid,date_ajout) VALUES('.$uid.','.$duid.','.time().')';
+			return $this->mysql->query($sql2);
+		}
+	}
 	public function connexion()
 	{
 		if(isset($_POST['id_Connexion'],$_POST['id_MotDePasse']) and !empty($_POST['id_Connexion']) and !empty($_POST['id_MotDePasse']))
@@ -478,15 +494,15 @@ class Utilisateurs
 		$template=str_replace('{{ANNEEINSCR}}',date('Y',$user->dinscription),$template);
 		return $template;
 	}
-	public static function listeUtilisateurs($nicedisplay=false)
+	public function listeUtilisateurs($nicedisplay=false)
 	{
 		$filter="";
 		$filter2="";
 		if($nicedisplay)
 		{
-			if(isset($_GET['startl'],$_GET['page']) and !empty($_GET['start1']) and !empty($_GET['page']))
+			if(isset($_GET['startl'],$_GET['page']) and !empty($_GET['startl']) and !empty($_GET['page']))
 			{
-				$startl=intval($_GET['startl']);
+				$startl=$this->mysql->real_escape_string($_GET['startl']);
 				$page=intval($_GET['start1']);
 				$page=$page > 0 ? $page : 1;
 			}
@@ -494,11 +510,11 @@ class Utilisateurs
 		if($this->estConnecte())
 		{
 			$uid=$this->getUid();
-			$sql='SELECT u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat,a.date_ajout FROM utilisateurs u LEFT JOIN amis a ON (a.euid=u.uid AND a.duid='.$uid.') OR (a.euid='.$uid.' AND a.duid=u.uid) ORDER BY u.pseudo';
+			$sql='SELECT u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat,a.date_ajout,u.avatar FROM utilisateurs u LEFT JOIN amis a ON (a.euid=u.uid AND a.duid='.$uid.') OR (a.euid='.$uid.' AND a.duid=u.uid) ORDER BY u.pseudo';
 		}
 		else
 		{
-			$sql='SELECT u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat FROM utilisateurs u ORDER BY u.pseudo';
+			$sql='SELECT u.pseudo,u.email,u.dinscription,u.ipinscription,u.uetat,u.avatar FROM utilisateurs u ORDER BY u.pseudo';
 		}
 		return queryToArray($this->mysql->query($sql));
 	}

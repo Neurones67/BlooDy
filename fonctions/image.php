@@ -119,7 +119,7 @@ class Image
 	function image_redim($adresseimage,$max_l,$max_h)
 	{
 		$path=ROOT.$adresseimage;
-		if(file_exists($path))
+		if(file_exists($path) and is_file($path))
 		{
 			$info=pathinfo($path);
 			$dir=$info['dirname'];
@@ -128,9 +128,9 @@ class Image
 			$npath=$dir.'/'.$name.'_'.$max_l.'_'.$max_h.'.'.$ext;
 			if(!file_exists($npath))
 			{
-				redim_img($path,$max_l,$max_h,$npath);
+				$this->redim_img($path,$max_l,$max_h,$npath);
 			}
-			return str_replace(ROOT,'/',$npath);
+			return str_replace(ROOT,'',$npath);
 		}
 		else
 		{
