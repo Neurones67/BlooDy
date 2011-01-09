@@ -191,6 +191,7 @@ class Livre
 				{
 					$template.="<div class='erreur'>Echec de l'enregistrement</div>";
 				}
+				$_POST['lid']=$lid;
 			}
 			else
 			{
@@ -204,6 +205,7 @@ class Livre
 					$template.="<div class='erreur'>Echec de la mise à jour</div>";
 				}
 			}
+			requestObject('Image')->uploadCover();
 		}
 		$template.=trim(file_get_contents(PARTIAL.'ajout_bd.xhtml'));
 		$livre=new Livre($lid);
