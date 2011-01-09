@@ -105,8 +105,9 @@ class Affichage
 
 			return $res;
 	}
-	public function creerLiensLettres($nomPage)
+	public function creerLiensLettres()
 	{
+		$nomPage = $_SERVER['REDIRECT_URL'];
 		$res = "<p>";
 		$tCar = array("0","1","2","3","4","5","6","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
 		foreach($tCar as $lettre)
@@ -238,7 +239,7 @@ class Affichage
 		$user = requestObject('Utilisateurs');
 		$affichage = requestObject('Affichage');
 		$res = "";
-		$utilisateurs = $users->listeUtilisateurs();
+		$utilisateurs = $user->listeUtilisateurs();
 		if($affichage->tableauEstVide($utilisateurs))
 		{
 			$res .= "<h2>Les utilisateurs</h2>\n\t<p>Il n'y a pas d'utilisatuers ici ! Vous n'existez même pas ! oups?</p>";
