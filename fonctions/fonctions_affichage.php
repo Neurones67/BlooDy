@@ -270,11 +270,14 @@ class Affichage
 	
 		foreach($tamis as $tami)
 		{
-			$adresseImage = $image->image_redim($tami['avatar'], 32, 32);
+			if(!empty($tami['avatar']))
+				$adresseImage = $image->image_redim($tami['avatar'], 32, 32);
+			else
+				$adresseImage = '/avatars/ANONYME.JPG';
 
 			$res .= "<tr>"; 
 			$res .= "<td><img src='$adresseImage' alt='avatar de " . $tami['pseudo'] . "' />\n"; 
-			$res .= "<td>" . $tami['pseudo'] . "</td><td>" . $tami['dinscription'] . "</td>\n";
+			$res .= "<td>" . $tami['pseudo'] . "</td><td>" . date("d.m.y \à H\hm",$tami['dinscription']) . "</td>\n";
 			
 			if($tami['uetat'] == 0)
 				$res .= "<td>Connecté</td>\n";
@@ -286,7 +289,7 @@ class Affichage
 				if(empty($tami['date_ajout'])) // Si la personne ne fait pas encore partie des amis
 					$res .= "<td><input type='checkbox' name='amis[]' value='" . $tami['uid'] . "' /></td>";
 				else
-					$res .= "<td>Vous possédez déjà cette personne</td>";
+					$res .= "<td>date_ajout :" . $tami['date_ajout']. "</td>";//"<td>Vous possédez déjà cette personne</td>";
 			}
 				$res .= "</tr>\n";
 		}
