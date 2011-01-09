@@ -373,6 +373,7 @@ class Utilisateurs
 	public function ajoutAmi($duid) // Permet d'ajouter un ami
 	{
 		$uid=$this->getUid();
+		$duid=intval($duid);
 		$sql1='SELECT a.duid FROM amis a WHERE (a.euid='.$uid.' AND a.duid='.$duid.') OR (a.euid='.$duid.' AND a.duid='.$uid.')';
 		$res1=$this->mysql->query($sql1);
 		if($res1->fetch_row())
@@ -385,6 +386,30 @@ class Utilisateurs
 			$sql2='INSERT INTO amis(euid,duid,date_ajout) VALUES('.$uid.','.$duid.','.time().')';
 			return $this->mysql->query($sql2);
 		}
+	}
+	public function ajoutPlusieursAmis()
+	{
+		if(isset($_POST['amis']) and !empty($_POST['amis']))
+		{
+			$res=true;
+			foreach($_POST['amis'] as $ami)
+			{
+				if(!$this->ajoutAmi($duid))
+				{
+					$res=false;
+				}
+			}
+			if($res)
+			{
+				$template='<div class="message">Amis rajoutés :)</div>';
+			}
+			else
+			{
+				$template='<div class="error">Au moins un ami n\'a pas été ajouté :(</div>';
+			}
+			return $template;
+		}
+		return "";
 	}
 	public function connexion()
 	{
