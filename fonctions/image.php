@@ -130,7 +130,7 @@ class Image
 			{
 				$this->redim_img($path,$max_l,$max_h,$npath);
 			}
-			return str_replace(ROOT,'/',$npath);
+			return str_replace(ROOT,'',$npath);
 		}
 		else
 		{
