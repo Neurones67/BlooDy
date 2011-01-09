@@ -98,7 +98,7 @@ class Nav
 		{
 			$addr=$_SERVER['HTTP_REFERER'];
 			$addrname="la page précédente";
-			if(preg_match('motdepasseperdu',$addr) or preg_match('inscription',$addr))
+			if(preg_match('/motdepasseperdu/',$addr) or preg_match('/inscription/',$addr))
 			{
 				$addr='/';
 			}
