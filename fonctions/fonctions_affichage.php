@@ -270,11 +270,14 @@ class Affichage
 	
 		foreach($tamis as $tami)
 		{
-			$adresseImage = $image->image_redim($tami['avatar'], 32, 32);
+			if(!empty($tami['avatar']))
+				$adresseImage = $image->image_redim($tami['avatar'], 32, 32);
+			else
+				$adresseImage = '/avatars/ANONYME.JPG';
 
 			$res .= "<tr>"; 
 			$res .= "<td><img src='$adresseImage' alt='avatar de " . $tami['pseudo'] . "' />\n"; 
-			$res .= "<td>" . $tami['pseudo'] . "</td><td>" . $tami['dinscription'] . "</td>\n";
+			$res .= "<td>" . $tami['pseudo'] . "</td><td>" . date("d.m.y \à H\hm",$tami['dinscription']) . "</td>\n";
 			
 			if($tami['uetat'] == 0)
 				$res .= "<td>Connecté</td>\n";
