@@ -137,7 +137,7 @@ class Auteur
 		$aid=intval($param->getValue());
 		if($aid>0)
 		{
-			$template=file_get_contents(PARTIAL.'auteur_complet.xhtml')
+			$template=file_get_contents(PARTIAL.'auteur_complet.xhtml');
 			$oauteur=new Auteur($aid);
 			$template=$this->affichAuteur($template,$oauteur);
 			return $remplate;
