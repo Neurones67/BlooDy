@@ -478,15 +478,15 @@ class Utilisateurs
 		$template=str_replace('{{ANNEEINSCR}}',date('Y',$user->dinscription),$template);
 		return $template;
 	}
-	public static function listeUtilisateurs($nicedisplay=false)
+	public function listeUtilisateurs($nicedisplay=false)
 	{
 		$filter="";
 		$filter2="";
 		if($nicedisplay)
 		{
-			if(isset($_GET['startl'],$_GET['page']) and !empty($_GET['start1']) and !empty($_GET['page']))
+			if(isset($_GET['startl'],$_GET['page']) and !empty($_GET['startl']) and !empty($_GET['page']))
 			{
-				$startl=intval($_GET['startl']);
+				$startl=$this->mysql->real_escape_string($_GET['startl']);
 				$page=intval($_GET['start1']);
 				$page=$page > 0 ? $page : 1;
 			}
