@@ -554,9 +554,9 @@ class Utilisateurs
 		$uid=intval($param->getValue());
 		if($uid>0)
 		{
-			$template=file_get_contents(PARTIAL.'auteur_complet.xhtml')
+			$template=file_get_contents(PARTIAL.'membre_complet.xhtml')
 			$ouser=new Utilisateurs($uid);
-			$template=$this->afficheUser($template,$user);
+			$template=$this->affichUser($template,$ouser);
 			return $remplate;
 		}
 	}
