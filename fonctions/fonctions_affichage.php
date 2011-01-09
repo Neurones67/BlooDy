@@ -239,7 +239,7 @@ class Affichage
 		$user = requestObject('Utilisateurs');
 		$affichage = requestObject('Affichage');
 		$res = "";
-		$utilisateurs = $users->listeUtilisateurs();
+		$utilisateurs = $user->listeUtilisateurs();
 		if($affichage->tableauEstVide($utilisateurs))
 		{
 			$res .= "<h2>Les utilisateurs</h2>\n\t<p>Il n'y a pas d'utilisatuers ici ! Vous n'existez même pas ! oups?</p>";
