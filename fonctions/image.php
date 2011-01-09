@@ -128,7 +128,7 @@ class Image
 			$npath=$dir.'/'.$name.'_'.$max_l.'_'.$max_h.'.'.$ext;
 			if(!file_exists($npath))
 			{
-				redim_img($path,$max_l,$max_h,$npath);
+				$this->redim_img($path,$max_l,$max_h,$npath);
 			}
 			return str_replace(ROOT,'/',$npath);
 		}
