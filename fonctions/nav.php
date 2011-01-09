@@ -98,12 +98,17 @@ class Nav
 		{
 			$addr=$_SERVER['HTTP_REFERER'];
 			$addrname="la page précédente";
+			if(preg_match('motdepasseperdu',$addr) or preg_match('inscription',$addr))
+			{
+				$addr='/';
+			}
+
 		}
 		if(empty($addrname))
 		{
 			$addrname=$addr;
 		}
-		if($addr=="/")
+		if($addr=="/" || $addr=="htttp://bloodybd.fr/")
 		{
 			$addrname="la page d'Accueil";
 		}
