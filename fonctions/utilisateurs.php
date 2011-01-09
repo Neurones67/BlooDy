@@ -76,6 +76,7 @@ class Utilisateurs
 		unset($this->uetat);
 		unset($this->cvalidation);
 		unset($this->connexionm);
+		unset($this->avatar);
 	}
 	private function initData($uid)
 	{
@@ -117,6 +118,10 @@ class Utilisateurs
 	public function getEmail()
 	{
 		return $this->email;
+	}
+	public function getAvatar()
+	{
+		return $this->avatar;
 	}
 	public function getDescription()
 	{

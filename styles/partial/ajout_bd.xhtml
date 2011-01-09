@@ -1,5 +1,5 @@
 	<h2>Ajout d'une Bande Dessinée</h2> 
-	<form id="formulaire_ajout_bd" method="post" action='' > 
+	<form id="formulaire_ajout_bd" method="post" action='' enctype="multipart/form-data" accept="image/jpeg,image/pjpeg,image/png,image/gif"> 
 	<fieldset> 
 		<legend>Les informations indispensables</legend> 
 		<dt><label for="nomBD" >Nom de la Bande dessinée</label></dt> 
@@ -25,7 +25,12 @@
 		<dd><input id='jourPublication' name='jourPublication' type='text' value="{{JOURPUB}}" /> / <input id='moisPublication' name='moisPublication' type='text' value="{{MOISPUB}}" /> / <input id='anneePublication' name='anneePublication' type='text' value="{{ANNEEPUB}}" /></dd> 
 		<dt><label for='synopsis'>Le synopsis</label></dt> 
 		<dd><textarea id='synopsis' name="synopsis" rows='7' cols='80'>{{SYNOPSIS}}</textarea></dd> 
-	</fieldset> 
+<form id="changer_avatar" method="post" action="" >
+		<p>Couverture :</p>
+		  <input type="hidden" name="MAX_FILE_SIZE" value="2097152"/>   
+		  <input type="file" name="nomfichier" accept="image/jpeg,image/pjpeg,image/png,image/gif"/>  
+	</fieldset>
 	<input type='hidden' name="lid" value='{{LID}}' />
-	<input type='reset' value='Annuler' />	<input type='submit' value='OK'/> 
+	<input type='reset' value='Annuler' />	<input type='submit' value='OK'/>
+	<p><a href="{{SCRIPT}}">Ajouter une nouvelle BD</a></p>
 	</form> 
