@@ -262,6 +262,8 @@ class Affichage
 	public function recherche_amis($tamis, $user)
 	{
 		$image = requestObject('Image');
+		$moi = requestObject('Utilisateurs');
+		$monUID = $moi->getUid();
 
 		$res = "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
 		if($user->estConnecte())
@@ -284,14 +286,14 @@ class Affichage
 			else
 				$res .= "<td>Non connecté</td>\n";
 
-			if($user->estConnecte())
+			if($user->estConnecte() && $monUID != $tami['uid'] )
 			{
 				if(empty($tami['date_ajout'])) // Si la personne ne fait pas encore partie des amis
 					$res .= "<td><input type='checkbox' name='amis[]' value='" . $tami['uid'] . "' /></td>";
 				else
 					$res .= "<td>Vous possédez déjà cette personne</td>";
 			}
-				$res .= "</tr>\n";
+			$res .= "</tr>\n";
 		}
 		$res .= "</table>\n";
 			
