@@ -370,6 +370,22 @@ class Utilisateurs
 		$sql='SELECT uid,pseudo,email FROM utilisateurs ORDER BY uid';
 		return queryToArray($this->mysql->query($sql));
 	}
+	public function ajoutAmi($duid) // Permet d'ajouter un ami
+	{
+		$uid=$this->getUid();
+		$sql1='SELECT a.duid FROM amis a WHERE (a.euid='.$uid.' AND a.duid='.$duid.') OR (a.euid='.$duid.' AND a.duid='.$uid.')';
+		$res1=$this->mysql->query($sql1);
+		if($res1->fetch_row())
+		{
+			// On est déjà ami avec la personne.
+		}
+		else
+		{
+			// on est pas déjà ami, on ajoute.
+			$sql2='INSERT INTO amis(euid,duid,date_ajout) VALUES('.$uid.','.$duid.','.time().')';
+			return $this->mysql->query($sql2);
+		}
+	}
 	public function connexion()
 	{
 		if(isset($_POST['id_Connexion'],$_POST['id_MotDePasse']) and !empty($_POST['id_Connexion']) and !empty($_POST['id_MotDePasse']))
