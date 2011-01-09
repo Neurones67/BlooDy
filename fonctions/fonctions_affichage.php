@@ -304,15 +304,6 @@ class Affichage
 
 		return $res;
 	}
-	public function affichage_compact_bd($tBD)
-	{
-		$image = requestObject('Image');
-
-		$res = "";
-		if(empty($tBD))
-			$res .= "<p>Vous n'avez rien à afficher</p>";
-		else
-	}
 	public function tableauEstVide($t)
 	{
 		$i = 0;
