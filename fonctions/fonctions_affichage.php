@@ -250,6 +250,69 @@ class Affichage
 		}
 		return $res;
 	}
+	public function afficher_amis()
+	{
+		$user = requestObject('Utilisateurs');
+		$affichage = requestObject('Affichage');
+		$res = "";
+		$amis = $user->liste_amis();
+		if($affichage->tableauEstVide($amis))
+		{
+			$res .= "<h2>Vous n'avez pas d'ami, tu veux un mouchoir ?</h2>";
+		}
+		else
+		{
+			$res .= $affichage->affichage_amis($amis);
+		}
+
+		return $res;
+	}
+	public function affichage_amis($amis)
+	{
+		$image = requestObject('Image');
+
+		$res = "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>";
+		$res .= "<th>Ajouter à mes amis</th><tr>\n";
+	
+		foreach($amis as $tami)
+		{
+			if(!empty($tami['avatar']))
+				$adresseImage = $image->image_redim($tami['avatar'], 32, 32);
+			else
+				$adresseImage = '/avatars/ANONYME.JPG';
+
+			$res .= "<tr>"; 
+			$res .= "<td><img src='$adresseImage' alt='avatar de " . $tami['pseudo'] . "' />\n"; 
+			$res .= "<td>" . $tami['pseudo'] . "</td><td>" . date("d.m.y \à H\hm",$tami['dinscription']) . "</td>\n";
+			
+			if($tami['uetat'] == 0)
+				$res .= "<td>Connecté</td>\n";
+			else
+				$res .= "<td>Non connecté</td>\n";
+
+			if(empty($tami['date_ajout'])) // Si la personne ne fait pas encore partie des amis
+				$res .= "<td>Cette personne n'est plus à vous :(</td>";
+			else
+				$res .= "<td><input type='checkbox' name='amis[]' value='" . $tami['uid'] . "' /></td>";
+			
+			$res .= "</tr>\n";
+		}
+		$res .= "</table>\n";
+			
+		$res .= "<input type='reset' value='Annuler' />";
+		$res .= "<input type='submit' value='Supprimer' />";
+
+		return $res;
+	}
+	public function affichage_compact_bd($tBD)
+	{
+		$image = requestObject('Image');
+
+		$res = "";
+		if(empty($tBD))
+			$res .= "<p>Vous n'avez rien à afficher</p>";
+		else
+	}
 	public function tableauEstVide($t)
 	{
 		$i = 0;
@@ -262,8 +325,7 @@ class Affichage
 	public function recherche_amis($tamis, $user)
 	{
 		$image = requestObject('Image');
-		$moi = requestObject('Utilisateurs');
-		$monUID = $moi->getUid();
+		$monUID = $user->getUid();
 
 		$res = "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>\n";
 		if($user->estConnecte())
