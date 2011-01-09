@@ -73,7 +73,7 @@ class Image
 			if($pathnav=$this->saveImage(COUVERTURES,$lid.'_',32,32))
 			{
 				$sql='UPDATE livres SET couverture="'.$pathnav.'" WHERE lid='.$lid;
-				if($this->mysql->query($sql))
+				if(RequestObject('MySQL')->query($sql))
 				{
 					$template='<div class="message">La couverture a bien été enregistré : <img src="'.$pathnav.'" alt="cover" /> </div>';
 				}
@@ -99,7 +99,7 @@ class Image
 			if($pathnav=$this->saveImage(PHOTOS,$aid.'_',32,32))
 			{
 				$sql='UPDATE auteurs SET photo="'.$pathnav.'" WHERE aid='.$aid;
-				if($this->mysql->query($sql))
+				if(RequestObject('MySQL')->query($sql))
 				{
 					$template='<div class="message">La photo de l\'auteur a bien été enregistrée : <img src="'.$pathnav.'" alt="photo" /></div>';
 				}

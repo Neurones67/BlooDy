@@ -131,4 +131,16 @@ class Auteur
 
 		return $template;
 	}
+	public function afficheComplet()
+	{
+		$param=requestObject('Param');
+		$aid=intval($param->getValue());
+		if($aid>0)
+		{
+			$template=file_get_contents(PARTIAL.'auteur_complet.xhtml')
+			$oauteur=new Auteur($aid);
+			$template=$this->affichAuteur($template,$oauteur);
+			return $remplate;
+		}
+	}
 }
