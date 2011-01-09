@@ -108,7 +108,7 @@ class Nav
 		{
 			$addrname=$addr;
 		}
-		if($addr=="/" || $addr=="htttp://bloodybd.fr/")
+		if($addr=="/" || $addr=="http://".$_SERVER['HTTP_HOST'].'/')
 		{
 			$addrname="la page d'Accueil";
 		}
