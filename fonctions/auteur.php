@@ -34,7 +34,7 @@ class Auteur
 	private function initData($aid)
 	{
 		$aid=intval($aid);
-		$sql='SELECT anom,aprenom,biographie,adatenaissance,aphoto,avalide FROM auteurs WHERE aid='.$aid;
+		$sql='SELECT anom,aprenom,biographie,adnaissance,aphoto,avalide FROM auteurs WHERE aid='.$aid;
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
