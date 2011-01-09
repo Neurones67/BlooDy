@@ -548,13 +548,14 @@ class Utilisateurs
 		}
 		return queryToArray($this->mysql->query($sql));
 	}
+
 	public function afficheComplet()
 	{
 		$param=requestObject('Param');
 		$uid=intval($param->getValue());
 		if($uid>0)
 		{
-			$template=file_get_contents(PARTIAL.'membre_complet.xhtml')
+			$template=file_get_contents(PARTIAL.'membre_complet.xhtml');
 			$ouser=new Utilisateurs($uid);
 			$template=$this->affichUser($template,$ouser);
 			return $remplate;
