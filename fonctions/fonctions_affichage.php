@@ -255,7 +255,7 @@ class Affichage
 		$user = requestObject('Utilisateurs');
 		$affichage = requestObject('Affichage');
 		$res = "";
-		$amis = $user->liste_amis();
+		$amis = $user->listeAmis();
 		if($affichage->tableauEstVide($amis))
 		{
 			$res .= "<h2>Vous n'avez pas d'ami, tu veux un mouchoir ?</h2>";
