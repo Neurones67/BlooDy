@@ -283,7 +283,7 @@ class Affichage
 
 			$res .= "<tr>"; 
 			$res .= "<td><img src='$adresseImage' alt='avatar de " . $tami['pseudo'] . "' />\n"; 
-			$res .= "<td><a href='/membre-" . $tami['uid'] . "'.html >" . $tami['pseudo'] . "</a></td>";
+			$res .= "<td><a href='/membre-" . $tami['uid'] . ".html' >" . $tami['pseudo'] . "</a></td>";
 			$res .= "<td>" . date("d.m.y \à H\hm",$tami['dinscription']) . "</td>\n";
 			
 			if($tami['uetat'] == 0)
