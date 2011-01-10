@@ -370,7 +370,11 @@ class Affichage
 		{
 			foreach($tBD as $BD)
 			{
-				$adresseImage = $image->image_redim($BD['couverture'], 100, 100);
+				if(!empty($BD['couverture'))
+					$adresseImage = $image->image_redim($BD['couverture'], 100, 100);
+				else
+					$adresseImage = "/couvertures/ANONYME.JPG";
+
 				$res .= "<div class='affichage_compact'>\n";
 				$res .= "\t<p>" . $BD['nom'] . "</p>\n";
 				$res .= "\t<img src='$adresseImage' alt='Image de " . $BD['nom'] . "' />\n";
