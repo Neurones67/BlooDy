@@ -88,13 +88,13 @@ class Utilisateurs
 			$this->uid=$uid;
 			$this->pseudo=$data->pseudo;
 			$this->email=$data->email;
-			if(!empty($this->avatar))
+			if(!empty($data->avatar))
 			{
 				$this->avatar=$data->avatar;
 			}
 			else
 			{
-				$this->avatar=AVATARS.'ANONYME.JPG';
+				$this->avatar=str_replace('ROOT','',AVATARS.'ANONYME.JPG');
 			}
 			$this->description=stripslashes($data->description);
 			$this->bdpublique=$data->bdpublique;
