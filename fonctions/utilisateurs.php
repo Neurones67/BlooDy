@@ -416,6 +416,36 @@ class Utilisateurs
 		}
 		return "";
 	}
+	public function supprimerAmi($duid)
+	{
+		$uid=$this->getUid();
+		$sql='DELETE FROM amis WHERE (duid='.$uid.' AND euid='.$duid.') OR (duid='.$duid.' AND euid='.$uid.')';
+		return $this->mysql->query($sql);
+	}
+	public function suppressionAmis()
+	{
+		if(isset($_POST['amis']) and !empty($_POST['amis']))
+		{
+			$res=true;
+			foreach($_POST['amis'] as $ami)
+			{
+				if(!$this->supprimerAmi($ami))
+				{
+					$res=false;
+				}
+			}
+			if($res)
+			{
+				$template='<div class="message">Amis supprimés :)</div>';
+			}
+			else
+			{
+				$template='<div class="error">Au moins un ami n\'a pas été supprimé :(</div>';
+			}
+			return $template;
+		}
+		return "";
+	}
 	public function connexion()
 	{
 		if(isset($_POST['id_Connexion'],$_POST['id_MotDePasse']) and !empty($_POST['id_Connexion']) and !empty($_POST['id_MotDePasse']))
