@@ -44,6 +44,14 @@ class Auteur
 			$this->biographie=$data->biographie;
 			$this->adnaissance=$data->adnaissance;
 			$this->avalide=$data->avalide;
+			if(!empty($data->aphoto))
+			{
+				$this->aphoto=$data->aphoto;
+			}
+			else
+			{
+				$this->aphoto=str_replace(ROOT,'',AVATARS.'ANONYME.JPG');
+			}
 		}
 	}
 	
