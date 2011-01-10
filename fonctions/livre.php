@@ -328,7 +328,7 @@ class Livre
 		$template=str_replace('{{AJDATE}}',$livre->ajdate,$template);
 		$template=str_replace('{{EDITEUR}}',$livre->editeur,$template);
 		$template=str_replace('{{SERIE}}',$livre->serie,$template);
-		$template=str_replace('{{COUVERTURE}}',$livre->couverture,$template);
+		$template=str_replace('{{COUVERTURE}}',requestObject('Image')->image_redim($livre->couverture,200,200),$template);
 		return $template;
 	}
 	
