@@ -13,10 +13,13 @@ class Templates
 		{		
 			foreach($result[1] as $key => $class)
 			{
-				if(class_exists($class) and method_exists($object,$result[2][$key]))
+				if(class_exists($class))
 				{
 					$object=requestObject($class);
-					$template=str_replace($result[0][$key],$object->$result[2][$key](),$template);
+					if(method_exists($object,$result[2][$key]))
+					{
+						$template=str_replace($result[0][$key],$object->$result[2][$key](),$template);
+					}
 				}
 			}
 		}
@@ -26,7 +29,7 @@ class Templates
 			foreach($result[1] as $key => $class)
 			{	
 					
-				if(class_exists($class) and method_exists($object,$result[2][$key]))
+				if(class_exists($class))
 				{
 					$object=requestObject($class);
 					if($result[3][$key] != NULL and method_exists($object,$result[2][$key]))
