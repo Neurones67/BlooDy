@@ -94,7 +94,7 @@ class Utilisateurs
 			}
 			else
 			{
-				$this->avatar=str_replace('ROOT','',AVATARS.'ANONYME.JPG');
+				$this->avatar=str_replace(ROOT,'',AVATARS.'ANONYME.JPG');
 			}
 			$this->description=stripslashes($data->description);
 			$this->bdpublique=$data->bdpublique;

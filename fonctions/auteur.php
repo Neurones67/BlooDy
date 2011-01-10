@@ -50,7 +50,7 @@ class Auteur
 			}
 			else
 			{
-				$this->aphoto=str_replace('ROOT','',AVATARS.'ANONYME.JPG');
+				$this->aphoto=str_replace(ROOT,'',AVATARS.'ANONYME.JPG');
 			}
 		}
 	}
