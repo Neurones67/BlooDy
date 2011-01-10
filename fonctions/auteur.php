@@ -135,7 +135,7 @@ class Auteur
 		$template=str_replace('{{DATEAUTEUR}}',$auteur->adnaissance,$template);
 		$template=str_replace('{{IDAUTEUR}}',$auteur->aid,$template);
 		$template=str_replace('{{BIOGRAPHIE}}',$auteur->biographie,$template);
-		$template=str_replace('{{PHOTO}}',$auteur->aphoto,$template);
+		$template=str_replace('{{PHOTO}}',requestObject('Image')->image_redim($data->aphoto,200,200),$template);
 
 		return $template;
 	}
