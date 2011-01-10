@@ -38,8 +38,8 @@ class Auteur
 		$req=$this->mysql->query($sql);
 		if($data=$req->fetch_object())
 		{
-			$this->aid=$data->aid;
-			$this->anom=$data-->anom;
+			$this->aid=$aid;
+			$this->anom=$data->anom;
 			$this->aprenom=$data->aprenom;
 			$this->biographie=$data->biographie;
 			$this->adnaissance=$data->adnaissance;
@@ -126,7 +126,7 @@ class Auteur
 		$template=str_replace('{{PRENOMAUTEUR}}',$auteur->aprenom,$template);
 		$template=str_replace('{{DATEAUTEUR}}',$auteur->adnaissance,$template);
 		$template=str_replace('{{IDAUTEUR}}',$auteur->aid,$template);
-		$template=str_replace('{{BIOGRAPHIE}}',$auteur->abiographie,$template);
+		$template=str_replace('{{BIOGRAPHIE}}',$auteur->biographie,$template);
 		$template=str_replace('{{PHOTO}}',$auteur->aphoto,$template);
 
 		return $template;
@@ -140,7 +140,7 @@ class Auteur
 			$template=file_get_contents(PARTIAL.'auteur_complet.xhtml');
 			$oauteur=new Auteur($aid);
 			$template=$this->affichAuteur($template,$oauteur);
-			return $remplate;
+			return $template;
 		}
 	}
 }
