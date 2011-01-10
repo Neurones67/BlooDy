@@ -554,7 +554,7 @@ class Utilisateurs
 		$template=str_replace('{{PSEUDO}}',$user->pseudo,$template);
 		$template=str_replace('{{EMAIL}}',$user->email,$template);
 		$template=str_replace('{{DESCRIPTION}}',htmlspecialchars($user->description),$template);
-		$template=str_replace('{{AVATAR}}',requestObject('Image')->image_redim($data->avatar,200,200),$template);
+		$template=str_replace('{{AVATAR}}',requestObject('Image')->image_redim($user->avatar,200,200),$template);
 		$template=str_replace('{{DATEINSCR}}',$user->dinscription,$template);
 		$template=str_replace('{{JOURINSCR}}',date('j',$user->dinscription),$template);
 		$template=str_replace('{{MOISINSCR}}',date('n',$user->dinscription),$template);
