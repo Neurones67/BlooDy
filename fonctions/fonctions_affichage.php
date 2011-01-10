@@ -370,7 +370,7 @@ class Affichage
 		{
 			foreach($tBD as $BD)
 			{
-				if(!empty($BD['couverture'))
+				if(!empty($BD['couverture']))
 					$adresseImage = $image->image_redim($BD['couverture'], 100, 100);
 				else
 					$adresseImage = "/couvertures/ANONYME.JPG";
