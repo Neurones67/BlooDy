@@ -272,7 +272,7 @@ class Affichage
 		$image = requestObject('Image');
 
 		$res = "<table id='amis'><tr><th>Avatar</th><th>Pseudo</th><th>Date d'inscription</th><th>État</th>";
-		$res .= "<th>Ajouter à mes amis</th><tr>\n";
+		$res .= "<th>Supprimer de mes amis</th><tr>\n";
 	
 		foreach($amis as $tami)
 		{
