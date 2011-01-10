@@ -88,7 +88,7 @@ class Utilisateurs
 			$this->uid=$uid;
 			$this->pseudo=$data->pseudo;
 			$this->email=$data->email;
-			if(!empty($this->avatar)
+			if(!empty($this->avatar))
 			{
 				$this->avatar=$data->avatar;
 			}
